@@ -1,5 +1,6 @@
 package net.slashie.libjcsi.jcurses;
 
+import net.slashie.libjcsi.CSIColor;
 import net.slashie.libjcsi.CharKey;
 import net.slashie.libjcsi.ConsoleSystemInterface;
 import net.slashie.util.Position;
@@ -296,6 +297,10 @@ public class JCursesConsoleInterface implements ConsoleSystemInterface{
 			System.arraycopy(colors[i], 0, colorsBuffer[i], 0, colors[i].length-1);
 			System.arraycopy(chars[i], 0, charsBuffer[i], 0, colors[i].length-1);
 		}
+	}
+	
+	public void print (int x, int y, char what, CSIColor color){
+		//Placeholder
 	}
 
 }
