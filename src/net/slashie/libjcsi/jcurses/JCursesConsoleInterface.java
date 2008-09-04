@@ -299,8 +299,64 @@ public class JCursesConsoleInterface implements ConsoleSystemInterface{
 		}
 	}
 	
-	public void print (int x, int y, char what, CSIColor color){
-		//Placeholder
+	final static CSIColor[] baseCSIColors = new CSIColor[]{
+		new CSIColor(0,0,0),
+		new CSIColor(0,0,128),
+		new CSIColor(0,128,0),
+		new CSIColor(0,128,128),
+		new CSIColor(128,0,0),
+		new CSIColor(128,0,128),
+		new CSIColor(128,64,0),
+		new CSIColor(128,128,128), //LIGHT_GRAY = 7
+		new CSIColor(64,64,64),//GRAY = 8
+		new CSIColor(0,0,255),//BLUE = 9
+		new CSIColor(0,255,0),//LEMON = 10
+		new CSIColor(0,255,255),//CYAN = 11
+		new CSIColor(255,0,0),//RED = 12
+		new CSIColor(255,0,255),//MAGENTA = 13
+		new CSIColor(255,255,0),//YELLOW = 14
+		new CSIColor(255,255,255)//WHITE = 15;
+	};;
+	
+	private int selectAproximateColor(CSIColor color){
+		int r = color.getR();
+		int g = color.getG();
+		int b = color.getB();
+		int minDifference = 99999;
+		int chosenIndex = -1;
+		for(int i = 0; i<16;i++){
+			int difference = Math.abs(baseCSIColors[i].getR() - r)+Math.abs(baseCSIColors[i].getG() - g)+Math.abs(baseCSIColors[i].getB() - b);
+			if (difference < minDifference){
+				chosenIndex = i;
+				minDifference = difference;
+			}
+		}
+		return chosenIndex;
+	}
+	
+	public void print (int x, int y, char character, CSIColor color){
+		print(x,y,character,selectAproximateColor(color));
+	}
+	
+	public void print (int x, int y, String string, CSIColor color){
+		print(x,y,string,selectAproximateColor(color));
+	}
+	
+	public static void main(String[] args){
+		CSIColor color = new CSIColor(0,160,150);
+		int r = color.getR();
+		int g = color.getG();
+		int b = color.getB();
+		int minDifference = 99999;
+		int chosenIndex = -1;
+		for(int i = 0; i<16;i++){
+			int difference = Math.abs(baseCSIColors[i].getR() - r)+Math.abs(baseCSIColors[i].getG() - g)+Math.abs(baseCSIColors[i].getB() - b);
+			if (difference < minDifference){
+				chosenIndex = i;
+				minDifference = difference;
+			}
+		}
+		System.out.println("Color "+chosenIndex);
 	}
 
 }
