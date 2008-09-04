@@ -153,4 +153,13 @@ public interface ConsoleSystemInterface {
 	MAGENTA = 13,
 	YELLOW = 14,
 	WHITE = 15;
+	
+	/**
+	 * Prints a character on the console, using a custom color
+	 * @param x
+	 * @param y
+	 * @param what The character to be printed
+	 * @param color The color, a rgba instance of CSIColor
+	 */
+	public void print (int x, int y, char what, CSIColor color);
 }
