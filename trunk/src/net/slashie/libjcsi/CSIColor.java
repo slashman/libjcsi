@@ -2,7 +2,7 @@ package net.slashie.libjcsi;
 
 public class CSIColor {
 
-    private final static int OPAQUE = 255;// 255 is opaque for the alpha channel
+    private final static int OPAQUE = 255;// 255 is opaque for the all channels
     private int value;
 
     public CSIColor(int pr, int pg, int pb, int pa) {
@@ -23,6 +23,14 @@ public class CSIColor {
     
     public CSIColor(CSIColorEnum color){
         value = color.color;
+    }
+    
+    public boolean equals(CSIColor b){
+        return (value == b.value);
+    }
+    
+    public boolean equals(CSIColorEnum b){
+        return (value == b.color);
     }
     
     public void setColor(int color){
