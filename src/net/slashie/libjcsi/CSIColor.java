@@ -2,57 +2,71 @@ package net.slashie.libjcsi;
 
 public class CSIColor {
 
-    private int r,  g,  b,  a;
-    private static int opaque = 255;// 255 is opaque for the alpha channel
+    private final static int OPAQUE = 255;// 255 is opaque for the alpha channel
+    private int value;
 
     public CSIColor(int pr, int pg, int pb, int pa) {
-        this(pr, pg, pb);
-        a = pa;
+        this((pa << 24) | (pr << 16) | (pg << 8) | pb);
     }
 
     public CSIColor(int pr, int pg, int pb) {
-        r = pr;
-        b = pb;
-        g = pg;
-        a = opaque;
+        this((OPAQUE << 24) | (pr << 16) | (pg << 8) | pb);
     }
 
-    public CSIColor() { //returns white
-        r = 255;
-        b = 255;
-        g = 255;
-        a = opaque;
+    public CSIColor() { //builds white
+        this((OPAQUE << 24) | (OPAQUE << 16) | (OPAQUE << 8) | OPAQUE);
+    }
+
+    public CSIColor(int hex) {
+        value = hex;
+
+    }
+    
+    public void setColor(int color){
+        value = color;
+    }
+    
+    public int getColor(){
+        return value;
     }
 
     public int getR() {
-        return r;
+        return (value >> 16) & 0xff;
     }
 
     public void setR(int r) {
-        this.r = r;
+        int x = getR();
+        value -= x;
+        value += r;
     }
 
     public int getG() {
-        return g;
+        return (value >> 8) & 0xff;
     }
 
     public void setG(int g) {
-        this.g = g;
+        int x = getG();
+        value -= x;
+        value += g;
     }
 
     public int getB() {
-        return b;
+        return value & 0xff;
     }
 
     public void setB(int b) {
-        this.b = b;
+        int x = getB();
+        value -= x;
+        value += b;
     }
 
     public int getA() {
-        return a;
+        return (value >> 24) & 0xff;
     }
 
     public void setA(int a) {
-        this.a = a;
+        int x = getA();
+        value -= x;
+        value += a;
     }
 }
