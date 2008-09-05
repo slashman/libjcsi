@@ -1,0 +1,4 @@
+#summary What features will next version have?
+= Plans for the future, version 0.2 =
+  * Changeable console resolutions
+  * Background colors
