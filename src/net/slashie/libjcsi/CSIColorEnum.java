@@ -27,9 +27,9 @@ public enum CSIColorEnum {
     WHITE(0xffffff),
     YELLOW(0xffff00);
     
-    int intValue;
+    int color;
 
     private CSIColorEnum(int value) {
-        intValue = value;
+        color = value;
     }
 }
