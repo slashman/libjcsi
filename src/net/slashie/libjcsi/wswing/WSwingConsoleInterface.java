@@ -35,9 +35,11 @@ public class WSwingConsoleInterface implements ConsoleSystemInterface, Runnable,
     private char[][] chars;
     private CSIColor[][] colorsBuffer;
     private char[][] charsBuffer;
+    private CSIColor backColor = new CSIColor(CSIColorEnum.BLACK);
+    private CSIColor frontColor = new CSIColor(CSIColorEnum.WHITE);
     private Position caretPosition = new Position(0, 0);
     private boolean sandboxDeploy;
-    private Hashtable colorTable = new Hashtable();
+    private Hashtable<CSIColor, Color> colorTable = new Hashtable<CSIColor, Color>();
 
     public WSwingConsoleInterface(String windowName, boolean sandboxDeploy) {
         this.sandboxDeploy = sandboxDeploy;
@@ -74,31 +76,22 @@ public class WSwingConsoleInterface implements ConsoleSystemInterface, Runnable,
         //targetPanel.flash(getColorFromCode(color));
     }
     
-    private void addColor(CSIColor color){
-        if (colorTable.containsKey(color)){
-            return;
-        } else{
-            colorTable.put(color, new Color(color.getColor()));
+    private Color colorPreProcess(CSIColor b){
+        if (!colorTable.containsKey(b)){
+            colorTable.put(b, new Color(b.getColor()));
         }
+            return colorTable.get(b);
     }
     
     public void flushColorTable(){
         colorTable.clear();
     }
 
-    public Color getColorFromCSIColor(CSIColor color) {
-        return new Color(color.getR(), color.getB(), color.getG());
-    }
-
-    public CSIColor getCSIColorFromColor(Color color) {
-        return new CSIColor(color.getRed(), color.getBlue(), color.getGreen());
-    }
-
     public void cls() {
         for (int x = 0; x < colors.length; x++) {
             for (int y = 0; y < colors[0].length; y++) {
                 chars[x][y] = ' ';
-                colors[x][y] = getCSIColorFromColor(Color.BLACK);
+                colors[x][y] = backColor;
             }
         }
         targetPanel.cls();
@@ -132,7 +125,7 @@ public class WSwingConsoleInterface implements ConsoleSystemInterface, Runnable,
             if (ypos >= ydim) {
                 break;
             }
-            targetPanel.plot(what.charAt(i), xpos, ypos, getColorFromCSIColor(color));
+            targetPanel.plot(what.charAt(i), xpos, ypos, colorPreProcess(color));
             chars[x + i][y] = what.charAt(i);
             colors[x + i][y] = color;
             xpos++;
@@ -150,13 +143,13 @@ public class WSwingConsoleInterface implements ConsoleSystemInterface, Runnable,
         if (chars[x][y] == what && colors[x][y] == color) {
             return;
         }
-        targetPanel.plot(what, xpos, ypos, getColorFromCSIColor(color));
+        targetPanel.plot(what, xpos, ypos, colorPreProcess(color));
         colors[x][y] = color;
         chars[x][y] = what;
     }
 
     public void print(int x, int y, String what) {
-        print(x, y, what, ConsoleSystemInterface.WHITE);
+        print(x, y, what, frontColor);
     }
 
     public void locateCaret(int x, int y) {
@@ -227,7 +220,6 @@ public class WSwingConsoleInterface implements ConsoleSystemInterface, Runnable,
         CharKey ret = new CharKey(aStrokeInformer.getInkeyBuffer());
         return ret;
     }
-    private final static Color DARKRED_COLOR = new Color(128, 0, 0),  DARKBLUE_COLOR = new Color(0, 0, 200),  DARKGREEN_COLOR = new Color(0, 128, 0),  DARKMAGENTA_COLOR = new Color(128, 0, 128),  TEAL_COLOR = new Color(0, 128, 128),  BROWN_COLOR = new Color(128, 128, 0);
 
     public int getColor(String colorName) {
         if (colorName == null) {
