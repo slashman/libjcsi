@@ -5,7 +5,7 @@
 One of the first project chats
 
 = Details =
-
+{{{
 9:23 AM 
 well,,
   
@@ -411,3 +411,4 @@ I am going on a meeting
 I am recording this convo into the project wiki, for later nostalgia
  
 Eben: hehe, sounds good
+}}}
