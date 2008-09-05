@@ -19,7 +19,10 @@ public class CSIColor {
 
     public CSIColor(int hex) {
         value = hex;
-
+    }
+    
+    public CSIColor(CSIColorEnum color){
+        value = color.color;
     }
     
     public void setColor(int color){
