@@ -112,6 +112,12 @@ public interface ConsoleSystemInterface {
      * @param color
      */
     public void flash(int color);
+    
+        /**
+     * This flushes the internal Hashtable for the colors.
+     * Should be called when changing the map drasticaly, such as during a level change event.
+     */
+    public void flushColorTable();
 
     /**
      * Sets whether or not a buffer will be used 

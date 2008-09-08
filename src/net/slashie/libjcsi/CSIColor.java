@@ -6,7 +6,6 @@ public class CSIColor {
 
     private final static int OPAQUE = 255;// 255 is opaque for the all channels
     private int value;
-    private static Vector<CSIColor> colorList = new Vector<CSIColor>();
     public static final CSIColor BLACK = new CSIColor(0x000000),  BLUE = new CSIColor(0x0000ff),  BROWN = new CSIColor(0x808000),  CYAN = new CSIColor(0x00ffff),  DARK_BLUE = new CSIColor(0x0000c8),  DARK_GRAY = new CSIColor(0X404040),  DARK_RED = new CSIColor(0x800000),  GRAY = new CSIColor(0x808080),  GREEN = new CSIColor(0x008000),  LEMON = new CSIColor(0x00FF00),// duplicated as LIGHT_GREEN for useability
          LIGHT_GRAY = new CSIColor(0xc0c0c0),  LIGHT_GREEN = new CSIColor(0x00FF00),  MAGENTA = new CSIColor(0xff00ff),  ORANGE = new CSIColor(0xffc800),  PINK = new CSIColor(0xffafaf),  PURPLE = new CSIColor(0x800080),  TEAL = new CSIColor(0x008080),  RED = new CSIColor(0xff0000),  WHITE = new CSIColor(0xffffff),  YELLOW = new CSIColor(0xffff00);
 
@@ -50,7 +49,6 @@ public class CSIColor {
     }
 
     public CSIColor(int hex) {
-//        if (colorList.contains(hex))
         value = hex;
     }
 
