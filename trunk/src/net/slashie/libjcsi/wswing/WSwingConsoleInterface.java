@@ -91,6 +91,7 @@ public class WSwingConsoleInterface implements ConsoleSystemInterface, Runnable,
             }
         }
         targetPanel.cls();
+        flushColorTable();// might as well clean out the colorTable if the screen is going to be blank
 
     }
 
