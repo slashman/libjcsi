@@ -4,6 +4,7 @@ package net.slashie.libjcsi.examples.luck;
 //Same as 3.1 but works on JWS.
 //Originally made for the 1st <1KBRL Challenge
 
+import net.slashie.libjcsi.CSIColor;
 import net.slashie.libjcsi.wswing.*;
 
 class Luck{
@@ -12,7 +13,9 @@ class Luck{
 	int r(){return(int)(Math.random()*17+1);}
 	int[]s=new int[]{0,0,-1,1,-1,1,0,0};
 	void a(int x,int y,char h){
-		j.print(x,y,Math.abs(a-x)+Math.abs(b-y)<7?h:' ',1+v%13);
+//		j.print(x,y,Math.abs(a-x)+Math.abs(b-y)<7?h:' ',1+v%13);
+            
+		j.print(x,y,Math.abs(a-x)+Math.abs(b-y)<7?h:' ',CSIColor.getColorVector().elementAt(1+v%13));
 	}
 	
 	public static void main(String[]p){

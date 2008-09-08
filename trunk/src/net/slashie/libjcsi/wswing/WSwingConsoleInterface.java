@@ -5,12 +5,8 @@ import java.awt.event.*;
 import java.io.*;
 
 import java.util.Hashtable;
-import net.slashie.libjcsi.CSIColor;
-import net.slashie.libjcsi.CSIColorEnum;
-import net.slashie.libjcsi.CharKey;
-import net.slashie.libjcsi.ConsoleSystemInterface;
-import net.slashie.util.FileUtil;
-import net.slashie.util.Position;
+import net.slashie.libjcsi.*;
+import net.slashie.util.*;
 
 public class WSwingConsoleInterface implements ConsoleSystemInterface, Runnable, ComponentListener {
 
@@ -35,8 +31,8 @@ public class WSwingConsoleInterface implements ConsoleSystemInterface, Runnable,
     private char[][] chars;
     private CSIColor[][] colorsBuffer;
     private char[][] charsBuffer;
-    private CSIColor backColor = new CSIColor(CSIColorEnum.BLACK);
-    private CSIColor frontColor = new CSIColor(CSIColorEnum.WHITE);
+    private CSIColor backColor = CSIColor.BLACK;
+    private CSIColor frontColor = CSIColor.WHITE;
     private Position caretPosition = new Position(0, 0);
     private boolean sandboxDeploy;
     private Hashtable<CSIColor, Color> colorTable = new Hashtable<CSIColor, Color>();
@@ -279,74 +275,74 @@ public class WSwingConsoleInterface implements ConsoleSystemInterface, Runnable,
     private CSIColor getColorFromCode(int code) {
         switch (code) {
             case BLACK:
-                return new CSIColor(CSIColorEnum.BLACK);
+                return CSIColor.BLACK;
             case DARK_BLUE:
-                return new CSIColor(CSIColorEnum.DARK_BLUE);
+                return CSIColor.DARK_BLUE;
             case GREEN:
-                return new CSIColor(CSIColorEnum.GREEN);
+                return CSIColor.GREEN;
             case TEAL:
-                return new CSIColor(CSIColorEnum.TEAL);
+                return CSIColor.TEAL;
             case DARK_RED:
-                return new CSIColor(CSIColorEnum.DARK_RED);
+                return CSIColor.DARK_RED;
             case PURPLE:
-                return new CSIColor(CSIColorEnum.PURPLE);
+                return CSIColor.PURPLE;
             case BROWN:
-                return new CSIColor(CSIColorEnum.BROWN);
+                return CSIColor.BROWN;
             case LIGHT_GRAY:
-                return new CSIColor(CSIColorEnum.LIGHT_GRAY);
+                return CSIColor.LIGHT_GRAY;
             case GRAY:
-                return new CSIColor(CSIColorEnum.GRAY);
+                return CSIColor.GRAY;
             case BLUE:
-                return new CSIColor(CSIColorEnum.BLUE);
+                return CSIColor.BLUE;
             case LEMON:
-                return new CSIColor(CSIColorEnum.LEMON);
+                return CSIColor.LEMON;
             case CYAN:
-                return new CSIColor(CSIColorEnum.CYAN);
+                return CSIColor.CYAN;
             case RED:
-                return new CSIColor(CSIColorEnum.RED);
+                return CSIColor.RED;
             case MAGENTA:
-                return new CSIColor(CSIColorEnum.MAGENTA);
+                return CSIColor.MAGENTA;
             case YELLOW:
-                return new CSIColor(CSIColorEnum.YELLOW);
+                return CSIColor.YELLOW;
             case WHITE:
-                return new CSIColor(CSIColorEnum.WHITE);
+                return CSIColor.WHITE;
             default:
                 return null;
         }
     }
 
     private int getCodeFromColor(CSIColor color) {
-        if (color.equals(CSIColorEnum.BLACK)) {
+        if (color.equals(CSIColor.BLACK)) {
             return BLACK;
-        } else if (color.equals(CSIColorEnum.DARK_BLUE)) {
+        } else if (color.equals(CSIColor.DARK_BLUE)) {
             return DARK_BLUE;
-        } else if (color.equals(CSIColorEnum.GREEN)) {
+        } else if (color.equals(CSIColor.GREEN)) {
             return GREEN;
-        } else if (color.equals(CSIColorEnum.TEAL)) {
+        } else if (color.equals(CSIColor.TEAL)) {
             return TEAL;
-        } else if (color.equals(CSIColorEnum.DARK_RED)) {
+        } else if (color.equals(CSIColor.DARK_RED)) {
             return DARK_RED;
-        } else if (color.equals(CSIColorEnum.PURPLE)) {
+        } else if (color.equals(CSIColor.PURPLE)) {
             return PURPLE;
-        } else if (color.equals(CSIColorEnum.BROWN)) {
+        } else if (color.equals(CSIColor.BROWN)) {
             return BROWN;
-        } else if (color.equals(CSIColorEnum.LIGHT_GRAY)) {
+        } else if (color.equals(CSIColor.LIGHT_GRAY)) {
             return LIGHT_GRAY;
-        } else if (color.equals(CSIColorEnum.GRAY)) {
+        } else if (color.equals(CSIColor.GRAY)) {
             return GRAY;
-        } else if (color.equals(CSIColorEnum.BLUE)) {
+        } else if (color.equals(CSIColor.BLUE)) {
             return BLUE;
-        } else if (color.equals(CSIColorEnum.LEMON)) {
+        } else if (color.equals(CSIColor.LEMON)) {
             return LEMON;
-        } else if (color.equals(CSIColorEnum.CYAN)) {
+        } else if (color.equals(CSIColor.CYAN)) {
             return CYAN;
-        } else if (color.equals(CSIColorEnum.RED)) {
+        } else if (color.equals(CSIColor.RED)) {
             return RED;
-        } else if (color.equals(CSIColorEnum.MAGENTA)) {
+        } else if (color.equals(CSIColor.MAGENTA)) {
             return MAGENTA;
-        } else if (color.equals(CSIColorEnum.YELLOW)) {
+        } else if (color.equals(CSIColor.YELLOW)) {
             return YELLOW;
-        } else if (color.equals(CSIColorEnum.WHITE)) {
+        } else if (color.equals(CSIColor.WHITE)) {
             return WHITE;
         } else {
             return 0;
