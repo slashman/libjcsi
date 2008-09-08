@@ -79,10 +79,6 @@ public class WSwingConsoleInterface implements ConsoleSystemInterface, Runnable,
             return colorTable.get(b);
     }
     
-    /**
-     * This flushes the internal Hashtable for the colors.
-     * Should be called when changing the map drasticaly, such as during a level change event.
-     */
     public void flushColorTable(){
         colorTable.clear();
     }
