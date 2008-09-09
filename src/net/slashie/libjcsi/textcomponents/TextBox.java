@@ -12,6 +12,7 @@ public class TextBox extends TextComponent {
         lines = new StringBuffer[]{new StringBuffer("")};
     }
 
+    @Override
     public void setHeight(int value) {
         super.setHeight(value);
         if (hasBorder()) {
@@ -24,6 +25,7 @@ public class TextBox extends TextComponent {
         }
     }
 
+    @Override
     public void setBorder(boolean value) {
         super.setBorder(value);
         if (hasBorder()) {
