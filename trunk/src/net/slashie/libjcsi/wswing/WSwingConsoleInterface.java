@@ -118,6 +118,7 @@ public class WSwingConsoleInterface implements ConsoleSystemInterface, Runnable,
         dialog.setText(question);
         locateCaret(x + 2, y + lines + 2);
         dialog.draw();
+        refresh();
         
         answer = input();
         restore();

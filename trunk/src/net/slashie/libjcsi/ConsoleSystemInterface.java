@@ -81,6 +81,16 @@ public interface ConsoleSystemInterface {
     public String input(int length);
 
     /**
+     * Builds a dialog box.
+     * The box will be centered in the game window and sized
+     * based on the number of lines requested and the length of the screen.
+     * @param lines The number of lines the text should be broken into.
+     * @param question The String that is the text displayed.
+     * @return A String that is taken as input from the player.
+     */
+    public String askPlayer(int lines, String question);
+
+    /**
      * Checks if the position is valid
      * @param e
      * @return true if the position is valid
@@ -112,8 +122,8 @@ public interface ConsoleSystemInterface {
      * @param color
      */
     public void flash(int color);
-    
-        /**
+
+    /**
      * This flushes the internal Hashtable for the colors.
      * Should be called when changing the map drasticaly, such as during a level change event.
      */
@@ -152,8 +162,8 @@ public interface ConsoleSystemInterface {
      * @param color The color, a rgba instance of CSIColor
      */
     public void print(int x, int y, char what, CSIColor color);
-    
-        /**
+
+    /**
      * Prints a character on the console, using a custom color
      * @param x
      * @param y
