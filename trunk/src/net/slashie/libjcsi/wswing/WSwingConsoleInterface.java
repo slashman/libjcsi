@@ -6,6 +6,7 @@ import java.io.*;
 
 import java.util.Hashtable;
 import net.slashie.libjcsi.*;
+import net.slashie.libjcsi.textcomponents.DialogBox;
 import net.slashie.util.*;
 
 public class WSwingConsoleInterface implements ConsoleSystemInterface, Runnable, ComponentListener {
@@ -102,7 +103,26 @@ public class WSwingConsoleInterface implements ConsoleSystemInterface, Runnable,
 
     public void refresh() {
         targetFrame.repaint();
-
+    }
+    
+    public String askPlayer(int lines, String question){
+        int x,y;
+        String answer;
+        saveBuffer();
+        
+        DialogBox dialog = new DialogBox(this, lines, question);
+        x = (xdim / 2) - (dialog.getWidth() / 2);
+        y = (ydim / 2) - (dialog.getHeight() / 2);
+        dialog.setPosition(x, y);
+        
+        dialog.setText(question);
+        locateCaret(x + 2, y + lines + 2);
+        dialog.draw();
+        
+        answer = input();
+        restore();
+        refresh();
+        return answer;
     }
 
     public void print(int x, int y, String what, int color) {
@@ -461,21 +481,17 @@ public class WSwingConsoleInterface implements ConsoleSystemInterface, Runnable,
     }
 
     public void restore() {
-        /*for (int i = 0; i < colors.length; i++){
-        System.arraycopy(colorsBuffer[i], 0, colors[i], 0, colors[i].length-1);
-        System.arraycopy(charsBuffer[i], 0, chars[i], 0, colors[i].length-1);
-        }*/
+        colors = colorsBuffer.clone();
+        chars = charsBuffer.clone();
         for (int x = 0; x < colors.length; x++) {
             for (int y = 0; y < colors[0].length; y++) {
-                this.print(x, y, charsBuffer[x][y], colorsBuffer[x][y]);
+                this.print(x, y, chars[x][y], colors[x][y]);
             }
         }
     }
 
     public void saveBuffer() {
-        for (int i = 0; i < colors.length; i++) {
-            System.arraycopy(colors[i], 0, colorsBuffer[i], 0, colors[i].length - 1);
-            System.arraycopy(chars[i], 0, charsBuffer[i], 0, colors[i].length - 1);
-        }
+        colorsBuffer = colors.clone();
+        charsBuffer = chars.clone();
     }
 }
