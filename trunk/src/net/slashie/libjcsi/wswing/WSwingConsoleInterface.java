@@ -72,15 +72,15 @@ public class WSwingConsoleInterface implements ConsoleSystemInterface, Runnable,
     public void flash(int color) {
         //targetPanel.flash(getColorFromCode(color));
     }
-    
-    private Color colorPreProcess(CSIColor b){
-        if (!colorMap.containsKey(b)){
+
+    private Color colorPreProcess(CSIColor b) {
+        if (!colorMap.containsKey(b)) {
             colorMap.put(b, new Color(b.getColor()));
         }
-            return colorMap.get(b);
+        return colorMap.get(b);
     }
-    
-    public void flushColorTable(){
+
+    public void flushColorTable() {
         colorMap.clear();
     }
 
@@ -104,32 +104,37 @@ public class WSwingConsoleInterface implements ConsoleSystemInterface, Runnable,
     public void refresh() {
         targetFrame.repaint();
     }
-    
-    public String askPlayer(int lines, String question){
-        int x,y;
+
+    public String askPlayer(int lines, String question, CSIColor color) {
+        int x, y;
         String answer;
         saveBuffer();
-        
+
         DialogBox dialog = new DialogBox(this, lines, question);
+        dialog.setForeColor(color);
         x = (xdim / 2) - (dialog.getWidth() / 2);
         y = (ydim / 2) - (dialog.getHeight() / 2);
         dialog.setPosition(x, y);
-        
+
         dialog.setText(question);
         locateCaret(x + 2, y + lines + 2);
         dialog.draw();
         refresh();
-        
+
         answer = input();
         restore();
         refresh();
         return answer;
     }
 
+    public String askPlayer(int lines, String question) {
+        return askPlayer(lines, question, frontColor);
+    }
+
     public void print(int x, int y, String what, int color) {
         locate(x, y);
 
-        print(x, y, what, getColorFromCode(color));
+        print(x, y, what, frontColor.getColorFromCode(color));
     }
 
     public void print(int x, int y, String what, CSIColor color) {
@@ -152,7 +157,7 @@ public class WSwingConsoleInterface implements ConsoleSystemInterface, Runnable,
 
     public void print(int x, int y, char what, int color) {
         locate(x, y);
-        CSIColor front = getColorFromCode(color);
+        CSIColor front = frontColor.getColorFromCode(color);
         print(x, y, what, front);
     }
 
@@ -240,136 +245,9 @@ public class WSwingConsoleInterface implements ConsoleSystemInterface, Runnable,
     }
 
     public int getColor(String colorName) {
-        if (colorName == null) {
-            return -1;
-        }
-        if (colorName.equals("BLACK")) {
-            return BLACK;
-        }
-        if (colorName.equals("DARK_BLUE")) {
-            return DARK_BLUE;
-        }
-        if (colorName.equals("GREEN")) {
-            return GREEN;
-        }
-        if (colorName.equals("TEAL")) {
-            return TEAL;
-        }
-        if (colorName.equals("DARK_RED")) {
-            return DARK_RED;
-        }
-        if (colorName.equals("PURPLE")) {
-            return PURPLE;
-        }
-        if (colorName.equals("BROWN")) {
-            return BROWN;
-        }
-        if (colorName.equals("LIGHT_GRAY")) {
-            return LIGHT_GRAY;
-        }
-        if (colorName.equals("GRAY")) {
-            return GRAY;
-        }
-        if (colorName.equals("BLUE")) {
-            return BLUE;
-        }
-        if (colorName.equals("LEMON")) {
-            return LEMON;
-        }
-        if (colorName.equals("CYAN")) {
-            return CYAN;
-        }
-        if (colorName.equals("RED")) {
-            return RED;
-        }
-        if (colorName.equals("MAGENTA")) {
-            return MAGENTA;
-        }
-        if (colorName.equals("YELLOW")) {
-            return YELLOW;
-        }
-        if (colorName.equals("WHITE")) {
-            return WHITE;
-        }
-        return -1;
+        return frontColor.getColor(colorName);
     }
 
-    private CSIColor getColorFromCode(int code) {
-        switch (code) {
-            case BLACK:
-                return CSIColor.BLACK;
-            case DARK_BLUE:
-                return CSIColor.DARK_BLUE;
-            case GREEN:
-                return CSIColor.GREEN;
-            case TEAL:
-                return CSIColor.TEAL;
-            case DARK_RED:
-                return CSIColor.DARK_RED;
-            case PURPLE:
-                return CSIColor.PURPLE;
-            case BROWN:
-                return CSIColor.BROWN;
-            case LIGHT_GRAY:
-                return CSIColor.LIGHT_GRAY;
-            case GRAY:
-                return CSIColor.GRAY;
-            case BLUE:
-                return CSIColor.BLUE;
-            case LEMON:
-                return CSIColor.LEMON;
-            case CYAN:
-                return CSIColor.CYAN;
-            case RED:
-                return CSIColor.RED;
-            case MAGENTA:
-                return CSIColor.MAGENTA;
-            case YELLOW:
-                return CSIColor.YELLOW;
-            case WHITE:
-                return CSIColor.WHITE;
-            default:
-                return null;
-        }
-    }
-
-    private int getCodeFromColor(CSIColor color) {
-        if (color.equals(CSIColor.BLACK)) {
-            return BLACK;
-        } else if (color.equals(CSIColor.DARK_BLUE)) {
-            return DARK_BLUE;
-        } else if (color.equals(CSIColor.GREEN)) {
-            return GREEN;
-        } else if (color.equals(CSIColor.TEAL)) {
-            return TEAL;
-        } else if (color.equals(CSIColor.DARK_RED)) {
-            return DARK_RED;
-        } else if (color.equals(CSIColor.PURPLE)) {
-            return PURPLE;
-        } else if (color.equals(CSIColor.BROWN)) {
-            return BROWN;
-        } else if (color.equals(CSIColor.LIGHT_GRAY)) {
-            return LIGHT_GRAY;
-        } else if (color.equals(CSIColor.GRAY)) {
-            return GRAY;
-        } else if (color.equals(CSIColor.BLUE)) {
-            return BLUE;
-        } else if (color.equals(CSIColor.LEMON)) {
-            return LEMON;
-        } else if (color.equals(CSIColor.CYAN)) {
-            return CYAN;
-        } else if (color.equals(CSIColor.RED)) {
-            return RED;
-        } else if (color.equals(CSIColor.MAGENTA)) {
-            return MAGENTA;
-        } else if (color.equals(CSIColor.YELLOW)) {
-            return YELLOW;
-        } else if (color.equals(CSIColor.WHITE)) {
-            return WHITE;
-        } else {
-            return 0;
-        }
-    }
 
     public void setAutoRefresh(boolean value) {
         targetPanel.setAutoUpdate(value);
@@ -380,10 +258,10 @@ public class WSwingConsoleInterface implements ConsoleSystemInterface, Runnable,
     }
 
     public int peekColor(int x, int y) {
-        return getCodeFromColor(colors[x][y]);
+        return frontColor.getCodeFromColor(colors[x][y]);
     }
-    
-        public CSIColor peekCSIColor(int x, int y) {
+
+    public CSIColor peekCSIColor(int x, int y) {
         return colors[x][y];
     }
 
@@ -411,7 +289,7 @@ public class WSwingConsoleInterface implements ConsoleSystemInterface, Runnable,
         }
 
         String x[] = GraphicsEnvironment.getLocalGraphicsEnvironment().getAvailableFontFamilyNames();
-        boolean lucida = false, courier = false;
+        boolean lucida = false,  courier = false;
         for (int i = 0; i < x.length; i++) {
             if (x[i].equals("Lucida Console")) {
                 lucida = true;

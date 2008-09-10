@@ -2,6 +2,7 @@ package net.slashie.libjcsi.textcomponents;
 
 import java.io.Serializable;
 
+import net.slashie.libjcsi.CSIColor;
 import net.slashie.libjcsi.ConsoleSystemInterface;
 import net.slashie.util.Position;
 
@@ -14,9 +15,9 @@ public abstract class TextComponent implements Serializable{
 	
 	protected transient ConsoleSystemInterface si;
 	
-	protected int foreColor = ConsoleSystemInterface.WHITE;
+	protected CSIColor foreColor = CSIColor.WHITE;
 	private boolean border;
-	protected int borderColor = ConsoleSystemInterface.WHITE;
+	protected CSIColor borderColor = CSIColor.WHITE;
 	
 	protected Position inPosition;
 	protected int inWidth;
@@ -56,12 +57,16 @@ public abstract class TextComponent implements Serializable{
 	}
 
 	public int getForeColor() {
-		return foreColor;
+		return foreColor.getCodeFromColor(foreColor);
 	}
 
-	public void setForeColor(int foreColor) {
-		this.foreColor = foreColor;
+	public void setForeColor(int color) {
+		this.foreColor = this.foreColor.getColorFromCode(color);
 	}
+        
+        public void setForeColor(CSIColor color){
+            foreColor = color;
+        }
 
 	public void setBorder(boolean value){
 		border = value;
@@ -116,7 +121,11 @@ public abstract class TextComponent implements Serializable{
 		}
 	}
 
-    public void setBorderColor(int borderColor){
-    	this.borderColor = borderColor;
+    public void setBorderColor(int color){
+    	this.borderColor = borderColor.getColorFromCode(color);
+    }
+    
+    public void setBorderColor(CSIColor color){
+        borderColor = color;
     }
 }

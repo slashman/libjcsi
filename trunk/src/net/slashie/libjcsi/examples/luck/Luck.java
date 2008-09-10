@@ -15,7 +15,7 @@ class Luck{
 	void a(int x,int y,char h){
 //		j.print(x,y,Math.abs(a-x)+Math.abs(b-y)<7?h:' ',1+v%13);
             
-		j.print(x,y,Math.abs(a-x)+Math.abs(b-y)<7?h:' ',CSIColor.getColorVector().elementAt(1+v%13));
+		j.print(x,y,Math.abs(a-x)+Math.abs(b-y)<7?h:' ',CSIColor.COLOR_ARRAY[1+v%13]);
 	}
 	
 	public static void main(String[]p){
