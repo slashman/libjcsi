@@ -4,7 +4,7 @@ import java.awt.*;
 import java.awt.event.*;
 import java.io.*;
 
-import java.util.Hashtable;
+import java.util.HashMap;
 import net.slashie.libjcsi.*;
 import net.slashie.libjcsi.textcomponents.DialogBox;
 import net.slashie.util.*;
@@ -36,7 +36,7 @@ public class WSwingConsoleInterface implements ConsoleSystemInterface, Runnable,
     private CSIColor frontColor = CSIColor.WHITE;
     private Position caretPosition = new Position(0, 0);
     private boolean sandboxDeploy;
-    private Hashtable<CSIColor, Color> colorTable = new Hashtable<CSIColor, Color>();
+    private HashMap<CSIColor, Color> colorMap = new HashMap<CSIColor, Color>();
 
     public WSwingConsoleInterface(String windowName, boolean sandboxDeploy) {
         this.sandboxDeploy = sandboxDeploy;
@@ -74,14 +74,14 @@ public class WSwingConsoleInterface implements ConsoleSystemInterface, Runnable,
     }
     
     private Color colorPreProcess(CSIColor b){
-        if (!colorTable.containsKey(b)){
-            colorTable.put(b, new Color(b.getColor()));
+        if (!colorMap.containsKey(b)){
+            colorMap.put(b, new Color(b.getColor()));
         }
-            return colorTable.get(b);
+            return colorMap.get(b);
     }
     
     public void flushColorTable(){
-        colorTable.clear();
+        colorMap.clear();
     }
 
     public void cls() {
