@@ -1,8 +1,13 @@
 package net.slashie.libjcsi.jcurses;
 
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.Vector;
+
 import net.slashie.libjcsi.CSIColor;
 import net.slashie.libjcsi.CharKey;
 import net.slashie.libjcsi.ConsoleSystemInterface;
+import net.slashie.util.Pair;
 import net.slashie.util.Position;
 import jcurses.system.*;
 
@@ -14,12 +19,15 @@ public class JCursesConsoleInterface implements ConsoleSystemInterface{
 	private int[][] colorsBuffer;
 	private char[][] charsBuffer;
 	
+	//private Vector<CSIColor> baseCSIColors; Where is the palette?
+	
 	public JCursesConsoleInterface(){
-            Toolkit.startPainting();
-            colors = new int[Toolkit.getScreenWidth()+1][Toolkit.getScreenHeight()+1];
-            chars = new char[Toolkit.getScreenWidth()+1][Toolkit.getScreenHeight()+1];
-            colorsBuffer = new int[Toolkit.getScreenWidth()+1][Toolkit.getScreenHeight()+1];
-            charsBuffer = new char[Toolkit.getScreenWidth()+1][Toolkit.getScreenHeight()+1];
+        Toolkit.startPainting();
+        colors = new int[Toolkit.getScreenWidth()+1][Toolkit.getScreenHeight()+1];
+        chars = new char[Toolkit.getScreenWidth()+1][Toolkit.getScreenHeight()+1];
+        colorsBuffer = new int[Toolkit.getScreenWidth()+1][Toolkit.getScreenHeight()+1];
+        charsBuffer = new char[Toolkit.getScreenWidth()+1][Toolkit.getScreenHeight()+1];
+        //baseCSIColors = where is the palette? 
 	}
 
 	public void print (int x, int y, char what, int color){
@@ -298,7 +306,8 @@ public class JCursesConsoleInterface implements ConsoleSystemInterface{
 			System.arraycopy(chars[i], 0, charsBuffer[i], 0, colors[i].length-1);
 		}
 	}
-	
+
+	// This must be changed to use the interface method
 	final static CSIColor[] baseCSIColors = new CSIColor[]{
 		new CSIColor(0,0,0),
 		new CSIColor(0,0,128),
@@ -318,10 +327,91 @@ public class JCursesConsoleInterface implements ConsoleSystemInterface{
 		new CSIColor(255,255,255)//WHITE = 15;
 	};;
 	
+	
+	@SuppressWarnings("unchecked")
 	private int selectAproximateColor(CSIColor color){
 		int r = color.getR();
 		int g = color.getG();
 		int b = color.getB();
+		
+		int rx = 1, rg = 1;
+		if (r>g){
+			if (r>b){
+				rx = 3;
+				if (b < g){
+					rg = 2;
+				}
+			} else {
+				if (g > b){
+					rg = 3;
+					if (r > b){
+						rx = 2;
+					}
+				}
+			}
+		}else{
+			if(g>b){
+				rg = 3;
+				if (r>b){
+					rx = 2;
+				}
+			}else{
+				rg = 2;
+			}
+		}
+		// Get the 3 colors closer to the dominant color
+		CSIColor[] closeColor = new CSIColor[3];
+		Pair<CSIColor, Integer>[] colorOffsets = new Pair[baseCSIColors.length] ;
+		for(int i = 0; i<baseCSIColors.length;i++){
+			int difference = rx == 3 ? Math.abs(baseCSIColors[i].getR() - r) : rg == 3 ? Math.abs(baseCSIColors[i].getG() - g) : Math.abs(baseCSIColors[i].getB() - b);
+			colorOffsets [i] = new Pair<CSIColor, Integer>(baseCSIColors[i],difference);
+		}
+		
+		Arrays.sort(colorOffsets, new Comparator<Pair<CSIColor, Integer>>(){
+			@Override
+			public int compare(Pair<CSIColor, Integer> o1,
+					Pair<CSIColor, Integer> o2) {
+				return o1.getB() - o2.getB();
+			}
+		});
+		
+		closeColor[0] = colorOffsets[0].getA();
+		closeColor[1] = colorOffsets[1].getA();
+		closeColor[2] = colorOffsets[2].getA();
+		colorOffsets = new Pair[closeColor.length];
+		
+		for(int i = 0; i<closeColor.length;i++){
+			int difference = rx == 2 ? Math.abs(closeColor[i].getR() - r) : rg == 2 ? Math.abs(closeColor[i].getG() - g) : Math.abs(closeColor[i].getB() - b);
+			colorOffsets [i] = new Pair<CSIColor, Integer>(closeColor[i],difference);
+		}
+		
+		Arrays.sort(colorOffsets, new Comparator<Pair<CSIColor, Integer>>(){
+			@Override
+			public int compare(Pair<CSIColor, Integer> o1,
+					Pair<CSIColor, Integer> o2) {
+				return o1.getB() - o2.getB();
+			}
+		});
+		
+		for (int i =0; i < baseCSIColors.length; i++){
+			if (baseCSIColors[i].equals(colorOffsets[0].getA())){
+				return i;
+			}
+		}
+		return -1;
+		
+	}
+	
+	/*
+	 * This method favoured gray colors, so was dropped.
+	 * 
+	 * private int selectAproximateColor(CSIColor color){
+		int r = (int)Math.round(color.getR()+1/64.0d);
+		int g = (int)Math.round(color.getG()+1/64.0d);
+		int b = (int)Math.round(color.getB()+1/64.0d);
+		
+		
+		
 		int minDifference = 99999;
 		int chosenIndex = -1;
 		for(int i = 0; i<16;i++){
@@ -332,31 +422,33 @@ public class JCursesConsoleInterface implements ConsoleSystemInterface{
 			}
 		}
 		return chosenIndex;
+	}*/
+	
+	public void print (int x, int y, char character, CSIColor csiColor){
+		int color = selectAproximateColor(csiColor);
+		print(x,y,character,color);
 	}
 	
-	public void print (int x, int y, char character, CSIColor color){
-		print(x,y,character,selectAproximateColor(color));
+	public void print (int x, int y, String string, CSIColor csiColor){
+		int color = selectAproximateColor(csiColor);
+		print(x,y,string,color);
 	}
 	
-	public void print (int x, int y, String string, CSIColor color){
-		print(x,y,string,selectAproximateColor(color));
+	@Override
+	public String askPlayer(int lines, String question) {
+		// TODO Remove this
+		return null;
 	}
 	
-	public static void main(String[] args){
-		CSIColor color = new CSIColor(0,160,150);
-		int r = color.getR();
-		int g = color.getG();
-		int b = color.getB();
-		int minDifference = 99999;
-		int chosenIndex = -1;
-		for(int i = 0; i<16;i++){
-			int difference = Math.abs(baseCSIColors[i].getR() - r)+Math.abs(baseCSIColors[i].getG() - g)+Math.abs(baseCSIColors[i].getB() - b);
-			if (difference < minDifference){
-				chosenIndex = i;
-				minDifference = difference;
-			}
-		}
-		System.out.println("Color "+chosenIndex);
+	@Override
+	public String askPlayer(int lines, String question, CSIColor color) {
+		// TODO Remove this
+		return null;
 	}
-
+	
+	@Override
+	public void flushColorTable() {
+		// TODO Add the color table
+		
+	}
 }
