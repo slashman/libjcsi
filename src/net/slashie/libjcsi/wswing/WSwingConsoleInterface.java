@@ -105,32 +105,6 @@ public class WSwingConsoleInterface implements ConsoleSystemInterface, Runnable,
         targetFrame.repaint();
     }
 
-    public String askPlayer(int lines, String question, CSIColor color) {
-        int x, y;
-        String answer;
-        saveBuffer();
-
-        DialogBox dialog = new DialogBox(this, lines, question);
-        dialog.setForeColor(color);
-        x = (xdim / 2) - (dialog.getWidth() / 2);
-        y = (ydim / 2) - (dialog.getHeight() / 2);
-        dialog.setPosition(x, y);
-
-        dialog.setText(question);
-        locateCaret(x + 2, y + lines + 2);
-        dialog.draw();
-        refresh();
-
-        answer = input();
-        restore();
-        refresh();
-        return answer;
-    }
-
-    public String askPlayer(int lines, String question) {
-        return askPlayer(lines, question, frontColor);
-    }
-
     public void print(int x, int y, String what, int color) {
         locate(x, y);
 
