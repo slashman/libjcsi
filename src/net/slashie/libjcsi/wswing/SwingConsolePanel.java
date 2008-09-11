@@ -7,6 +7,7 @@ public class SwingConsolePanel extends JPanel {
 
     private char[][] charBuffer;
     private Color[][] colorBuffer;
+    private Color[][] backGroundBuffer;
     private Color backGround,  foreGround;
     private boolean[][] updateBuffer;
     //private boolean autoUpdate;
@@ -33,12 +34,14 @@ public class SwingConsolePanel extends JPanel {
         this.f = f;
         charBuffer = new char[xdim][ydim];
         colorBuffer = new Color[xdim][ydim];
+        backGroundBuffer = new Color[xdim][ydim];
         updateBuffer = new boolean[xdim][ydim];
 
         for (int i = 0; i < xdim; i++) {
             for (int j = 0; j < ydim; j++) {
                 charBuffer[i][j] = ' ';
                 colorBuffer[i][j] = foreGround;
+                backGroundBuffer[i][j] = backGround;
                 updateBuffer[i][j] = true;
             }        //Double Buffer
         }
@@ -52,16 +55,16 @@ public class SwingConsolePanel extends JPanel {
     }
 
     public void plot(char c, int x, int y) {
-        colorBuffer[x][y] = foreGround;
-        charBuffer[x][y] = c;
-        updateBuffer[x][y] = true;
-        if (autoUpdate) {
-            repaint();
-        }
+        plot(c, x, y, foreGround, backGround);
     }
 
     public void plot(char c, int x, int y, Color foreColor) {
+        plot(c, x, y, foreColor, backGround);
+    }
+
+    public void plot(char c, int x, int y, Color foreColor, Color backColor) {
         colorBuffer[x][y] = foreColor;
+        backGroundBuffer[x][y] = backColor;
         charBuffer[x][y] = c;
         updateBuffer[x][y] = true;
 
@@ -96,6 +99,8 @@ public class SwingConsolePanel extends JPanel {
         for (int x = 0; x < charBuffer.length; x++) {
             for (int y = 0; y < charBuffer[0].length; y++) {
                 charBuffer[x][y] = ' ';
+                colorBuffer[x][y] = foreGround;
+                backGroundBuffer[x][y] = backGround;
                 updateBuffer[x][y] = true;
             }
         }
@@ -106,7 +111,7 @@ public class SwingConsolePanel extends JPanel {
         for (int x = 0; x < charBuffer.length; x++) {
             for (int y = 0; y < charBuffer[0].length; y++) {
                 if (updateBuffer[x][y]) {
-                    graphicsBuff.setColor(backGround);
+                    graphicsBuff.setColor(backGroundBuffer[x][y]);
                     graphicsBuff.fillRect(x * fontWidth, y * fontSize, fontWidth, fontDown);
                     // Fix upper and lower positions if possible
                     if (y - 1 >= 0) {

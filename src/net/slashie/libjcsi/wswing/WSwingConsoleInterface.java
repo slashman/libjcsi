@@ -106,12 +106,14 @@ public class WSwingConsoleInterface implements ConsoleSystemInterface, Runnable,
     }
 
     public void print(int x, int y, String what, int color) {
-        locate(x, y);
-
-        print(x, y, what, frontColor.getColorFromCode(color));
+        print(x, y, what, frontColor.getColorFromCode(color), CSIColor.BLACK);
     }
 
     public void print(int x, int y, String what, CSIColor color) {
+        print(x, y, what, color, CSIColor.BLACK);
+    }
+
+    public void print(int x, int y, String what, CSIColor color, CSIColor background) {
         locate(x, y);
 
         for (int i = 0; i < what.length(); i++) {
@@ -122,7 +124,7 @@ public class WSwingConsoleInterface implements ConsoleSystemInterface, Runnable,
             if (ypos >= ydim) {
                 break;
             }
-            targetPanel.plot(what.charAt(i), xpos, ypos, colorPreProcess(color));
+            targetPanel.plot(what.charAt(i), xpos, ypos, colorPreProcess(color), colorPreProcess(background));
             chars[x + i][y] = what.charAt(i);
             colors[x + i][y] = color;
             xpos++;
@@ -130,21 +132,24 @@ public class WSwingConsoleInterface implements ConsoleSystemInterface, Runnable,
     }
 
     public void print(int x, int y, char what, int color) {
-        locate(x, y);
         CSIColor front = frontColor.getColorFromCode(color);
         print(x, y, what, front);
     }
 
     public void print(int x, int y, char what, CSIColor color) {
+        print(x, y, what, color, CSIColor.BLACK);
+    }
+
+        public void print(int x, int y, char what, CSIColor color, CSIColor back) {
         locate(x, y);
         if (chars[x][y] == what && colors[x][y] == color) {
             return;
         }
-        targetPanel.plot(what, xpos, ypos, colorPreProcess(color));
+        targetPanel.plot(what, xpos, ypos, colorPreProcess(color), colorPreProcess(back));
         colors[x][y] = color;
         chars[x][y] = what;
     }
-
+    
     public void print(int x, int y, String what) {
         print(x, y, what, frontColor);
     }
@@ -222,7 +227,6 @@ public class WSwingConsoleInterface implements ConsoleSystemInterface, Runnable,
         return frontColor.getColor(colorName);
     }
 
-
     public void setAutoRefresh(boolean value) {
         targetPanel.setAutoUpdate(value);
     }
@@ -263,7 +267,7 @@ public class WSwingConsoleInterface implements ConsoleSystemInterface, Runnable,
         }
 
         String x[] = GraphicsEnvironment.getLocalGraphicsEnvironment().getAvailableFontFamilyNames();
-        boolean lucida = false,  courier = false;
+        boolean lucida = false, courier = false;
         for (int i = 0; i < x.length; i++) {
             if (x[i].equals("Lucida Console")) {
                 lucida = true;
