@@ -434,13 +434,11 @@ public class JCursesConsoleInterface implements ConsoleSystemInterface{
 		print(x,y,string,color);
 	}
 	
-	@Override
 	public String askPlayer(int lines, String question) {
 		// TODO Remove this
 		return null;
 	}
 	
-	@Override
 	public String askPlayer(int lines, String question, CSIColor color) {
 		// TODO Remove this
 		return null;

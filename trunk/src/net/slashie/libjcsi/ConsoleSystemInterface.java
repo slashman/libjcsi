@@ -81,28 +81,6 @@ public interface ConsoleSystemInterface {
     public String input(int length);
 
     /**
-     * Builds a dialog box.
-     * The box will be centered in the game window and sized
-     * based on the number of lines requested and the length of the screen.
-     * @param lines The number of lines the text should be broken into.
-     * @param question The String that is the text displayed.
-     * @return A String that is taken as input from the player.
-     */
-    public String askPlayer(int lines, String question);
-
-    /**
-     * Builds a dialog box.
-     * The box will be centered in the game window and sized
-     * based on the number of lines requested and the length of the screen.
-     * It will make the border and text a custom color.
-     * @param lines The number of lines the text should be broken into.
-     * @param question The String that is the text displayed.
-     * @param color The color that the text and border will be displayed in.
-     * @return A String that is taken as input from the player.
-     */
-    public String askPlayer(int lines, String question, CSIColor color);
-
-    /**
      * Checks if the position is valid
      * @param e
      * @return true if the position is valid

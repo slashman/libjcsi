@@ -16,6 +16,7 @@ public class TextInformBox extends TextComponent{
 	private StringBuffer[] lines;
 	private String curLine;
 	
+    @Override
 	public void setHeight(int value) {
 		super.setHeight(value);
 		lines = new StringBuffer[value];

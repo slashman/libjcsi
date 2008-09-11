@@ -49,7 +49,7 @@ public class TextBox extends TextComponent {
             si.print(position.x + 2, position.y, title);
         }
         for (int i = 0; i < lines.length; i++) {
-            si.print(inPosition.x, inPosition.y + i, lines[i].toString(), foreColor);
+            si.print(inPosition.x, inPosition.y + i, lines[i].toString(), this.foreColor);
         }
     }
 

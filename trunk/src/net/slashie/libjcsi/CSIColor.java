@@ -25,6 +25,10 @@ public class CSIColor {
     public CSIColor() { //builds white
         this((OPAQUE << 24) | (OPAQUE << 16) | (OPAQUE << 8) | OPAQUE);
     }
+    
+    public CSIColor(CSIColor color){
+        value = color.value;
+    }
 
     public CSIColor(int hex) {
         value = hex;
@@ -47,9 +51,7 @@ public class CSIColor {
     }
 
     public void setR(int r) {
-        int x = getR();
-        value -= x;
-        value += r;
+       value = (getA() << 24) | (r << 16) | (getG() << 8) | getB();
     }
 
     public int getG() {
@@ -57,9 +59,7 @@ public class CSIColor {
     }
 
     public void setG(int g) {
-        int x = getG();
-        value -= x;
-        value += g;
+       value = (getA() << 24) | (getR() << 16) | (g << 8) | getB();
     }
 
     public int getB() {
@@ -67,9 +67,7 @@ public class CSIColor {
     }
 
     public void setB(int b) {
-        int x = getB();
-        value -= x;
-        value += b;
+       value = (getA() << 24) | (getR() << 16) | (getG() << 8) | b;
     }
 
     public int getA() {
@@ -77,9 +75,7 @@ public class CSIColor {
     }
 
     public void setA(int a) {
-        int x = getA();
-        value -= x;
-        value += a;
+       value = (a << 24) | (getR() << 16) | (getG() << 8) | getB();
     }
 
     public int getColor(String colorName) {
