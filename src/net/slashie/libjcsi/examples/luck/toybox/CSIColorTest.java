@@ -1,4 +1,3 @@
-
 package net.slashie.libjcsi.examples.luck.toybox;
 
 import java.util.Random;
@@ -18,25 +17,18 @@ public class CSIColorTest {
             eiie.printStackTrace();
             System.exit(-1);
         }
-
-        //--------for testing screen size-----//
-        CSIColor tempColor = new CSIColor(50, 50, 50);
-        int x = 0;
+        int xdiv = 255 / 80, ydiv = 255 / 25;
+        
+        CSIColor tempColor;
         for (int i = 0; i < mainInterface.xdim; i++) {
             for (int k = 0; k < mainInterface.ydim; k++) {
-                x = k;
-                while (x > 9) {
-                    x = (i / 10);
-                }
-                tempColor.setR(i * 3);
-                tempColor.setB(k * 10);
-//                tempColor.setG(((i * 3) + (k * 10)) / 2);
+               tempColor = new CSIColor(i * xdiv, k * ydiv, (i * xdiv + k * ydiv) / 2);
                 mainInterface.print(i, k, "#", new CSIColor(tempColor));
             }
         }
     }
 
-    public static void main(String[] args){
+    public static void main(String[] args) {
         new CSIColorTest();
     }
 }
