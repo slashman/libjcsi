@@ -28,7 +28,6 @@ public class SwingConsoleFrame extends javax.swing.JFrame{
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         getContentPane().add(swingConsolePanel);
         setCursor(null);
-        //swingConsolePanel.setBounds(0, 0, 0, 0);
         pack();
     }
 

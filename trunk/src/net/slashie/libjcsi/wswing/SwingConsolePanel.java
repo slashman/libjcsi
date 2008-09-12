@@ -19,7 +19,9 @@ public class SwingConsolePanel extends JPanel {
          fontSize;
     private int fontWidth;
     private int fontDown;
-    private Font f;
+    private int ascent, descent;
+    private Font font;
+    private FontMetrics fMetric;
 
     public void init(Font f, int xdim, int ydim) {
         setCursor(null);
@@ -31,7 +33,7 @@ public class SwingConsolePanel extends JPanel {
         setBackground(backGround);
         this.xdim = xdim;
         this.ydim = ydim;
-        this.f = f;
+        this.font = f;
         charBuffer = new char[xdim][ydim];
         colorBuffer = new Color[xdim][ydim];
         backGroundBuffer = new Color[xdim][ydim];
@@ -48,9 +50,12 @@ public class SwingConsolePanel extends JPanel {
         imageBuff = createImage(width, height);
         graphicsBuff = imageBuff.getGraphics();
         graphicsBuff.setFont(f);
+        fMetric = graphicsBuff.getFontMetrics(f);
+        ascent = fMetric.getMaxAscent();
+        descent = fMetric.getMaxDescent();
         fontSize = f.getSize();
-        fontWidth = (int) (fontSize * 0.7);
-        fontDown = (int) (fontSize * 1.3);
+        fontWidth = fMetric.getMaxAdvance();
+        fontDown = fMetric.getHeight();
         repaint();
     }
 
@@ -85,7 +90,7 @@ public class SwingConsolePanel extends JPanel {
 
     @Override
     public void setFont(Font pFont) {
-        f = pFont;
+        font = pFont;
     }
 
     public char peekChar(int x, int y) {
@@ -112,19 +117,9 @@ public class SwingConsolePanel extends JPanel {
             for (int y = 0; y < charBuffer[0].length; y++) {
                 if (updateBuffer[x][y]) {
                     graphicsBuff.setColor(backGroundBuffer[x][y]);
-                    graphicsBuff.fillRect(x * fontWidth, y * fontSize, fontWidth, fontDown);
-                    // Fix upper and lower positions if possible
-                    if (y - 1 >= 0) {
-                        graphicsBuff.setColor(colorBuffer[x][y - 1]);
-                        graphicsBuff.drawString("" + charBuffer[x][y - 1], x * fontWidth, y * fontSize);
-                    }
-                    if (y + 1 < ydim) {
-                        graphicsBuff.setColor(colorBuffer[x][y + 1]);
-                        graphicsBuff.drawString("" + charBuffer[x][y + 1], x * fontWidth, (y + 2) * fontSize);
-                    }
+                    graphicsBuff.fillRect(x * fontWidth, y * fontDown, fontWidth, fontDown);
                     graphicsBuff.setColor(colorBuffer[x][y]);
-                    graphicsBuff.drawString("" + charBuffer[x][y], x * fontWidth, (y + 1) * fontSize);
-                    //graphicsBuff.drawChars(charBuffer[x], 0,1,x * fontWidth, y * fontSize);
+                    graphicsBuff.drawString("" + charBuffer[x][y], x * fontWidth, y * fontDown + ascent);
                     updateBuffer[x][y] = false;
                 }
             }
