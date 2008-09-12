@@ -62,7 +62,12 @@ public class WSwingConsoleInterface implements ConsoleSystemInterface, Runnable,
         int x,y;
         x = fMetric.getMaxAdvance();
         y = fMetric.getHeight();
-        targetFrame.setSize((int) (xdim * x) + x, (int) (ydim * y) + y + y);
+        if (!this.sandboxDeploy){
+        targetFrame.setSize((xdim * x) + x,(ydim * y) + y + y);
+        }else{
+            x = fMetric.charWidth('W');
+        targetFrame.setSize(((xdim * x) + x),(ydim * y) + y + y);
+        }
         targetFrame.setLocationRelativeTo(null); // places window in center of screen
         targetFrame.setResizable(false);
         locate(1, 1);
@@ -264,7 +269,8 @@ public class WSwingConsoleInterface implements ConsoleSystemInterface, Runnable,
                 }
             }
         } else {
-            return "Monospaced";
+//            return "Monospaced";
+            return "SansSerif";
         }
 
         String x[] = GraphicsEnvironment.getLocalGraphicsEnvironment().getAvailableFontFamilyNames();
