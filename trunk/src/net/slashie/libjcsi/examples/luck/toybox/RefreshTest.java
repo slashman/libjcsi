@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Random;
 import net.slashie.libjcsi.CSIColor;
+import net.slashie.libjcsi.CharKey;
 import net.slashie.libjcsi.wswing.WSwingConsoleInterface;
 
 public class RefreshTest {
@@ -32,15 +33,16 @@ public class RefreshTest {
         CSIColor tempColor = CSIColor.WHITE, backColor = CSIColor.BLACK;
 
         do {
-            for (int k = 0; k < mainInterface.ydim; k++) {
-                for (int i = 0; i < mainInterface.xdim; i++) {
                     tempColor = list.get(rng.nextInt(list.size()));
                     backColor = list.get(rng.nextInt(list.size()));
+            for (int k = 0; k < mainInterface.ydim; k++) {
+                for (int i = 0; i < mainInterface.xdim; i++) {
                     
                     mainInterface.print(i, k, 'Q', tempColor, backColor);
                 }
             }
             mainInterface.refresh();
+            mainInterface.waitKey(CharKey.ENTER);
 //            mainInterface.cls();
             
         } while (true);
