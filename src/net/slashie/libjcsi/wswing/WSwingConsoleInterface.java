@@ -269,8 +269,7 @@ public class WSwingConsoleInterface implements ConsoleSystemInterface, Runnable,
                 }
             }
         } else {
-//            return "Monospaced";
-            return "SansSerif";
+            return "Monospaced";
         }
 
         String x[] = GraphicsEnvironment.getLocalGraphicsEnvironment().getAvailableFontFamilyNames();
