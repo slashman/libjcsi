@@ -37,18 +37,17 @@ public class WSwingConsoleInterface implements ConsoleSystemInterface, Runnable,
     private Position caretPosition = new Position(0, 0);
     private boolean sandboxDeploy;
     private HashMap<CSIColor, Color> colorMap = new HashMap<CSIColor, Color>();
+    private FontMetrics fMetric;
 
     public WSwingConsoleInterface(String windowName, boolean sandboxDeploy) {
         this.sandboxDeploy = sandboxDeploy;
         aStrokeInformer = new StrokeInformer();
         targetFrame = new SwingConsoleFrame(windowName);
-        java.awt.Dimension initialSize = new java.awt.Dimension(1208, 1024);
+        java.awt.Dimension initialSize = new java.awt.Dimension(1280, 1024);
         int fontSize = defineFontSize(initialSize.height, initialSize.width);
         String strConsoleFont = loadFont();
         consoleFont = new Font(strConsoleFont, Font.PLAIN, fontSize);
-        //targetFrame.setUndecorated(true);
         targetFrame.init(consoleFont, xdim, ydim);
-
 
         colors = new CSIColor[xdim][ydim];
         chars = new char[xdim][ydim];
@@ -58,12 +57,14 @@ public class WSwingConsoleInterface implements ConsoleSystemInterface, Runnable,
         targetPanel = targetFrame.getSwingConsolePanel();
         targetFrame.addKeyListener(aStrokeInformer);
         targetFrame.addComponentListener(this);
+        fMetric = targetFrame.getFontMetrics(consoleFont);
 
-
-        targetFrame.setSize((int) (fontSize * xdim * 0.7 * 1.05), (int) (fontSize * ydim * 1.15));
-        //targetFrame.setSize(Toolkit.getDefaultToolkit().getScreenSize());
-//        targetFrame.setLocation(0, 0);
+        int x,y;
+        x = fMetric.getMaxAdvance();
+        y = fMetric.getHeight();
+        targetFrame.setSize((int) (xdim * x) + x, (int) (ydim * y) + y + y);
         targetFrame.setLocationRelativeTo(null); // places window in center of screen
+        targetFrame.setResizable(false);
         locate(1, 1);
 
         targetFrame.setVisible(true);
@@ -286,7 +287,7 @@ public class WSwingConsoleInterface implements ConsoleSystemInterface, Runnable,
 
     private int defineFontSize(int scrHeight, int scrWidth) {
         int byHeight = (int) (scrHeight / ydim);
-        int byWidth = (int) (scrWidth / (xdim * 0.8));
+        int byWidth = (int) (scrWidth / (xdim));
 
         if (byHeight < byWidth) {
             return byHeight;
