@@ -2,6 +2,7 @@ package net.slashie.libjcsi.jcurses;
 
 import java.util.Arrays;
 import java.util.Comparator;
+import java.util.HashMap;
 import java.util.Vector;
 
 import net.slashie.libjcsi.CSIColor;
@@ -9,6 +10,7 @@ import net.slashie.libjcsi.CharKey;
 import net.slashie.libjcsi.ConsoleSystemInterface;
 import net.slashie.util.Pair;
 import net.slashie.util.Position;
+import net.slashie.util.ReferenceParam;
 import jcurses.system.*;
 
 
@@ -19,15 +21,16 @@ public class JCursesConsoleInterface implements ConsoleSystemInterface{
 	private int[][] colorsBuffer;
 	private char[][] charsBuffer;
 	
-	//private Vector<CSIColor> baseCSIColors; Where is the palette?
+	private HashMap<String, CharColor> colorMap = new HashMap<String, CharColor>();
 	
-	public JCursesConsoleInterface(){
+    private Position caretPosition = new Position(0,0);
+    
+   public JCursesConsoleInterface(){
         Toolkit.startPainting();
         colors = new int[Toolkit.getScreenWidth()+1][Toolkit.getScreenHeight()+1];
         chars = new char[Toolkit.getScreenWidth()+1][Toolkit.getScreenHeight()+1];
         colorsBuffer = new int[Toolkit.getScreenWidth()+1][Toolkit.getScreenHeight()+1];
         charsBuffer = new char[Toolkit.getScreenWidth()+1][Toolkit.getScreenHeight()+1];
-        //baseCSIColors = where is the palette? 
 	}
 
 	public void print (int x, int y, char what, int color){
@@ -49,13 +52,7 @@ public class JCursesConsoleInterface implements ConsoleSystemInterface{
 		Toolkit.printString(what, x, y, getJCurseColor(color));
 	}
 	public void print (int x, int y, String what){
-		for (int i = 0; i < what.length(); i++){
-			if (!isInsideBounds(x+i,y))
-				break;
-			chars[x+i][y] = what.charAt(i);
-			colors[x+i][y] = ConsoleSystemInterface.WHITE;
-		}
-		Toolkit.printString(what, x, y, WHITE);
+		print(x,y,what,ConsoleSystemInterface.WHITE);
 	}
 
 	public char peekChar(int x, int y){
@@ -71,13 +68,11 @@ public class JCursesConsoleInterface implements ConsoleSystemInterface{
 		return new CharKey(ASCtoCharKeyCode(c.getCode()));
 	}
 
-    /**  Waits until a key is pressed and returns it */
     public void locateCaret (int x, int y){
     	caretPosition.x = x;
     	caretPosition.y = y;
     }
 
-    private Position caretPosition = new Position(0,0);
 
     public String input(){
     	return input(999);
@@ -137,7 +132,7 @@ public class JCursesConsoleInterface implements ConsoleSystemInterface{
 
 
     public void cls(){
-    	Toolkit.clearScreen(BLACK);
+    	Toolkit.clearScreen(getJCurseColor(BLACK));
     	for (int x = 0; x < chars.length; x++)
     		for (int y = 0; y < chars[0].length; y++) {
 				chars[x][y] = '\u0000';
@@ -149,7 +144,7 @@ public class JCursesConsoleInterface implements ConsoleSystemInterface{
     public void refresh(){
 		Toolkit.endPainting();
 		Toolkit.startPainting();
-		Toolkit.printString("", 79,24,BLACK);
+		Toolkit.printString("", 79,24,getJCurseColor(BLACK));
 	}
     public void refresh(Thread t){
 		refresh();
@@ -167,44 +162,47 @@ public class JCursesConsoleInterface implements ConsoleSystemInterface{
 
     public void setAutoRefresh(boolean value){}
 
-        private final CharColor BLACK = new CharColor(CharColor.BLACK, CharColor.BLACK);
-		private final CharColor DARK_BLUE = new CharColor(CharColor.BLACK, CharColor.BLUE);
-		private final CharColor GREEN = new CharColor(CharColor.BLACK, CharColor.GREEN);
-		private final CharColor TEAL = new CharColor(CharColor.BLACK, CharColor.CYAN);
-		private final CharColor DARK_RED = new CharColor(CharColor.BLACK, CharColor.RED);
-		private final CharColor PURPLE = new CharColor(CharColor.BLACK, CharColor.MAGENTA);
-		private final CharColor BROWN = new CharColor(CharColor.BLACK, CharColor.YELLOW);
-		private final CharColor LIGHT_GRAY  = new CharColor(CharColor.BLACK, CharColor.WHITE);
-        private final CharColor GRAY = new CharColor(CharColor.BLACK, CharColor.BLACK, CharColor.BOLD, CharColor.BOLD);
-		private final CharColor BLUE = new CharColor(CharColor.BLACK, CharColor.BLUE, CharColor.BOLD, CharColor.BOLD);
-		private final CharColor LEMON = new CharColor(CharColor.BLACK, CharColor.GREEN, CharColor.BOLD, CharColor.BOLD);
-		private final CharColor CYAN = new CharColor(CharColor.BLACK, CharColor.CYAN, CharColor.BOLD, CharColor.BOLD);
-		private final CharColor RED = new CharColor(CharColor.BLACK, CharColor.RED, CharColor.BOLD, CharColor.BOLD);
-		private final CharColor MAGENTA = new CharColor(CharColor.BLACK, CharColor.MAGENTA, CharColor.BOLD, CharColor.BOLD);
-		private final CharColor YELLOW = new CharColor(CharColor.BLACK, CharColor.YELLOW, CharColor.BOLD, CharColor.BOLD);
-		private final CharColor WHITE = new CharColor(CharColor.BLACK, CharColor.WHITE, CharColor.BOLD, CharColor.BOLD);
-
-
-    private CharColor getJCurseColor(int crlColor){
-    	switch (crlColor){
-   	        case ConsoleSystemInterface.BLACK: return BLACK;
-			case ConsoleSystemInterface.DARK_BLUE: return DARK_BLUE;
-			case ConsoleSystemInterface.GREEN: return GREEN;
-			case ConsoleSystemInterface.TEAL: return TEAL;
-			case ConsoleSystemInterface.DARK_RED: return DARK_RED;
-			case ConsoleSystemInterface.PURPLE: return PURPLE;
-			case ConsoleSystemInterface.BROWN: return BROWN;
-			case ConsoleSystemInterface.LIGHT_GRAY: return LIGHT_GRAY;
-    	    case ConsoleSystemInterface.GRAY: return GRAY;
-			case ConsoleSystemInterface.BLUE: return BLUE;
-			case ConsoleSystemInterface.LEMON: return LEMON;
-			case ConsoleSystemInterface.CYAN: return CYAN;
-			case ConsoleSystemInterface.RED: return RED;
-			case ConsoleSystemInterface.MAGENTA: return MAGENTA;
-			case ConsoleSystemInterface.YELLOW: return YELLOW;
-			case ConsoleSystemInterface.WHITE: return WHITE;
+	private void getBasicColorInfo(ReferenceParam<Short> face, ReferenceParam<Short> boldness, int paletteValue){
+		boldness.setValue(CharColor.NORMAL);
+		switch (paletteValue){
+   	        case ConsoleSystemInterface.BLACK: face.setValue(CharColor.BLACK);break;
+			case ConsoleSystemInterface.DARK_BLUE: face.setValue(CharColor.BLUE); break;
+			case ConsoleSystemInterface.GREEN: face.setValue(CharColor.GREEN); break;
+			case ConsoleSystemInterface.TEAL: face.setValue(CharColor.CYAN); break;
+			case ConsoleSystemInterface.DARK_RED: face.setValue(CharColor.RED); break;
+			case ConsoleSystemInterface.PURPLE: face.setValue(CharColor.MAGENTA); break;
+			case ConsoleSystemInterface.BROWN: face.setValue(CharColor.YELLOW); break;
+			case ConsoleSystemInterface.LIGHT_GRAY: face.setValue(CharColor.WHITE); break;
+    	    case ConsoleSystemInterface.GRAY: face.setValue(CharColor.BLACK); break;
+			case ConsoleSystemInterface.BLUE: face.setValue(CharColor.BLUE); boldness.setValue(CharColor.BOLD); break;
+			case ConsoleSystemInterface.LEMON: face.setValue(CharColor.GREEN); boldness.setValue(CharColor.BOLD); break;
+			case ConsoleSystemInterface.CYAN: face.setValue(CharColor.CYAN); boldness.setValue(CharColor.BOLD); break;
+			case ConsoleSystemInterface.RED: face.setValue(CharColor.RED); boldness.setValue(CharColor.BOLD); break;
+			case ConsoleSystemInterface.MAGENTA: face.setValue(CharColor.MAGENTA); boldness.setValue(CharColor.BOLD); break;
+			case ConsoleSystemInterface.YELLOW: face.setValue(CharColor.YELLOW); boldness.setValue(CharColor.BOLD); break;
+			case ConsoleSystemInterface.WHITE: face.setValue(CharColor.WHITE); boldness.setValue(CharColor.BOLD); break;
 		}
-		return BLACK;
+	}
+	
+    private CharColor getJCurseColor(int paletteValue, int backgroundValue){
+    	String key = paletteValue+","+backgroundValue;
+    	CharColor cachedColor = colorMap.get(key);
+    	if (cachedColor != null){
+    		return cachedColor;
+    	}
+    	ReferenceParam<Short> frontFace = new ReferenceParam<Short>();
+    	ReferenceParam<Short> frontBoldness = new ReferenceParam<Short>();
+    	ReferenceParam<Short> backgroundFace = new ReferenceParam<Short>();
+    	ReferenceParam<Short> backgroundBoldness = new ReferenceParam<Short>();
+    	getBasicColorInfo(frontFace, frontBoldness, paletteValue);
+    	getBasicColorInfo(backgroundFace, backgroundBoldness, backgroundValue);
+    	cachedColor = new CharColor(backgroundFace.getValue(), frontFace.getValue(), backgroundBoldness.getValue(), frontBoldness.getValue());
+    	colorMap.put(key,cachedColor);
+    	return cachedColor;
+	}
+    
+    private CharColor getJCurseColor(int paletteValue){
+    	return getJCurseColor(paletteValue,ConsoleSystemInterface.BLACK);
 	}
 
 	private final static int KEY_BACKSPACE = InputChar.KEY_BACKSPACE;
@@ -308,7 +306,7 @@ public class JCursesConsoleInterface implements ConsoleSystemInterface{
 	}
 
 	// This must be changed to use the interface method
-	final static CSIColor[] baseCSIColors = new CSIColor[]{
+	/*final static CSIColor[] baseCSIColors = new CSIColor[]{
 		new CSIColor(0,0,0),
 		new CSIColor(0,0,128),
 		new CSIColor(0,128,0),
@@ -325,7 +323,7 @@ public class JCursesConsoleInterface implements ConsoleSystemInterface{
 		new CSIColor(255,0,255),//MAGENTA = 13
 		new CSIColor(255,255,0),//YELLOW = 14
 		new CSIColor(255,255,255)//WHITE = 15;
-	};;
+	};;*/
 	
 	
 	@SuppressWarnings("unchecked")
@@ -361,10 +359,10 @@ public class JCursesConsoleInterface implements ConsoleSystemInterface{
 		}
 		// Get the 3 colors closer to the dominant color
 		CSIColor[] closeColor = new CSIColor[3];
-		Pair<CSIColor, Integer>[] colorOffsets = new Pair[baseCSIColors.length] ;
-		for(int i = 0; i<baseCSIColors.length;i++){
-			int difference = rx == 3 ? Math.abs(baseCSIColors[i].getR() - r) : rg == 3 ? Math.abs(baseCSIColors[i].getG() - g) : Math.abs(baseCSIColors[i].getB() - b);
-			colorOffsets [i] = new Pair<CSIColor, Integer>(baseCSIColors[i],difference);
+		Pair<CSIColor, Integer>[] colorOffsets = new Pair[CSIColor.DEFAULT_PALLET.length] ;
+		for(int i = 0; i<CSIColor.DEFAULT_PALLET.length;i++){
+			int difference = rx == 3 ? Math.abs(CSIColor.DEFAULT_PALLET[i].getR() - r) : rg == 3 ? Math.abs(CSIColor.DEFAULT_PALLET[i].getG() - g) : Math.abs(CSIColor.DEFAULT_PALLET[i].getB() - b);
+			colorOffsets [i] = new Pair<CSIColor, Integer>(CSIColor.DEFAULT_PALLET[i],difference);
 		}
 		
 		Arrays.sort(colorOffsets, new Comparator<Pair<CSIColor, Integer>>(){
@@ -393,8 +391,8 @@ public class JCursesConsoleInterface implements ConsoleSystemInterface{
 			}
 		});
 		
-		for (int i =0; i < baseCSIColors.length; i++){
-			if (baseCSIColors[i].equals(colorOffsets[0].getA())){
+		for (int i =0; i < CSIColor.DEFAULT_PALLET.length; i++){
+			if (CSIColor.DEFAULT_PALLET[i].equals(colorOffsets[0].getA())){
 				return i;
 			}
 		}
@@ -434,19 +432,8 @@ public class JCursesConsoleInterface implements ConsoleSystemInterface{
 		print(x,y,string,color);
 	}
 	
-	public String askPlayer(int lines, String question) {
-		// TODO Remove this
-		return null;
-	}
-	
-	public String askPlayer(int lines, String question, CSIColor color) {
-		// TODO Remove this
-		return null;
-	}
-	
 	@Override
 	public void flushColorTable() {
-		// TODO Add the color table
-		
+		colorMap.clear();
 	}
 }
