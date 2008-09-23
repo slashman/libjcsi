@@ -61,7 +61,7 @@ public class TextBox extends TextComponent {
         out:
         for (int i = 0; i < tokens.length; i++) {
             int distance = inWidth - curx;
-            if (distance < tokens[i].length() + 1) {
+            if (!(tokens[i].equals("XXX")) && (distance < tokens[i].length() + 1)) {
                 if (cury < inHeight - 1) {
                     curx = 0;
                     cury++;
