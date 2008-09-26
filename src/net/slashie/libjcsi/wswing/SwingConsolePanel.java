@@ -19,11 +19,13 @@ public class SwingConsolePanel extends JPanel {
          fontSize;
     private int fontWidth;
     private int fontDown;
-    private int ascent, descent;
+    private int ascent,  descent;
     private Font font;
     private FontMetrics fMetric;
+    private long timing;
 
     public void init(Font f, int xdim, int ydim) {
+        timing = System.currentTimeMillis();
         setCursor(null);
         width = Toolkit.getDefaultToolkit().getScreenSize().width;
         height = Toolkit.getDefaultToolkit().getScreenSize().height;
@@ -57,6 +59,7 @@ public class SwingConsolePanel extends JPanel {
 //        fontWidth = fMetric.getMaxAdvance();
         fontWidth = fMetric.charWidth('W');
         fontDown = fMetric.getHeight();
+
         repaint();
     }
 
@@ -114,6 +117,8 @@ public class SwingConsolePanel extends JPanel {
 
     @Override
     public synchronized void paintComponent(Graphics g) {
+        do {
+        } while (System.currentTimeMillis() - timing < 150); // adds 5 millisecond delay in printing
         for (int x = 0; x < charBuffer.length; x++) {
             for (int y = 0; y < charBuffer[0].length; y++) {
                 if (updateBuffer[x][y]) {
@@ -126,5 +131,6 @@ public class SwingConsolePanel extends JPanel {
             }
         }
         g.drawImage(imageBuff, 0, 0, null);
+        timing = System.currentTimeMillis();
     }
 }
