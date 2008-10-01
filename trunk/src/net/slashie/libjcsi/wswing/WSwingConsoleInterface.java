@@ -2,11 +2,11 @@ package net.slashie.libjcsi.wswing;
 
 import java.awt.*;
 import java.awt.event.*;
+import java.awt.image.BufferStrategy;
 import java.io.*;
 
 import java.util.HashMap;
 import net.slashie.libjcsi.*;
-import net.slashie.libjcsi.textcomponents.DialogBox;
 import net.slashie.util.*;
 
 public class WSwingConsoleInterface implements ConsoleSystemInterface, Runnable, ComponentListener {
@@ -16,7 +16,6 @@ public class WSwingConsoleInterface implements ConsoleSystemInterface, Runnable,
      * Shows the characters in a Frame
      */    //Relations
     private SwingConsoleFrame targetFrame; //To get the keypresses from the AWT Model
-    private SwingConsolePanel targetPanel; //To output characters
     private StrokeInformer aStrokeInformer; // Object to which strokes are informed
 
     // Attributes
@@ -54,7 +53,6 @@ public class WSwingConsoleInterface implements ConsoleSystemInterface, Runnable,
         colorsBuffer = new CSIColor[xdim][ydim];
         charsBuffer = new char[xdim][ydim];
 
-        targetPanel = targetFrame.getSwingConsolePanel();
         targetFrame.addKeyListener(aStrokeInformer);
         targetFrame.addComponentListener(this);
         fMetric = targetFrame.getFontMetrics(consoleFont);
@@ -97,7 +95,7 @@ public class WSwingConsoleInterface implements ConsoleSystemInterface, Runnable,
                 colors[x][y] = backColor;
             }
         }
-        targetPanel.cls();
+        targetFrame.cls();
         flushColorTable();// might as well clean out the colorTable if the screen is going to be blank
 
     }
@@ -130,7 +128,7 @@ public class WSwingConsoleInterface implements ConsoleSystemInterface, Runnable,
             if (ypos >= ydim) {
                 break;
             }
-            targetPanel.plot(what.charAt(i), xpos, ypos, colorPreProcess(color), colorPreProcess(background));
+            targetFrame.plot(what.charAt(i), xpos, ypos, colorPreProcess(color), colorPreProcess(background));
             chars[x + i][y] = what.charAt(i);
             colors[x + i][y] = color;
             xpos++;
@@ -151,7 +149,7 @@ public class WSwingConsoleInterface implements ConsoleSystemInterface, Runnable,
         if (chars[x][y] == what && colors[x][y] == color) {
             return;
         }
-        targetPanel.plot(what, xpos, ypos, colorPreProcess(color), colorPreProcess(back));
+        targetFrame.plot(what, xpos, ypos, colorPreProcess(color), colorPreProcess(back));
         colors[x][y] = color;
         chars[x][y] = what;
     }
@@ -234,11 +232,11 @@ public class WSwingConsoleInterface implements ConsoleSystemInterface, Runnable,
     }
 
     public void setAutoRefresh(boolean value) {
-        targetPanel.setAutoUpdate(value);
+       
     }
 
     public char peekChar(int x, int y) {
-        return targetPanel.peekChar(x, y);
+        return targetFrame.peekChar(x, y);
     }
 
     public int peekColor(int x, int y) {
@@ -329,7 +327,6 @@ public class WSwingConsoleInterface implements ConsoleSystemInterface, Runnable,
         String strConsoleFont = loadFont();
         consoleFont = new Font(strConsoleFont, Font.PLAIN, fontSize);
         targetFrame.setFont(consoleFont);
-        targetPanel.setFont(consoleFont);
 
     }
 

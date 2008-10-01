@@ -24,6 +24,10 @@ public class SwingConsolePanel extends JPanel {
     private FontMetrics fMetric;
     private long timing;
 
+    SwingConsolePanel(boolean b) {
+        super(b);
+    }
+
     public void init(Font f, int xdim, int ydim) {
         timing = System.currentTimeMillis();
         setCursor(null);
@@ -118,7 +122,7 @@ public class SwingConsolePanel extends JPanel {
     @Override
     public synchronized void paintComponent(Graphics g) {
         do {
-        } while (System.currentTimeMillis() - timing < 150); // adds 5 millisecond delay in printing
+        } while (System.currentTimeMillis() - timing < 50); // adds 5 millisecond delay in printing
         for (int x = 0; x < charBuffer.length; x++) {
             for (int y = 0; y < charBuffer[0].length; y++) {
                 if (updateBuffer[x][y]) {
