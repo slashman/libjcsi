@@ -1,5 +1,9 @@
 package net.slashie.util;
 
+/**
+ * Utility class to make using coordinates easier.
+ * @author Santiago Zapata
+ */
 public class Position {
 	public int x,y;
 	

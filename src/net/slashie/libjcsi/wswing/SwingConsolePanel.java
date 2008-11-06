@@ -3,6 +3,11 @@ package net.slashie.libjcsi.wswing;
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ * Display space.
+ * @author Santiago Zapata
+ * @author Eben Howard
+ */
 public class SwingConsolePanel extends JPanel {
 
     private char[][] charBuffer;
@@ -10,16 +15,14 @@ public class SwingConsolePanel extends JPanel {
     private Color[][] backGroundBuffer;
     private Color backGround,  foreGround;
     private boolean[][] updateBuffer;
-    //private boolean autoUpdate;
+    //private boolean autoUpdate; //not currently implemented
     private transient Graphics graphicsBuff;
     private transient Image imageBuff;
-    private int xpos,  ypos, // Current Cursor Position
-         width,  height, // Size of the Panel in points
-         xdim,  ydim, // Size of the Panel in characters
-         fontSize;
+    private int width,  height, // Size of the Panel in points
+         xdim,  ydim; // Size of the Panel in characters
     private int fontWidth;
     private int fontDown;
-    private int ascent,  descent;
+    private int ascent;
     private Font font;
     private FontMetrics fMetric;
     private long timing;
@@ -28,8 +31,14 @@ public class SwingConsolePanel extends JPanel {
         super(b);
     }
 
+    /**
+     * Sets the size and font for the display area.
+     * @param f desired font
+     * @param xdim horizontal width
+     * @param ydim vertical height
+     */
     public void init(Font f, int xdim, int ydim) {
-        timing = System.currentTimeMillis();
+        timing = System.currentTimeMillis(); //keep inputs from comming too quickly
         setCursor(null);
         width = Toolkit.getDefaultToolkit().getScreenSize().width;
         height = Toolkit.getDefaultToolkit().getScreenSize().height;
@@ -58,23 +67,43 @@ public class SwingConsolePanel extends JPanel {
         graphicsBuff.setFont(f);
         fMetric = graphicsBuff.getFontMetrics(f);
         ascent = fMetric.getMaxAscent();
-        descent = fMetric.getMaxDescent();
-        fontSize = f.getSize();
-//        fontWidth = fMetric.getMaxAdvance();
         fontWidth = fMetric.charWidth('W');
         fontDown = fMetric.getHeight();
 
         repaint();
     }
 
+    /**
+     * Sets a specific character to a specific point.
+     * @param c specified character
+     * @param x horizontal position
+     * @param y vertical position
+     */
     public void plot(char c, int x, int y) {
         plot(c, x, y, foreGround, backGround);
     }
 
+    /**
+     * Sets a specific character to a specific point and makes
+     * it a specific color.
+     * @param c specified character
+     * @param x horizontal position
+     * @param y vertical position
+     * @param foreColor specified color
+     */
     public void plot(char c, int x, int y, Color foreColor) {
         plot(c, x, y, foreColor, backGround);
     }
 
+    /**
+     * Sets a specific character to a specific point and makes
+     * it and the background specific colors.
+     * @param c specified character
+     * @param x horizontal position
+     * @param y vertical position
+     * @param foreColor specified character color
+     * @param backColor specified background color
+     */
     public void plot(char c, int x, int y, Color foreColor, Color backColor) {
         colorBuffer[x][y] = foreColor;
         backGroundBuffer[x][y] = backColor;
@@ -86,28 +115,51 @@ public class SwingConsolePanel extends JPanel {
         }
     }
 
+    /**
+     * Redraws the output area.
+     */
     public void refresh() {
         repaint();
     }
     private boolean autoUpdate = false;
 
+    /**
+     * Declares whether output area should update itself when anything changes.
+     * @param value true if automatically updating is desired
+     */
     public void setAutoUpdate(boolean value) {
         autoUpdate = value;
-    //autoUpdate = false;
     }
 
+    /**
+     * 
+     * @param pFont desired font
+     */
     @Override
     public void setFont(Font pFont) {
         font = pFont;
     }
 
+    /**
+     * Shows what character is at a specific point.
+     * @param x horizontal position
+     * @param y vertical position
+     * @return character at point
+     */
     public char peekChar(int x, int y) {
         return charBuffer[x][y];
     }
 
+    /**
+     * Flashes screen a specified color.  Currently inoperable.
+     * @param fc specified color to flash
+     */
     public void flash(Color fc) {
     }
 
+    /**
+     * Erases entire output area.
+     */
     public void cls() {
         for (int x = 0; x < charBuffer.length; x++) {
             for (int y = 0; y < charBuffer[0].length; y++) {
@@ -119,6 +171,10 @@ public class SwingConsolePanel extends JPanel {
         }
     }
 
+    /**
+     * Draws the output area.
+     * @param g
+     */
     @Override
     public synchronized void paintComponent(Graphics g) {
         do {

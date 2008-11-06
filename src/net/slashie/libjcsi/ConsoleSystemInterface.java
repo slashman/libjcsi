@@ -2,12 +2,18 @@ package net.slashie.libjcsi;
 
 import net.slashie.util.Position;
 
+/**
+ * Allows for easy output to a console screen emulation and keyboard input.
+ * 
+ * @author Santiago Zapata
+ * @author Eben Howard
+ */
 public interface ConsoleSystemInterface {
 
     /**
      * Prints a character on the console
-     * @param x
-     * @param y
+     * @param x horizontal position
+     * @param y vertical position
      * @param what The character to be printed
      * @param color The color, one of the ConsoleSystemInterface constants
      */
@@ -15,42 +21,48 @@ public interface ConsoleSystemInterface {
 
     /**
      * Same as print but must check for validity of the coordinates
-     * @param x
-     * @param y
+     * @param x horizontal position
+     * @param y vertical position
      * @param what The character to be printed
      * @param color The color, one of the ConsoleSystemInterface constants
      */
     public void safeprint(int x, int y, char what, int color);
 
     /**
-     * Prints a String on the console
-     * @param x
-     * @param y
+     * Prints a String on the console in the color specified.
+     * 
+     * Does not check for running of the edge of the screen, so calling function
+     * must do such a check to avoid errors.
+     * @param x horizontal starting position
+     * @param y vertical position
      * @param what The string to be printed
      * @param color The color, one of the ConsoleSystemInterface constants
      */
     public void print(int x, int y, String what, int color);
 
     /**
-     * Prints a String on the console with the default color
-     * @param x
-     * @param y
+     * Prints a String on the console with the default color.
+     * 
+     * Does not check for running of the edge of the screen, so calling function
+     * must do such a check to avoid errors.
+     * @param x horizontal starting position
+     * @param y vertical starting position
      * @param what The String to be printed
      */
     public void print(int x, int y, String what);
 
     /**
      * Checks what character is at a given position
-     * @param x
-     * @param y
+     * @param x horizontal position
+     * @param y vertical position
      * @return The character at the x,y position
      */
     public char peekChar(int x, int y);
 
     /**
      * Checks what color is at a given position
-     * @param x
-     * @param y
+     * @param x horizontal position
+     * @param y vertical position
      * @return The color at the x,y position
      */
     public int peekColor(int x, int y);
@@ -63,8 +75,8 @@ public interface ConsoleSystemInterface {
 
     /**
      * Locates the input caret on a given position
-     * @param x
-     * @param y
+     * @param x horizontal position
+     * @param y vertical position
      */
     public void locateCaret(int x, int y);
 
@@ -76,13 +88,13 @@ public interface ConsoleSystemInterface {
 
     /**
      * Reads a string from the keyboard with a maximum length
-     * @return The String that was read after pressing enter
+     * @return The String that was read after pressing enter, truncated at specified length
      */
     public String input(int length);
 
     /**
      * Checks if the position is valid
-     * @param e
+     * @param e position to be tested
      * @return true if the position is valid
      */
     public boolean isInsideBounds(Position e);
@@ -121,13 +133,13 @@ public interface ConsoleSystemInterface {
 
     /**
      * Sets whether or not a buffer will be used 
-     * @param value
+     * @param value true to activate buffer
      */
     public void setAutoRefresh(boolean value);
 
     /**
      * Waits for the user to press a key
-     * @param keyCode
+     * @param keyCode code of specific key to wait for
      */
     public void waitKey(int keyCode);
 
@@ -146,17 +158,20 @@ public interface ConsoleSystemInterface {
 
     /**
      * Prints a character on the console, using a custom color
-     * @param x
-     * @param y
+     * @param x horizontal position
+     * @param y vertical position
      * @param what The character to be printed
      * @param color The color, a rgba instance of CSIColor
      */
     public void print(int x, int y, char what, CSIColor color);
 
     /**
-     * Prints a character on the console, using a custom color
-     * @param x
-     * @param y
+     * Prints a String on the console, using a custom color.
+     * 
+     * Does not check for running of the edge of the screen, so calling function
+     * must do such a check to avoid errors.
+     * @param x horizontal position
+     * @param y vertical position
      * @param what The String to be printed
      * @param color The color, a rgba instance of CSIColor
      */

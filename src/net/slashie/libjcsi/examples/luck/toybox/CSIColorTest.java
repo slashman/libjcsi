@@ -4,6 +4,10 @@ import java.util.Random;
 import net.slashie.libjcsi.CSIColor;
 import net.slashie.libjcsi.wswing.WSwingConsoleInterface;
 
+/**
+ * This will display a color test using CSIColor objects.
+ * @author Eben Howard
+ */
 public class CSIColorTest {
 
     WSwingConsoleInterface mainInterface;

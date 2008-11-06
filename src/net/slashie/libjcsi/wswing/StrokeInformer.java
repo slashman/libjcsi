@@ -3,33 +3,50 @@ package net.slashie.libjcsi.wswing;
 import java.awt.event.*;
 import net.slashie.libjcsi.CharKey;
 
+/**
+ * Gets keyboard input.
+ * @author Santiago Zapata
+ * @author Eben Howard
+ */
 public class StrokeInformer implements KeyListener, java.io.Serializable {
 
     private int bufferCode;
-    //private transient UserInterface aUI;
     private transient Thread keyListener;
 
     public StrokeInformer() {
         bufferCode = -1;
     }
 
+    /**
+     *
+     * @param toWho where to add keyListener
+     */
     public void informKey(Thread toWho) {
         keyListener = toWho;
     }
 
+    /**
+     *
+     * @return code shows what was input
+     */
     public int getInkeyBuffer() {
         return bufferCode;
     }
 
-    /*public void setUI(UserInterface pUI){
-    aUI = pUI;
-    }*/
+    /**
+     * Captures input
+     * @param e
+     */
     public void keyPressed(KeyEvent e) {
         bufferCode = charCode(e);
-        //if (!e.isShiftDown())
         keyListener.interrupt();
     }
 
+    /**
+     * Takes raw input and turns it into CharKey encoding.
+     * @param x pressing of a key
+     * @return CharKey encoded value
+     */
     private int charCode(KeyEvent x) {
         int code = x.getKeyCode();
         if (x.isControlDown()) {
@@ -54,7 +71,7 @@ public class StrokeInformer implements KeyListener, java.io.Serializable {
         if (x.getKeyChar() == '<') {  // Added 8/19/2008 by Eben
             return CharKey.LESSTHAN;
         }
-        
+
         switch (x.getKeyCode()) {
             case KeyEvent.VK_SPACE:
                 return CharKey.SPACE;
@@ -105,9 +122,17 @@ public class StrokeInformer implements KeyListener, java.io.Serializable {
         return CharKey.NONE;
     }
 
+    /**
+     * Currently does nothing.
+     * @param e
+     */
     public void keyReleased(KeyEvent e) {
     }
 
+    /**
+     * Currently does nothing.
+     * @param e
+     */
     public void keyTyped(KeyEvent e) {
     }
 }

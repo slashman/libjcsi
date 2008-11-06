@@ -3,6 +3,10 @@ package net.slashie.libjcsi.examples;
 import net.slashie.libjcsi.ConsoleSystemInterface;
 import net.slashie.libjcsi.jcurses.JCursesConsoleInterface;
 
+/**
+ * This shows a basic console interface using the JCurses implementation.
+ * @author Santiago Zapata
+ */
 public class JCursesExample {
 	public static void main(String[] args) {
 		ConsoleSystemInterface csi = null;
