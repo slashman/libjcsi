@@ -2,16 +2,30 @@ package net.slashie.libjcsi.textcomponents;
 
 import net.slashie.libjcsi.ConsoleSystemInterface;
 
+/**
+ * Provides a means to put output into a specific box.
+ * @author Santiago Zapata
+ * @author Eben Howard
+ */
 public class TextBox extends TextComponent {
 
     private StringBuffer[] lines;
     private String title = "";
+    public static final String BEOL = "XXX";// this is the EndOfLine String for this component
 
+    /**
+     * Allows creation of a new TextBox
+     * @param si the ConsoleSystemInterface that this box will be attached to
+     */
     public TextBox(ConsoleSystemInterface si) {
         super(si);
         lines = new StringBuffer[]{new StringBuffer("")};
     }
 
+    /**
+     *
+     * @param value The height of the box
+     */
     @Override
     public void setHeight(int value) {
         super.setHeight(value);
@@ -25,6 +39,10 @@ public class TextBox extends TextComponent {
         }
     }
 
+    /**
+     * Allows for setting a border.
+     * @param value true if border desired
+     */
     @Override
     public void setBorder(boolean value) {
         super.setBorder(value);
@@ -39,6 +57,9 @@ public class TextBox extends TextComponent {
         }
     }
 
+    /**
+     * Outputs box to interface.
+     */
     public void draw() {
         if (height == 0) {
             return;
@@ -53,6 +74,10 @@ public class TextBox extends TextComponent {
         }
     }
 
+    /**
+     *
+     * @param text String that is the contents desired.
+     */
     public void setText(String text) {
         clear();
         String[] tokens = text.split(" ");
@@ -79,10 +104,20 @@ public class TextBox extends TextComponent {
         }
     }
 
+    /**
+     * Sets the title of the box, displayed in the top border.
+     *
+     * Does not check to see if box is wide enough for the title to
+     * appear in the border, so such a check must be done externaly.
+     * @param pTitle title for box
+     */
     public void setTitle(String pTitle) {
         title = pTitle;
     }
 
+    /**
+     * Empties the box but does not erase the box itself.
+     */
     public void clear() {
         for (int i = 0; i < lines.length; i++) {
             lines[i] = new StringBuffer("");

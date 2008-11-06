@@ -2,26 +2,28 @@ package net.slashie.libjcsi.wswing;
 
 import java.awt.*;
 import java.awt.event.*;
-import java.awt.image.BufferStrategy;
 import java.io.*;
 
 import java.util.HashMap;
 import net.slashie.libjcsi.*;
 import net.slashie.util.*;
 
+/**
+ * Swing interface for input and output.
+ * Returns keystrokes as CharKeys.
+ * Shows the characters in a Frame
+ * @author Santiago Zapata
+ * @author Eben Howard
+ */
 public class WSwingConsoleInterface implements ConsoleSystemInterface, Runnable, ComponentListener {
 
-    /** Provides Console IO.
-     * Returns keystrokes as CharKeys.
-     * Shows the characters in a Frame
-     */    //Relations
     private SwingConsoleFrame targetFrame; //To get the keypresses from the AWT Model
     private StrokeInformer aStrokeInformer; // Object to which strokes are informed
 
     // Attributes
     private int xpos,  ypos;
     /** Current printing cursor position */
-    //private boolean autorefresh;
+    //private boolean autorefresh; //not currently implemented
 
     // Static Attributes
     public static Font consoleFont;
@@ -38,6 +40,12 @@ public class WSwingConsoleInterface implements ConsoleSystemInterface, Runnable,
     private HashMap<CSIColor, Color> colorMap = new HashMap<CSIColor, Color>();
     private FontMetrics fMetric;
 
+    /**
+     * Allows for setting the window's name and deploying as a
+     * Java WebStart application.
+     * @param windowName
+     * @param sandboxDeploy true if intended at a Java Webstart application
+     */
     public WSwingConsoleInterface(String windowName, boolean sandboxDeploy) {
         this.sandboxDeploy = sandboxDeploy;
         aStrokeInformer = new StrokeInformer();
@@ -57,14 +65,14 @@ public class WSwingConsoleInterface implements ConsoleSystemInterface, Runnable,
         targetFrame.addComponentListener(this);
         fMetric = targetFrame.getFontMetrics(consoleFont);
 
-        int x,y;
+        int x, y;
         x = fMetric.getMaxAdvance();
         y = fMetric.getHeight();
-        if (!this.sandboxDeploy){
-        targetFrame.setSize((xdim * x) + x,(ydim * y) + y + y);
-        }else{
+        if (!this.sandboxDeploy) {
+            targetFrame.setSize((xdim * x) + x, (ydim * y) + y + y);
+        } else {
             x = fMetric.charWidth('W');
-        targetFrame.setSize(((xdim * x) + x),(ydim * y) + y + y);
+            targetFrame.setSize(((xdim * x) + x), (ydim * y) + y + y);
         }
         targetFrame.setLocationRelativeTo(null); // places window in center of screen
         targetFrame.setResizable(false);
@@ -73,6 +81,10 @@ public class WSwingConsoleInterface implements ConsoleSystemInterface, Runnable,
         targetFrame.setVisible(true);
     }
 
+    /**
+     * Flashes the output area a specified color.  Currently inoperable.
+     * @param color
+     */
     public void flash(int color) {
         //targetPanel.flash(getColorFromCode(color));
     }
@@ -144,7 +156,7 @@ public class WSwingConsoleInterface implements ConsoleSystemInterface, Runnable,
         print(x, y, what, color, CSIColor.BLACK);
     }
 
-        public void print(int x, int y, char what, CSIColor color, CSIColor back) {
+    public void print(int x, int y, char what, CSIColor color, CSIColor back) {
         locate(x, y);
         if (chars[x][y] == what && colors[x][y] == color) {
             return;
@@ -153,7 +165,7 @@ public class WSwingConsoleInterface implements ConsoleSystemInterface, Runnable,
         colors[x][y] = color;
         chars[x][y] = what;
     }
-    
+
     public void print(int x, int y, String what) {
         print(x, y, what, frontColor);
     }
@@ -232,7 +244,6 @@ public class WSwingConsoleInterface implements ConsoleSystemInterface, Runnable,
     }
 
     public void setAutoRefresh(boolean value) {
-       
     }
 
     public char peekChar(int x, int y) {
