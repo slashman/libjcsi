@@ -27,7 +27,15 @@ class LuckCSIColor {
         new CSIColor(80, 40, 40),
         new CSIColor(200, 60, 50),
         new CSIColor(80, 250, 60),
-        new CSIColor(80, 60, 60)
+        new CSIColor(80, 60, 60),
+		new CSIColor(80,20,0),
+		new CSIColor(80,0,20),
+		new CSIColor(80,20,20),
+		new CSIColor(80,40,80),
+		new CSIColor(20,20,80),
+		new CSIColor(80,40,40),
+		new CSIColor(200,60,50),
+		new CSIColor(80,250,60)
     };
 
     void a(int x, int y, char h) {
