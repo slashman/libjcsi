@@ -2,9 +2,10 @@ package net.slashie.libjcsi.wswing;
 
 import java.awt.*;
 import java.awt.event.*;
-import java.io.*;
 
 import java.util.HashMap;
+import java.util.Properties;
+
 import net.slashie.libjcsi.*;
 import net.slashie.util.*;
 
@@ -36,18 +37,37 @@ public class WSwingConsoleInterface implements ConsoleSystemInterface, Runnable,
     private CSIColor backColor = CSIColor.BLACK;
     private CSIColor frontColor = CSIColor.WHITE;
     private Position caretPosition = new Position(0, 0);
-    private boolean sandboxDeploy;
     private HashMap<CSIColor, Color> colorMap = new HashMap<CSIColor, Color>();
     private FontMetrics fMetric;
+    private Properties configuration;
 
     /**
      * Allows for setting the window's name and deploying as a
      * Java WebStart application.
      * @param windowName
      * @param sandboxDeploy true if intended at a Java Webstart application
-     */
+     * @deprecated sandboxDeploy is no longer needed to be specified
+     */    
     public WSwingConsoleInterface(String windowName, boolean sandboxDeploy) {
-        this.sandboxDeploy = sandboxDeploy;
+    	this(windowName);
+    }
+
+    /**
+     * Initializes the SwingConsoleBox, giving its window a distinctive title
+     * @param windowName
+     */    
+    public WSwingConsoleInterface(String windowName) {
+    	this(windowName, new Properties());
+    }
+    
+    /**
+     * Initializes the SwingConsoleBox, giving its window a distinctive title.
+     * Receives the configuration parameters
+     * @param windowName
+     * @param configuration A Properties object containing key-value configuration pairs
+     */
+    public WSwingConsoleInterface(String windowName, Properties configuration) {
+    	this.configuration = configuration;
         aStrokeInformer = new StrokeInformer();
         targetFrame = new SwingConsoleFrame(windowName);
         java.awt.Dimension initialSize = new java.awt.Dimension(1280, 1024);
@@ -67,19 +87,16 @@ public class WSwingConsoleInterface implements ConsoleSystemInterface, Runnable,
 
         int x, y;
         x = fMetric.getMaxAdvance();
+        x = fMetric.charWidth('W'); //TODO: Which one to use?
         y = fMetric.getHeight();
-        if (!this.sandboxDeploy) {
-            targetFrame.setSize((xdim * x) + x, (ydim * y) + y + y);
-        } else {
-            x = fMetric.charWidth('W');
-            targetFrame.setSize(((xdim * x) + x), (ydim * y) + y + y);
-        }
+        targetFrame.setSize((xdim * x) + x, (ydim * y) + y + y);
         targetFrame.setLocationRelativeTo(null); // places window in center of screen
         targetFrame.setResizable(false);
         locate(1, 1);
 
         targetFrame.setVisible(true);
     }
+    
 
     /**
      * Flashes the output area a specified color.  Currently inoperable.
@@ -259,44 +276,26 @@ public class WSwingConsoleInterface implements ConsoleSystemInterface, Runnable,
     }
 
     private String loadFont() {
-        if (!sandboxDeploy) {
-            BufferedReader br = null;
-            try {
-                br = FileUtil.getReader("font.scb");
-                String fnt = br.readLine();
-                br.close();
-                if (!fnt.equals("NFE")) {
-                    System.out.println("Using font " + fnt);
-                    return fnt;
-                }
-            } catch (IOException ioe) {
-                System.out.println("Error reading font file: " + ioe.getMessage());
-                try {
-                    br.close();
-                } catch (IOException ioe2) {
-                    System.out.println("Error reading font file: " + ioe2.getMessage());
-                }
-            }
-        } else {
-            return "Monospaced";
-        }
-
-        String x[] = GraphicsEnvironment.getLocalGraphicsEnvironment().getAvailableFontFamilyNames();
-        boolean lucida = false, courier = false;
-        for (int i = 0; i < x.length; i++) {
-            if (x[i].equals("Lucida Console")) {
-                lucida = true;
-            } else if (x[i].equals("Courier New")) {
-                courier = true;
-            }
-        }
-        if (courier) {
-            return "Courier New";
-        } else if (lucida) {
-            return "Lucida Console";
-        }
-        return "Monospaced";
-
+    	String font = configuration.getProperty("font"); 
+    	if (font != null){
+    		return font;
+    	} else {
+	    	String x[] = GraphicsEnvironment.getLocalGraphicsEnvironment().getAvailableFontFamilyNames();
+	        boolean lucida = false, courier = false;
+	        for (int i = 0; i < x.length; i++) {
+	            if (x[i].equals("Lucida Console")) {
+	                lucida = true;
+	            } else if (x[i].equals("Courier New")) {
+	                courier = true;
+	            }
+	        }
+	        if (courier) {
+	            return "Courier New";
+	        } else if (lucida) {
+	            return "Lucida Console";
+	        }
+	        return "Monospaced";
+    	}
     }
 
     private int defineFontSize(int scrHeight, int scrWidth) {
