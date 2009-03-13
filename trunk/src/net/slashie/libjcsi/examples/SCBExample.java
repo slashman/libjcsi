@@ -12,7 +12,7 @@ public class SCBExample {
     public static void main(String[] args) {
         ConsoleSystemInterface csi = null;
         try {
-            csi = new WSwingConsoleInterface("libjcsi example - Santiago Zapata", false);
+            csi = new WSwingConsoleInterface("libjcsi example - Santiago Zapata", true);
         } catch (ExceptionInInitializerError eiie) {
             System.out.println("Fatal Error Initializing Swing Console Box");
             eiie.printStackTrace();

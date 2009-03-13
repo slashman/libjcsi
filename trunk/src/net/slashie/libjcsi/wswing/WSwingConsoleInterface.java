@@ -47,19 +47,19 @@ public class WSwingConsoleInterface implements ConsoleSystemInterface, Runnable,
      * @param windowName
      * @param sandboxDeploy true if intended at a Java Webstart application
      * @deprecated sandboxDeploy is no longer needed to be specified
-     */    
+     */
     public WSwingConsoleInterface(String windowName, boolean sandboxDeploy) {
-    	this(windowName);
+        this(windowName);
     }
 
     /**
      * Initializes the SwingConsoleBox, giving its window a distinctive title
      * @param windowName
-     */    
+     */
     public WSwingConsoleInterface(String windowName) {
-    	this(windowName, new Properties());
+        this(windowName, new Properties());
     }
-    
+
     /**
      * Initializes the SwingConsoleBox, giving its window a distinctive title.
      * Receives the configuration parameters
@@ -67,7 +67,7 @@ public class WSwingConsoleInterface implements ConsoleSystemInterface, Runnable,
      * @param configuration A Properties object containing key-value configuration pairs
      */
     public WSwingConsoleInterface(String windowName, Properties configuration) {
-    	this.configuration = configuration;
+        this.configuration = configuration;
         aStrokeInformer = new StrokeInformer();
         targetFrame = new SwingConsoleFrame(windowName);
         java.awt.Dimension initialSize = new java.awt.Dimension(1280, 1024);
@@ -96,7 +96,6 @@ public class WSwingConsoleInterface implements ConsoleSystemInterface, Runnable,
 
         targetFrame.setVisible(true);
     }
-    
 
     /**
      * Flashes the output area a specified color.  Currently inoperable.
@@ -276,26 +275,26 @@ public class WSwingConsoleInterface implements ConsoleSystemInterface, Runnable,
     }
 
     private String loadFont() {
-    	String font = configuration.getProperty("font"); 
-    	if (font != null){
-    		return font;
-    	} else {
-	    	String x[] = GraphicsEnvironment.getLocalGraphicsEnvironment().getAvailableFontFamilyNames();
-	        boolean lucida = false, courier = false;
-	        for (int i = 0; i < x.length; i++) {
-	            if (x[i].equals("Lucida Console")) {
-	                lucida = true;
-	            } else if (x[i].equals("Courier New")) {
-	                courier = true;
-	            }
-	        }
-	        if (courier) {
-	            return "Courier New";
-	        } else if (lucida) {
-	            return "Lucida Console";
-	        }
-	        return "Monospaced";
-    	}
+        String font = configuration.getProperty("font");
+        if (font != null) {
+            return font;
+        } else {
+            String x[] = GraphicsEnvironment.getLocalGraphicsEnvironment().getAvailableFontFamilyNames();
+            boolean lucida = false, courier = false;
+            for (int i = 0; i < x.length; i++) {
+                if (x[i].equals("Lucida Console")) {
+                    lucida = true;
+                } else if (x[i].equals("Courier New")) {
+                    courier = true;
+                }
+            }
+            if (courier) {
+                return "Courier New";
+            } else if (lucida) {
+                return "Lucida Console";
+            }
+            return "Monospaced";
+        }
     }
 
     private int defineFontSize(int scrHeight, int scrWidth) {

@@ -73,6 +73,26 @@ public class StrokeInformer implements KeyListener, java.io.Serializable {
         }
 
         switch (x.getKeyCode()) {
+            case KeyEvent.VK_0:
+                return CharKey.T0;
+            case KeyEvent.VK_1:
+                return CharKey.T1;
+            case KeyEvent.VK_2:
+                return CharKey.T2;
+            case KeyEvent.VK_3:
+                return CharKey.T3;
+            case KeyEvent.VK_4:
+                return CharKey.T4;
+            case KeyEvent.VK_5:
+                return CharKey.T5;
+            case KeyEvent.VK_6:
+                return CharKey.T6;
+            case KeyEvent.VK_7:
+                return CharKey.T7;
+            case KeyEvent.VK_8:
+                return CharKey.T8;
+            case KeyEvent.VK_9:
+                return CharKey.T9;
             case KeyEvent.VK_SPACE:
                 return CharKey.SPACE;
 
