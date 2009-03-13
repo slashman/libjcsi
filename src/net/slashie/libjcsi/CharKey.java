@@ -9,7 +9,17 @@ import java.util.*;
  */
 public class CharKey {
 
-    public final static int UARROW = 0,  DARROW = 1,  LARROW = 2,  RARROW = 3,  LCTRL = 4,  RCTRL = 5,  LALT = 6,  RALT = 7,  LSHIFT = 8,  RSHIFT = 9,  ENTER = 10,  BACKSPACE = 11,  F1 = 12,  F2 = 13,  F3 = 14,  F4 = 15,  F5 = 16,  F6 = 17,  F7 = 18,  F8 = 19,  F9 = 20,  F10 = 21,  F11 = 22,  F12 = 23,  INSERT = 24,  HOME = 25,  PAGEUP = 26,  PAGEDOWN = 27,  DELETE = 28,  END = 29,  ESC = 30,  TAB = 31,  OPENSHARPBRACETS = 32,  CLOSESHARPBRACETS = 33,  SEMICOLON = 34,  APOSTROPHE = 35,  COMMA = 36,  DOT = 37,  SLASH = 38,  BACKSLASH = 39,  SPACE = 40,  MINUS = 41,  EQUALS = 42,  BACKAPOSTROPHE = 43,  CURLYMINUS = 44,  EXCLAMATION = 45,  ARROBE = 46,  MONEY = 47,  PERCENTAGE = 48,  EXPONENCIATION = 49,  AMPERSAND = 50,  ASTERISK = 51,  OPENPARENTHESIS = 52,  CLOSEPARENTHESIS = 53,  UNDERLINE = 54,  PLUS = 55,  OPENCURLYBRACETS = 56,  CLOSECURLYBRACETS = 57,  COLON = 58,  COMILLAS = 59,  LESSTHAN = 60,  MORETHAN = 61,  QUESTION = 62,  OR = 63,  a = 64,  b = 65,  c = 66,  d = 67,  e = 68,  f = 69,  g = 70,  h = 71,  i = 72,  j = 73,  k = 74,  l = 75,  m = 76,  n = 77,  o = 78,  p = 79,  q = 80,  r = 81,  s = 82,  t = 83,  u = 84,  v = 85,  w = 86,  x = 87,  y = 88,  z = 89,  A = 90,  B = 91,  C = 92,  D = 93,  E = 94,  F = 95,  G = 96,  H = 97,  I = 98,  J = 99,  K = 100,  L = 101,  M = 102,  N = 103,  O = 104,  P = 105,  Q = 106,  R = 107,  S = 108,  T = 109,  U = 110,  V = 111,  W = 112,  X = 113,  Y = 114,  Z = 115,  NONE = 116,  N0 = 117,  N1 = 118,  N2 = 119,  N3 = 120,  N4 = 121,  N5 = 122,  N6 = 123,  N7 = 124,  N8 = 125,  N9 = 126,  CTRL = 127;
+    public final static int UARROW = 0,  DARROW = 1,  LARROW = 2,  RARROW = 3,  LCTRL = 4,  RCTRL = 5,  LALT = 6,  RALT = 7,  LSHIFT = 8,  RSHIFT = 9,  ENTER = 10,  BACKSPACE = 11,  F1 = 12,  F2 = 13,  F3 = 14,  F4 = 15,  F5 = 16,  F6 = 17,  F7 = 18,  F8 = 19,  F9 = 20,  F10 = 21,  F11 = 22,  F12 = 23,  INSERT = 24,  HOME = 25,  PAGEUP = 26,  PAGEDOWN = 27,  DELETE = 28,  END = 29,  ESC = 30,  TAB = 31,  OPENSHARPBRACETS = 32,  CLOSESHARPBRACETS = 33,  SEMICOLON = 34,  APOSTROPHE = 35,  COMMA = 36,  DOT = 37,  SLASH = 38,  BACKSLASH = 39,  SPACE = 40,  MINUS = 41,  EQUALS = 42,  BACKAPOSTROPHE = 43,  CURLYMINUS = 44,  EXCLAMATION = 45,  ARROBE = 46,  MONEY = 47,  PERCENTAGE = 48,  EXPONENCIATION = 49,  AMPERSAND = 50,  ASTERISK = 51,  OPENPARENTHESIS = 52,  CLOSEPARENTHESIS = 53,  UNDERLINE = 54,  PLUS = 55,  OPENCURLYBRACETS = 56,  CLOSECURLYBRACETS = 57,  COLON = 58,  COMILLAS = 59,  LESSTHAN = 60,  MORETHAN = 61,  QUESTION = 62,  OR = 63,  a = 64,  b = 65,  c = 66,  d = 67,  e = 68,  f = 69,  g = 70,  h = 71,  i = 72,  j = 73,  k = 74,  l = 75,  m = 76,  n = 77,  o = 78,  p = 79,  q = 80,  r = 81,  s = 82,  t = 83,  u = 84,  v = 85,  w = 86,  x = 87,  y = 88,  z = 89,  A = 90,  B = 91,  C = 92,  D = 93,  E = 94,  F = 95,  G = 96,  H = 97,  I = 98,  J = 99,  K = 100,  L = 101,  M = 102,  N = 103,  O = 104,  P = 105,  Q = 106,  R = 107,  S = 108,  T = 109,  U = 110,  V = 111,  W = 112,  X = 113,  Y = 114,  Z = 115,  NONE = 116,  N0 = 117,  N1 = 118,  N2 = 119,  N3 = 120,  N4 = 121,  N5 = 122,  N6 = 123,  N7 = 124,  N8 = 125,  N9 = 126,  CTRL = 127,
+            T0 = 130,
+            T1 = 131,
+            T2 = 132,
+            T3 = 133,
+            T4 = 134,
+            T5 = 135,
+            T6 = 136,
+            T7 = 137,
+            T8 = 138,
+            T9 = 139;
     public int code;
     public static Hashtable mirrors = new Hashtable(20);
     
@@ -75,6 +85,9 @@ public class CharKey {
         }
         if (code >= 117 && code <= 126) {
             return "" + ((char) (code - 69));
+        }
+        if (code >= 130 && code <= 139){
+            return "" + (code - 130);
         }
         String ret = (String) mirrors.get("" + code);
         if (ret != null) {
