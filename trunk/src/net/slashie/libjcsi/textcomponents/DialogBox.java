@@ -23,13 +23,17 @@ public class DialogBox extends TextBox {
 
         lineLength = args.length();
 
-        for (int i = 1; i < lines; i++) {
+        for (int i = 1; i <= lines; i++) {
             tempLineLength = (lineLength * i) / lines;
             nextIndex = args.indexOf(" ", tempLineLength);
             if (nextIndex == -1) {
                 nextIndex = tempLineLength / i;
             }
-            maxLineLength = Math.max(maxLineLength, nextIndex);
+            maxLineLength = Math.max(maxLineLength, nextIndex / i);
+            if (maxLineLength > 60) {
+                maxLineLength = 59;
+                lines++;
+            }
         }
 
         if (maxLineLength == 0) {
