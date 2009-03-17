@@ -174,9 +174,6 @@ public class WSwingConsoleInterface implements ConsoleSystemInterface, Runnable,
 
     public void print(int x, int y, char what, CSIColor color, CSIColor back) {
         locate(x, y);
-        if (chars[x][y] == what && colors[x][y] == color) {
-            return;
-        }
         targetFrame.plot(what, xpos, ypos, colorPreProcess(color), colorPreProcess(back));
         colors[x][y] = color;
         chars[x][y] = what;
@@ -350,8 +347,11 @@ public class WSwingConsoleInterface implements ConsoleSystemInterface, Runnable,
     }
 
     public void restore() {
-        colors = colorsBuffer.clone();
-        chars = charsBuffer.clone();
+        for (int x = 0; x < colors.length; x++) {
+            colors[x] = colorsBuffer[x].clone();
+            chars[x] = charsBuffer[x].clone();
+        }
+        
         for (int x = 0; x < colors.length; x++) {
             for (int y = 0; y < colors[0].length; y++) {
                 this.print(x, y, chars[x][y], colors[x][y]);
@@ -360,7 +360,9 @@ public class WSwingConsoleInterface implements ConsoleSystemInterface, Runnable,
     }
 
     public void saveBuffer() {
-        colorsBuffer = colors.clone();
-        charsBuffer = chars.clone();
+    	for (int x = 0; x < colors.length; x++) {
+    		colorsBuffer[x] = colors[x].clone();
+    		charsBuffer[x] = chars[x].clone();
+        }
     }
 }
