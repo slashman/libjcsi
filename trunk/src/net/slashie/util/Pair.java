@@ -1,6 +1,8 @@
 package net.slashie.util;
 
-public class Pair <K,L>{
+import java.io.Serializable;
+
+public class Pair <K,L> implements Serializable{
 	private K a;
 	public Pair(K a_, L b_){
 		a = a_;
