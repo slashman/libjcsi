@@ -429,7 +429,7 @@ public class JCursesConsoleInterface implements ConsoleSystemInterface {
 
         Arrays.sort(colorOffsets, new Comparator<Pair<CSIColor, Integer>>() {
 
-            @Override
+            
             public int compare(Pair<CSIColor, Integer> o1,
                 Pair<CSIColor, Integer> o2) {
                 return o1.getB() - o2.getB();
@@ -448,7 +448,7 @@ public class JCursesConsoleInterface implements ConsoleSystemInterface {
 
         Arrays.sort(colorOffsets, new Comparator<Pair<CSIColor, Integer>>() {
 
-            @Override
+            
             public int compare(Pair<CSIColor, Integer> o1,
                 Pair<CSIColor, Integer> o2) {
                 return o1.getB() - o2.getB();
@@ -474,7 +474,7 @@ public class JCursesConsoleInterface implements ConsoleSystemInterface {
         print(x, y, string, color);
     }
 
-    @Override
+    
     public void flushColorTable() {
         colorMap.clear();
     }
