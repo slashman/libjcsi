@@ -6,17 +6,17 @@ import java.util.ArrayList;
  * Allows for the use of custom colors.  These colors are comparable for equality
  * but the ordering of them has more to do with saturation than color, so if
  * placed in order the output may not be what is expected.
- * 
+ *
  * Has both a small pallet called DEFAULT_PALLET which contains the basic 16
  * colors from curses implementations.
- * 
+ *
  * Has an extended pallet called FULL_PALLET which contains a wide variety of
  * custom named colors.
- * 
+ *
  * Can be used to make any color with aRGB values from 0-255.
- * 
+ *
  * @author Santiago Zapata
- * @author Eben Howard  
+ * @author Eben Howard
  */
 public class CSIColor implements Comparable {
 
@@ -53,6 +53,7 @@ public class CSIColor implements Comparable {
      */
     public static final CSIColor BROWN = new CSIColor(0x808000);
     /**
+     * Duplicated as AQUA for usability
      *<pre><font style="background-color: #00ffff;" color=000000>&nbsp&nbsp&nbsp</font><font style="background-color: #000000;" color=000000>&nbsp&nbsp&nbsp</font><font style="background-color: #888888;" color=000000>&nbsp&nbsp&nbsp</font><font style="background-color: #ffffff;" color=000000>&nbsp&nbsp&nbsp</font><font style="background-color: #00ffff;" color=000000>&nbsp@&nbsp</font>
      *<font style="background-color: #00ffff;" color=000000>&nbsp&nbsp&nbsp</font><font style="background-color: #000000;" color=00ffff>&nbsp@&nbsp</font><font style="background-color: #888888;" color=00ffff>&nbsp@&nbsp</font><font style="background-color: #ffffff;" color=00ffff>&nbsp@&nbsp</font></font><font style="background-color: #00ffff;" color=888888>&nbsp@&nbsp</font>
      *<font style="background-color: #00ffff;" color=000000>&nbsp&nbsp&nbsp</font><font style="background-color: #000000;" color=000000>&nbsp&nbsp&nbsp</font><font style="background-color: #888888;" color=000000>&nbsp&nbsp&nbsp</font><font style="background-color: #ffffff;" color=000000>&nbsp&nbsp&nbsp</font><font style="background-color: #00ffff;" color=ffffff>&nbsp@&nbsp</font>
@@ -63,7 +64,6 @@ public class CSIColor implements Comparable {
      */
     public static final CSIColor CYAN = new CSIColor(0x00ffff);
     /**
-     * Duplicated as AQUA for usability
      *<pre><font style="background-color: #0000c8;" color=000000>&nbsp&nbsp&nbsp</font><font style="background-color: #000000;" color=000000>&nbsp&nbsp&nbsp</font><font style="background-color: #888888;" color=000000>&nbsp&nbsp&nbsp</font><font style="background-color: #ffffff;" color=000000>&nbsp&nbsp&nbsp</font><font style="background-color: #0000c8;" color=000000>&nbsp@&nbsp</font>
      *<font style="background-color: #0000c8;" color=000000>&nbsp&nbsp&nbsp</font><font style="background-color: #000000;" color=0000c8>&nbsp@&nbsp</font><font style="background-color: #888888;" color=0000c8>&nbsp@&nbsp</font><font style="background-color: #ffffff;" color=0000c8>&nbsp@&nbsp</font></font><font style="background-color: #0000c8;" color=888888>&nbsp@&nbsp</font>
      *<font style="background-color: #0000c8;" color=000000>&nbsp&nbsp&nbsp</font><font style="background-color: #000000;" color=000000>&nbsp&nbsp&nbsp</font><font style="background-color: #888888;" color=000000>&nbsp&nbsp&nbsp</font><font style="background-color: #ffffff;" color=000000>&nbsp&nbsp&nbsp</font><font style="background-color: #0000c8;" color=ffffff>&nbsp@&nbsp</font>
@@ -834,7 +834,956 @@ public class CSIColor implements Comparable {
      *<font style="background-color: #ff0000;" color=DC143C>&nbsp@&nbsp<font style="background-color: #ffff00;">&nbsp@&nbsp<font style="background-color: #00ff00;">&nbsp@&nbsp<font style="background-color: #0000ff;">&nbsp@&nbsp<font style="background-color: #964b00;">&nbsp@&nbsp</font>
      *<font style="background-color: #ff0000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #00ff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #0000ff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #964b00;" color=000000>&nbsp&nbsp&nbsp</font></pre>
      */
-    public static final CSIColor CRIMSON = new CSIColor(0xDC143C),  DARK_BROWN = new CSIColor(0x654321),  DARK_CERULEAN = new CSIColor(0x08457E),  DARK_CHESTNUT = new CSIColor(0x986960),  DARK_CORAL = new CSIColor(0xCD5B45),  DARK_GOLDENROD = new CSIColor(0xB8860B),  DARK_GREEN = new CSIColor(0x013220),  DARK_KHAKI = new CSIColor(0xBDB76B),  DARK_PASTEL_GREEN = new CSIColor(0x03C03C),  DARK_PINK = new CSIColor(0xE75480),  DARK_SCARLET = new CSIColor(0x560319),  DARK_SALMON = new CSIColor(0xE9967A),  DARK_SLATE_GRAY = new CSIColor(0x2F4F4F),  DARK_SPRING_GREEN = new CSIColor(0x177245),  DARK_TAN = new CSIColor(0x918151),  DARK_TURQUOISE = new CSIColor(0x00CED1),  DARK_VIOLET = new CSIColor(0x9400D3),  DEEP_CERISE = new CSIColor(0xDA3287),  DEEP_CHESTNUT = new CSIColor(0xB94E48),  DEEP_FUCHSIA = new CSIColor(0xC154C1),  DEEP_LILAC = new CSIColor(0x9955BB),  DEEP_MAGENTA = new CSIColor(0xCD00CC),  DEEP_PEACH = new CSIColor(0xFFCBA4),  DEEP_PINK = new CSIColor(0xFF1493),  DENIM = new CSIColor(0x1560BD),  DODGER_BLUE = new CSIColor(0x1E90FF),  ECRU = new CSIColor(0xC2B280),  EGYPTIAN_BLUE = new CSIColor(0x1034A6),  ELECTRIC_BLUE = new CSIColor(0x7DF9FF),  ELECTRIC_GREEN = new CSIColor(0x00FF00),  ELECTRIC_INDIGO = new CSIColor(0x6600FF),  ELECTRIC_LIME = new CSIColor(0xCCFF00),  ELECTRIC_PURPLE = new CSIColor(0xBF00FF),  EMERALD = new CSIColor(0x50C878),  EGGPLANT = new CSIColor(0x614051),  FALU_RED = new CSIColor(0x801818),  FERN_GREEN = new CSIColor(0x4F7942),  FIREBRICK = new CSIColor(0xB22222),  FLAX = new CSIColor(0xEEDC82),  FOREST_GREEN = new CSIColor(0x228B22),  FRENCH_ROSE = new CSIColor(0xF64A8A),  FUCSHIA_PINK = new CSIColor(0xFF77FF),  GAMBOGE = new CSIColor(0xE49B0F),  GOLD = new CSIColor(0xD4AF37),  GOLDEN = new CSIColor(0xFFD700),  GOLDEN_BROWN = new CSIColor(0x996515),  GOLDEN_YELLOW = new CSIColor(0xFFDF00),  GOLDENROD = new CSIColor(0xDAA520),  GRAY_ASPARAGUS = new CSIColor(0x465945),  GREEN_YELLOW = new CSIColor(0xADFF2F),  HAN_PURPLE = new CSIColor(0x5218FA),  HELIOTROPE = new CSIColor(0xDF73FF),  HOLLYWOOD_CERISE = new CSIColor(0xF400A1),  HOT_MAGENTA = new CSIColor(0xFF00CC),  HOT_PINK = new CSIColor(0xFF69B4),  INDIGO_DYE = new CSIColor(0x00416A),  INDIGO = new CSIColor(0x4B0082),  INTERNATIONAL_KLEIN_BLUE = new CSIColor(0x002FA7),  INTERNATIONAL_ORANGE = new CSIColor(0xFF4F00),  ISLAMIC_GREEN = new CSIColor(0x009000),  IVORY = new CSIColor(0xFFFFF0),  JADE = new CSIColor(0x00A86B),  KELLY_GREEN = new CSIColor(0x4CBB17),  KHAKI = new CSIColor(0xC3B091),  LIGHT_KHAKI = new CSIColor(0xF0E68C),  LAVENDER_FLORAL = new CSIColor(0xB57EDC),  LAVENDER = new CSIColor(0xE6E6FA),  LAVENDER_BLUE = new CSIColor(0xCCCCFF),  LAVENDER_BLUSH = new CSIColor(0xFFF0F5),  LAVENDER_GRAY = new CSIColor(0xC4C3D0),  LAVENDER_MAGENTA = new CSIColor(0xEE82EE),  LAVENDER_PINK = new CSIColor(0xFBAED2),  LAVENDER_PURPLE = new CSIColor(0x967BB6),  LAVENDER_ROSE = new CSIColor(0xFBA0E3),  LAWN_GREEN = new CSIColor(0x7CFC00),  LEMON_CHIFFON = new CSIColor(0xFFFACD),  LIGHT_BLUE = new CSIColor(0xADD8E6),  LIGHT_PINK = new CSIColor(0xFFB6C1),  LILAC = new CSIColor(0xC8A2C8),  LEMON = new CSIColor(0xFDE910),  LIGHT_LIME = new CSIColor(0xBFFF00),  LIME_GREEN = new CSIColor(0x32CD32),  LINEN = new CSIColor(0xFAF0E6),  MAGENTA_DYE = new CSIColor(0xCA1F7B),  MAGIC_MINT = new CSIColor(0xAAF0D1),  MAGNOLIA = new CSIColor(0xF8F4FF),  MALACHITE = new CSIColor(0x0BDA51),  MAROON = new CSIColor(0x800000),  LIGHT_MAROON = new CSIColor(0xB03060),  MAYA_BLUE = new CSIColor(0x73C2FB),  MAUVE = new CSIColor(0xE0B0FF),  MAUVE_TAUPE = new CSIColor(0x915F6D),  MEDIUM_BLUE = new CSIColor(0x0000CD),  MEDIUM_CARMINE = new CSIColor(0xAF4035),  MEDIUM_LAVENDER_MAGENTA = new CSIColor(0xCC99CC),  MEDIUM_PURPLE = new CSIColor(0x9370DB),  MEDIUM_SPRING_GREEN = new CSIColor(0x00FA9A),  MIDNIGHT_BLUE = new CSIColor(0x003366),  MINT_GREEN = new CSIColor(0x98FF98),  MISTY_ROSE = new CSIColor(0xFFE4E1),  MOSS_GREEN = new CSIColor(0xADDFAD),  MOUNTBATTEN_PINK = new CSIColor(0x997A8D),  MUSTARD = new CSIColor(0xFFDB58),  MYRTLE = new CSIColor(0x21421E),  NAVAJO_WHITE = new CSIColor(0xFFDEAD),  NAVY_BLUE = new CSIColor(0x000080),  OCHRE = new CSIColor(0xCC7722),  OLD_GOLD = new CSIColor(0xCFB53B),  OLD_LACE = new CSIColor(0xFDF5E6),  OLD_LAVENDER = new CSIColor(0x796878),  OLD_ROSE = new CSIColor(0xC08081),  OLIVE = new CSIColor(0x808000),  OLIVE_DRAB = new CSIColor(0x6B8E23),  OLIVINE = new CSIColor(0x9AB973),  ORANGE_PEEL = new CSIColor(0xFFA000),  ORANGE_RED = new CSIColor(0xFF4500),  ORCHID = new CSIColor(0xDA70D6),  PALE_BLUE = new CSIColor(0xAFEEEE),  PALE_BROWN = new CSIColor(0x987654),  PALE_CARMINE = new CSIColor(0xAF4035),  PALE_CHESTNUT = new CSIColor(0xDDADAF),  PALE_CORNFLOWER_BLUE = new CSIColor(0xABCDEF),  PALE_MAGENTA = new CSIColor(0xF984E5),  PALE_PINK = new CSIColor(0xFADADD),  PALE_RED_VIOLET = new CSIColor(0xDB7093),  PAPAYA_WHIP = new CSIColor(0xFFEFD5),  PASTEL_GREEN = new CSIColor(0x77DD77),  PASTEL_PINK = new CSIColor(0xFFD1DC),  PEACH = new CSIColor(0xFFE5B4),  PEACH_ORANGE = new CSIColor(0xFFCC99),  PEACH_YELLOW = new CSIColor(0xFADFAD),  PEAR = new CSIColor(0xD1E231),  PERIWINKLE = new CSIColor(0xCCCCFF),  PERSIAN_BLUE = new CSIColor(0x1C39BB),  PERSIAN_GREEN = new CSIColor(0x00A693),  PERSIAN_INDIGO = new CSIColor(0x32127A),  PERSIAN_RED = new CSIColor(0xCC3333),  PERSIAN_PINK = new CSIColor(0xF77FBE),  PERSIAN_ROSE = new CSIColor(0xFE28A2),  PERSIMMON = new CSIColor(0xEC5800),  PINE_GREEN = new CSIColor(0x01796F),  TRUE_PINK = new CSIColor(0xFFC0CB),  PINK_ORANGE = new CSIColor(0xFF9966),  PLATINUM = new CSIColor(0xE5E4E2),  PLUM = new CSIColor(0xCC99CC),  POWDER_BLUE = new CSIColor(0xB0E0E6),  PUCE = new CSIColor(0xCC8899),  PRUSSIAN_BLUE = new CSIColor(0x003153),  PSYCHEDELIC_PURPLE = new CSIColor(0xDD00FF),  PUMPKIN = new CSIColor(0xFF7518),  PURPLE_TAUPE = new CSIColor(0x50404D),  RAW_UMBER = new CSIColor(0x734A12),  RAZZMATAZZ = new CSIColor(0xE30B5C),  RED_PIGMENT = new CSIColor(0xED1C24),  RED_VIOLET = new CSIColor(0xC71585),  RICH_CARMINE = new CSIColor(0xD70040),  ROBIN_EGG_BLUE = new CSIColor(0x00CCCC),  ROSE = new CSIColor(0xFF007F),  ROSE_MADDER = new CSIColor(0xE32636),  ROSE_TAUPE = new CSIColor(0x905D5D),  ROYAL_BLUE = new CSIColor(0x4169E1),  ROYAL_PURPLE = new CSIColor(0x6B3FA0),  RUBY = new CSIColor(0xE0115F),  RUSSET = new CSIColor(0x80461B),  RUST = new CSIColor(0xB7410E),  SAFETY_ORANGE = new CSIColor(0xFF6600),  SAFFRON = new CSIColor(0xF4C430),  SALMON = new CSIColor(0xFF8C69),  SANDY_BROWN = new CSIColor(0xF4A460),  SANGRIA = new CSIColor(0x92000A),  SAPPHIRE = new CSIColor(0x082567),  SCARLET = new CSIColor(0xFF2400),  SCHOOL_BUS_YELLOW = new CSIColor(0xFFD800),  SEA_GREEN = new CSIColor(0x2E8B57),  SEASHELL = new CSIColor(0xFFF5EE),  SELECTIVE_YELLOW = new CSIColor(0xFFBA00),  SEPIA = new CSIColor(0x704214),  SHAMROCK_GREEN = new CSIColor(0x009E60),  SHOCKING_PINK = new CSIColor(0xFC0FC0),  SILVER = new CSIColor(0xC0C0C0),  SKY_BLUE = new CSIColor(0x87CEEB),  SLATE_GRAY = new CSIColor(0x708090),  SMALT = new CSIColor(0x003399),  SPRING_BUD = new CSIColor(0xA7FC00),  SPRING_GREEN = new CSIColor(0x00FF7F),  STEEL_BLUE = new CSIColor(0x4682B4),  TAN = new CSIColor(0xD2B48C),  TANGERINE = new CSIColor(0xF28500),  TANGERINE_YELLOW = new CSIColor(0xFFCC00),  TAUPE = new CSIColor(0x483C32),  TEA_GREEN = new CSIColor(0xD0F0C0),  TEA_ORANGE = new CSIColor(0xF88379),  TEA_ROSE = new CSIColor(0xF4C2C2),  TAWNY = new CSIColor(0xCD5700),  TERRA_COTTA = new CSIColor(0xE2725B),  THISTLE = new CSIColor(0xD8BFD8),  TOMATO = new CSIColor(0xFF6347),  TURQUOISE = new CSIColor(0x30D5C8),  TYRIAN_PURPLE = new CSIColor(0x66023C),  ULTRAMARINE = new CSIColor(0x120A8F),  VEGAS_GOLD = new CSIColor(0xC5B358),  VERMILION = new CSIColor(0xE34234),  VIOLET = new CSIColor(0x8B00FF),  LIGHT_VIOLET = new CSIColor(0xEE82EE),  VIRIDIAN = new CSIColor(0x40826D),  WHEAT = new CSIColor(0xF5DEB3),  WISTERIA = new CSIColor(0xC9A0DC),  YELLOW_GREEN = new CSIColor(0x9ACD32),  ZINNWALDITE = new CSIColor(0xEBC2AF);
+    public static final CSIColor CRIMSON = new CSIColor(0xDC143C);
+    /**
+     *<pre><font style="background-color: #654321;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #000000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #888888;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffffff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #654321;" color=000000>&nbsp@&nbsp</font>
+     *<font style="background-color: #654321;" color=654321>&nbsp&nbsp&nbsp<font style="background-color: #000000;">&nbsp@&nbsp<font style="background-color: #888888;">&nbsp@&nbsp<font style="background-color: #ffffff;">&nbsp@&nbsp<font style="background-color: #654321;" color=888888>&nbsp@&nbsp</font>
+     *<font style="background-color: #654321;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #000000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #888888;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffffff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #654321;" color=ffffff>&nbsp@&nbsp</font>
+     *
+     *<font style="background-color: #ff0000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #00ff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #0000ff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #964b00;" color=000000>&nbsp&nbsp&nbsp</font>
+     *<font style="background-color: #ff0000;" color=654321>&nbsp@&nbsp<font style="background-color: #ffff00;">&nbsp@&nbsp<font style="background-color: #00ff00;">&nbsp@&nbsp<font style="background-color: #0000ff;">&nbsp@&nbsp<font style="background-color: #964b00;">&nbsp@&nbsp</font>
+     *<font style="background-color: #ff0000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #00ff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #0000ff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #964b00;" color=000000>&nbsp&nbsp&nbsp</font></pre>
+     */
+    public static final CSIColor DARK_BROWN = new CSIColor(0x654321);
+    /**
+     *<pre><font style="background-color: #08457E;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #000000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #888888;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffffff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #08457E;" color=000000>&nbsp@&nbsp</font>
+     *<font style="background-color: #08457E;" color=08457E>&nbsp&nbsp&nbsp<font style="background-color: #000000;">&nbsp@&nbsp<font style="background-color: #888888;">&nbsp@&nbsp<font style="background-color: #ffffff;">&nbsp@&nbsp<font style="background-color: #08457E;" color=888888>&nbsp@&nbsp</font>
+     *<font style="background-color: #08457E;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #000000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #888888;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffffff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #08457E;" color=ffffff>&nbsp@&nbsp</font>
+     *
+     *<font style="background-color: #ff0000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #00ff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #0000ff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #964b00;" color=000000>&nbsp&nbsp&nbsp</font>
+     *<font style="background-color: #ff0000;" color=08457E>&nbsp@&nbsp<font style="background-color: #ffff00;">&nbsp@&nbsp<font style="background-color: #00ff00;">&nbsp@&nbsp<font style="background-color: #0000ff;">&nbsp@&nbsp<font style="background-color: #964b00;">&nbsp@&nbsp</font>
+     *<font style="background-color: #ff0000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #00ff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #0000ff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #964b00;" color=000000>&nbsp&nbsp&nbsp</font></pre>
+     */
+    public static final CSIColor DARK_CERULEAN = new CSIColor(0x08457E);
+    /**
+     *<pre><font style="background-color: #986960;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #000000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #888888;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffffff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #986960;" color=000000>&nbsp@&nbsp</font>
+     *<font style="background-color: #986960;" color=986960>&nbsp&nbsp&nbsp<font style="background-color: #000000;">&nbsp@&nbsp<font style="background-color: #888888;">&nbsp@&nbsp<font style="background-color: #ffffff;">&nbsp@&nbsp<font style="background-color: #986960;" color=888888>&nbsp@&nbsp</font>
+     *<font style="background-color: #986960;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #000000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #888888;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffffff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #986960;" color=ffffff>&nbsp@&nbsp</font>
+     *
+     *<font style="background-color: #ff0000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #00ff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #0000ff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #964b00;" color=000000>&nbsp&nbsp&nbsp</font>
+     *<font style="background-color: #ff0000;" color=986960>&nbsp@&nbsp<font style="background-color: #ffff00;">&nbsp@&nbsp<font style="background-color: #00ff00;">&nbsp@&nbsp<font style="background-color: #0000ff;">&nbsp@&nbsp<font style="background-color: #964b00;">&nbsp@&nbsp</font>
+     *<font style="background-color: #ff0000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #00ff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #0000ff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #964b00;" color=000000>&nbsp&nbsp&nbsp</font></pre>
+     */
+    public static final CSIColor DARK_CHESTNUT = new CSIColor(0x986960);
+    /**
+     *<pre><font style="background-color: #CD5B45;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #000000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #888888;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffffff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #CD5B45;" color=000000>&nbsp@&nbsp</font>
+     *<font style="background-color: #CD5B45;" color=CD5B45>&nbsp&nbsp&nbsp<font style="background-color: #000000;">&nbsp@&nbsp<font style="background-color: #888888;">&nbsp@&nbsp<font style="background-color: #ffffff;">&nbsp@&nbsp<font style="background-color: #CD5B45;" color=888888>&nbsp@&nbsp</font>
+     *<font style="background-color: #CD5B45;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #000000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #888888;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffffff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #CD5B45;" color=ffffff>&nbsp@&nbsp</font>
+     *
+     *<font style="background-color: #ff0000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #00ff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #0000ff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #964b00;" color=000000>&nbsp&nbsp&nbsp</font>
+     *<font style="background-color: #ff0000;" color=CD5B45>&nbsp@&nbsp<font style="background-color: #ffff00;">&nbsp@&nbsp<font style="background-color: #00ff00;">&nbsp@&nbsp<font style="background-color: #0000ff;">&nbsp@&nbsp<font style="background-color: #964b00;">&nbsp@&nbsp</font>
+     *<font style="background-color: #ff0000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #00ff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #0000ff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #964b00;" color=000000>&nbsp&nbsp&nbsp</font></pre>
+     */
+    public static final CSIColor DARK_CORAL = new CSIColor(0xCD5B45);
+    /**
+     *<pre><font style="background-color: #B8860B;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #000000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #888888;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffffff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #B8860B;" color=000000>&nbsp@&nbsp</font>
+     *<font style="background-color: #B8860B;" color=B8860B>&nbsp&nbsp&nbsp<font style="background-color: #000000;">&nbsp@&nbsp<font style="background-color: #888888;">&nbsp@&nbsp<font style="background-color: #ffffff;">&nbsp@&nbsp<font style="background-color: #B8860B;" color=888888>&nbsp@&nbsp</font>
+     *<font style="background-color: #B8860B;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #000000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #888888;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffffff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #B8860B;" color=ffffff>&nbsp@&nbsp</font>
+     *
+     *<font style="background-color: #ff0000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #00ff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #0000ff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #964b00;" color=000000>&nbsp&nbsp&nbsp</font>
+     *<font style="background-color: #ff0000;" color=B8860B>&nbsp@&nbsp<font style="background-color: #ffff00;">&nbsp@&nbsp<font style="background-color: #00ff00;">&nbsp@&nbsp<font style="background-color: #0000ff;">&nbsp@&nbsp<font style="background-color: #964b00;">&nbsp@&nbsp</font>
+     *<font style="background-color: #ff0000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #00ff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #0000ff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #964b00;" color=000000>&nbsp&nbsp&nbsp</font></pre>
+     */
+    public static final CSIColor DARK_GOLDENROD = new CSIColor(0xB8860B);
+    /**
+     *<pre><font style="background-color: #013220;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #000000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #888888;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffffff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #013220;" color=000000>&nbsp@&nbsp</font>
+     *<font style="background-color: #013220;" color=013220>&nbsp&nbsp&nbsp<font style="background-color: #000000;">&nbsp@&nbsp<font style="background-color: #888888;">&nbsp@&nbsp<font style="background-color: #ffffff;">&nbsp@&nbsp<font style="background-color: #013220;" color=888888>&nbsp@&nbsp</font>
+     *<font style="background-color: #013220;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #000000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #888888;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffffff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #013220;" color=ffffff>&nbsp@&nbsp</font>
+     *
+     *<font style="background-color: #ff0000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #00ff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #0000ff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #964b00;" color=000000>&nbsp&nbsp&nbsp</font>
+     *<font style="background-color: #ff0000;" color=013220>&nbsp@&nbsp<font style="background-color: #ffff00;">&nbsp@&nbsp<font style="background-color: #00ff00;">&nbsp@&nbsp<font style="background-color: #0000ff;">&nbsp@&nbsp<font style="background-color: #964b00;">&nbsp@&nbsp</font>
+     *<font style="background-color: #ff0000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #00ff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #0000ff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #964b00;" color=000000>&nbsp&nbsp&nbsp</font></pre>
+     */
+    public static final CSIColor DARK_GREEN = new CSIColor(0x013220);
+    /**
+     *<pre><font style="background-color: #BDB76B;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #000000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #888888;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffffff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #BDB76B;" color=000000>&nbsp@&nbsp</font>
+     *<font style="background-color: #BDB76B;" color=BDB76B>&nbsp&nbsp&nbsp<font style="background-color: #000000;">&nbsp@&nbsp<font style="background-color: #888888;">&nbsp@&nbsp<font style="background-color: #ffffff;">&nbsp@&nbsp<font style="background-color: #BDB76B;" color=888888>&nbsp@&nbsp</font>
+     *<font style="background-color: #BDB76B;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #000000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #888888;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffffff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #BDB76B;" color=ffffff>&nbsp@&nbsp</font>
+     *
+     *<font style="background-color: #ff0000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #00ff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #0000ff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #964b00;" color=000000>&nbsp&nbsp&nbsp</font>
+     *<font style="background-color: #ff0000;" color=BDB76B>&nbsp@&nbsp<font style="background-color: #ffff00;">&nbsp@&nbsp<font style="background-color: #00ff00;">&nbsp@&nbsp<font style="background-color: #0000ff;">&nbsp@&nbsp<font style="background-color: #964b00;">&nbsp@&nbsp</font>
+     *<font style="background-color: #ff0000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #00ff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #0000ff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #964b00;" color=000000>&nbsp&nbsp&nbsp</font></pre>
+     */
+    public static final CSIColor DARK_KHAKI = new CSIColor(0xBDB76B);
+    /**
+     *<pre><font style="background-color: #03C03C;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #000000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #888888;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffffff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #03C03C;" color=000000>&nbsp@&nbsp</font>
+     *<font style="background-color: #03C03C;" color=03C03C>&nbsp&nbsp&nbsp<font style="background-color: #000000;">&nbsp@&nbsp<font style="background-color: #888888;">&nbsp@&nbsp<font style="background-color: #ffffff;">&nbsp@&nbsp<font style="background-color: #03C03C;" color=888888>&nbsp@&nbsp</font>
+     *<font style="background-color: #03C03C;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #000000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #888888;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffffff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #03C03C;" color=ffffff>&nbsp@&nbsp</font>
+     *
+     *<font style="background-color: #ff0000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #00ff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #0000ff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #964b00;" color=000000>&nbsp&nbsp&nbsp</font>
+     *<font style="background-color: #ff0000;" color=03C03C>&nbsp@&nbsp<font style="background-color: #ffff00;">&nbsp@&nbsp<font style="background-color: #00ff00;">&nbsp@&nbsp<font style="background-color: #0000ff;">&nbsp@&nbsp<font style="background-color: #964b00;">&nbsp@&nbsp</font>
+     *<font style="background-color: #ff0000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #00ff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #0000ff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #964b00;" color=000000>&nbsp&nbsp&nbsp</font></pre>
+     */
+    public static final CSIColor DARK_PASTEL_GREEN = new CSIColor(0x03C03C);
+    /**
+     *<pre><font style="background-color: #E75480;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #000000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #888888;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffffff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #E75480;" color=000000>&nbsp@&nbsp</font>
+     *<font style="background-color: #E75480;" color=E75480>&nbsp&nbsp&nbsp<font style="background-color: #000000;">&nbsp@&nbsp<font style="background-color: #888888;">&nbsp@&nbsp<font style="background-color: #ffffff;">&nbsp@&nbsp<font style="background-color: #E75480;" color=888888>&nbsp@&nbsp</font>
+     *<font style="background-color: #E75480;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #000000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #888888;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffffff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #E75480;" color=ffffff>&nbsp@&nbsp</font>
+     *
+     *<font style="background-color: #ff0000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #00ff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #0000ff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #964b00;" color=000000>&nbsp&nbsp&nbsp</font>
+     *<font style="background-color: #ff0000;" color=E75480>&nbsp@&nbsp<font style="background-color: #ffff00;">&nbsp@&nbsp<font style="background-color: #00ff00;">&nbsp@&nbsp<font style="background-color: #0000ff;">&nbsp@&nbsp<font style="background-color: #964b00;">&nbsp@&nbsp</font>
+     *<font style="background-color: #ff0000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #00ff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #0000ff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #964b00;" color=000000>&nbsp&nbsp&nbsp</font></pre>
+     */
+    public static final CSIColor DARK_PINK = new CSIColor(0xE75480);
+    /**
+     *<pre><font style="background-color: #560319;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #000000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #888888;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffffff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #560319;" color=000000>&nbsp@&nbsp</font>
+     *<font style="background-color: #560319;" color=560319>&nbsp&nbsp&nbsp<font style="background-color: #000000;">&nbsp@&nbsp<font style="background-color: #888888;">&nbsp@&nbsp<font style="background-color: #ffffff;">&nbsp@&nbsp<font style="background-color: #560319;" color=888888>&nbsp@&nbsp</font>
+     *<font style="background-color: #560319;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #000000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #888888;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffffff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #560319;" color=ffffff>&nbsp@&nbsp</font>
+     *
+     *<font style="background-color: #ff0000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #00ff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #0000ff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #964b00;" color=000000>&nbsp&nbsp&nbsp</font>
+     *<font style="background-color: #ff0000;" color=560319>&nbsp@&nbsp<font style="background-color: #ffff00;">&nbsp@&nbsp<font style="background-color: #00ff00;">&nbsp@&nbsp<font style="background-color: #0000ff;">&nbsp@&nbsp<font style="background-color: #964b00;">&nbsp@&nbsp</font>
+     *<font style="background-color: #ff0000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #00ff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #0000ff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #964b00;" color=000000>&nbsp&nbsp&nbsp</font></pre>
+     */
+    public static final CSIColor DARK_SCARLET = new CSIColor(0x560319);
+    /**
+     *<pre><font style="background-color: #E9967A;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #000000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #888888;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffffff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #E9967A;" color=000000>&nbsp@&nbsp</font>
+     *<font style="background-color: #E9967A;" color=E9967A>&nbsp&nbsp&nbsp<font style="background-color: #000000;">&nbsp@&nbsp<font style="background-color: #888888;">&nbsp@&nbsp<font style="background-color: #ffffff;">&nbsp@&nbsp<font style="background-color: #E9967A;" color=888888>&nbsp@&nbsp</font>
+     *<font style="background-color: #E9967A;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #000000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #888888;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffffff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #E9967A;" color=ffffff>&nbsp@&nbsp</font>
+     *
+     *<font style="background-color: #ff0000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #00ff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #0000ff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #964b00;" color=000000>&nbsp&nbsp&nbsp</font>
+     *<font style="background-color: #ff0000;" color=E9967A>&nbsp@&nbsp<font style="background-color: #ffff00;">&nbsp@&nbsp<font style="background-color: #00ff00;">&nbsp@&nbsp<font style="background-color: #0000ff;">&nbsp@&nbsp<font style="background-color: #964b00;">&nbsp@&nbsp</font>
+     *<font style="background-color: #ff0000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #00ff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #0000ff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #964b00;" color=000000>&nbsp&nbsp&nbsp</font></pre>
+     */
+    public static final CSIColor DARK_SALMON = new CSIColor(0xE9967A);
+    /**
+     *<pre><font style="background-color: #2F4F4F;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #000000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #888888;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffffff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #2F4F4F;" color=000000>&nbsp@&nbsp</font>
+     *<font style="background-color: #2F4F4F;" color=2F4F4F>&nbsp&nbsp&nbsp<font style="background-color: #000000;">&nbsp@&nbsp<font style="background-color: #888888;">&nbsp@&nbsp<font style="background-color: #ffffff;">&nbsp@&nbsp<font style="background-color: #2F4F4F;" color=888888>&nbsp@&nbsp</font>
+     *<font style="background-color: #2F4F4F;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #000000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #888888;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffffff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #2F4F4F;" color=ffffff>&nbsp@&nbsp</font>
+     *
+     *<font style="background-color: #ff0000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #00ff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #0000ff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #964b00;" color=000000>&nbsp&nbsp&nbsp</font>
+     *<font style="background-color: #ff0000;" color=2F4F4F>&nbsp@&nbsp<font style="background-color: #ffff00;">&nbsp@&nbsp<font style="background-color: #00ff00;">&nbsp@&nbsp<font style="background-color: #0000ff;">&nbsp@&nbsp<font style="background-color: #964b00;">&nbsp@&nbsp</font>
+     *<font style="background-color: #ff0000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #00ff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #0000ff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #964b00;" color=000000>&nbsp&nbsp&nbsp</font></pre>
+     */
+    public static final CSIColor DARK_SLATE_GRAY = new CSIColor(0x2F4F4F);
+    /**
+     *<pre><font style="background-color: #177245;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #000000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #888888;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffffff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #177245;" color=000000>&nbsp@&nbsp</font>
+     *<font style="background-color: #177245;" color=177245>&nbsp&nbsp&nbsp<font style="background-color: #000000;">&nbsp@&nbsp<font style="background-color: #888888;">&nbsp@&nbsp<font style="background-color: #ffffff;">&nbsp@&nbsp<font style="background-color: #177245;" color=888888>&nbsp@&nbsp</font>
+     *<font style="background-color: #177245;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #000000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #888888;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffffff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #177245;" color=ffffff>&nbsp@&nbsp</font>
+     *
+     *<font style="background-color: #ff0000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #00ff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #0000ff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #964b00;" color=000000>&nbsp&nbsp&nbsp</font>
+     *<font style="background-color: #ff0000;" color=177245>&nbsp@&nbsp<font style="background-color: #ffff00;">&nbsp@&nbsp<font style="background-color: #00ff00;">&nbsp@&nbsp<font style="background-color: #0000ff;">&nbsp@&nbsp<font style="background-color: #964b00;">&nbsp@&nbsp</font>
+     *<font style="background-color: #ff0000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #00ff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #0000ff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #964b00;" color=000000>&nbsp&nbsp&nbsp</font></pre>
+     */
+    public static final CSIColor DARK_SPRING_GREEN = new CSIColor(0x177245);
+    /**
+     *<pre><font style="background-color: #918151;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #000000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #888888;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffffff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #918151;" color=000000>&nbsp@&nbsp</font>
+     *<font style="background-color: #918151;" color=918151>&nbsp&nbsp&nbsp<font style="background-color: #000000;">&nbsp@&nbsp<font style="background-color: #888888;">&nbsp@&nbsp<font style="background-color: #ffffff;">&nbsp@&nbsp<font style="background-color: #918151;" color=888888>&nbsp@&nbsp</font>
+     *<font style="background-color: #918151;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #000000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #888888;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffffff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #918151;" color=ffffff>&nbsp@&nbsp</font>
+     *
+     *<font style="background-color: #ff0000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #00ff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #0000ff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #964b00;" color=000000>&nbsp&nbsp&nbsp</font>
+     *<font style="background-color: #ff0000;" color=918151>&nbsp@&nbsp<font style="background-color: #ffff00;">&nbsp@&nbsp<font style="background-color: #00ff00;">&nbsp@&nbsp<font style="background-color: #0000ff;">&nbsp@&nbsp<font style="background-color: #964b00;">&nbsp@&nbsp</font>
+     *<font style="background-color: #ff0000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #00ff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #0000ff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #964b00;" color=000000>&nbsp&nbsp&nbsp</font></pre>
+     */
+    public static final CSIColor DARK_TAN = new CSIColor(0x918151);
+    /**
+     *<pre><font style="background-color: #00CED1;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #000000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #888888;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffffff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #00CED1;" color=000000>&nbsp@&nbsp</font>
+     *<font style="background-color: #00CED1;" color=00CED1>&nbsp&nbsp&nbsp<font style="background-color: #000000;">&nbsp@&nbsp<font style="background-color: #888888;">&nbsp@&nbsp<font style="background-color: #ffffff;">&nbsp@&nbsp<font style="background-color: #00CED1;" color=888888>&nbsp@&nbsp</font>
+     *<font style="background-color: #00CED1;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #000000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #888888;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffffff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #00CED1;" color=ffffff>&nbsp@&nbsp</font>
+     *
+     *<font style="background-color: #ff0000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #00ff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #0000ff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #964b00;" color=000000>&nbsp&nbsp&nbsp</font>
+     *<font style="background-color: #ff0000;" color=00CED1>&nbsp@&nbsp<font style="background-color: #ffff00;">&nbsp@&nbsp<font style="background-color: #00ff00;">&nbsp@&nbsp<font style="background-color: #0000ff;">&nbsp@&nbsp<font style="background-color: #964b00;">&nbsp@&nbsp</font>
+     *<font style="background-color: #ff0000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #00ff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #0000ff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #964b00;" color=000000>&nbsp&nbsp&nbsp</font></pre>
+     */
+    public static final CSIColor DARK_TURQUOISE = new CSIColor(0x00CED1);
+    /**
+     *<pre><font style="background-color: #9400D3;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #000000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #888888;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffffff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #9400D3;" color=000000>&nbsp@&nbsp</font>
+     *<font style="background-color: #9400D3;" color=9400D3>&nbsp&nbsp&nbsp<font style="background-color: #000000;">&nbsp@&nbsp<font style="background-color: #888888;">&nbsp@&nbsp<font style="background-color: #ffffff;">&nbsp@&nbsp<font style="background-color: #9400D3;" color=888888>&nbsp@&nbsp</font>
+     *<font style="background-color: #9400D3;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #000000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #888888;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffffff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #9400D3;" color=ffffff>&nbsp@&nbsp</font>
+     *
+     *<font style="background-color: #ff0000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #00ff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #0000ff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #964b00;" color=000000>&nbsp&nbsp&nbsp</font>
+     *<font style="background-color: #ff0000;" color=9400D3>&nbsp@&nbsp<font style="background-color: #ffff00;">&nbsp@&nbsp<font style="background-color: #00ff00;">&nbsp@&nbsp<font style="background-color: #0000ff;">&nbsp@&nbsp<font style="background-color: #964b00;">&nbsp@&nbsp</font>
+     *<font style="background-color: #ff0000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #00ff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #0000ff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #964b00;" color=000000>&nbsp&nbsp&nbsp</font></pre>
+     */
+    public static final CSIColor DARK_VIOLET = new CSIColor(0x9400D3);
+    /**
+     *<pre><font style="background-color: #DA3287;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #000000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #888888;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffffff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #DA3287;" color=000000>&nbsp@&nbsp</font>
+     *<font style="background-color: #DA3287;" color=DA3287>&nbsp&nbsp&nbsp<font style="background-color: #000000;">&nbsp@&nbsp<font style="background-color: #888888;">&nbsp@&nbsp<font style="background-color: #ffffff;">&nbsp@&nbsp<font style="background-color: #DA3287;" color=888888>&nbsp@&nbsp</font>
+     *<font style="background-color: #DA3287;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #000000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #888888;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffffff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #DA3287;" color=ffffff>&nbsp@&nbsp</font>
+     *
+     *<font style="background-color: #ff0000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #00ff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #0000ff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #964b00;" color=000000>&nbsp&nbsp&nbsp</font>
+     *<font style="background-color: #ff0000;" color=DA3287>&nbsp@&nbsp<font style="background-color: #ffff00;">&nbsp@&nbsp<font style="background-color: #00ff00;">&nbsp@&nbsp<font style="background-color: #0000ff;">&nbsp@&nbsp<font style="background-color: #964b00;">&nbsp@&nbsp</font>
+     *<font style="background-color: #ff0000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #00ff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #0000ff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #964b00;" color=000000>&nbsp&nbsp&nbsp</font></pre>
+     */
+    public static final CSIColor DEEP_CERISE = new CSIColor(0xDA3287);
+    /**
+     *<pre><font style="background-color: #B94E48;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #000000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #888888;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffffff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #B94E48;" color=000000>&nbsp@&nbsp</font>
+     *<font style="background-color: #B94E48;" color=B94E48>&nbsp&nbsp&nbsp<font style="background-color: #000000;">&nbsp@&nbsp<font style="background-color: #888888;">&nbsp@&nbsp<font style="background-color: #ffffff;">&nbsp@&nbsp<font style="background-color: #B94E48;" color=888888>&nbsp@&nbsp</font>
+     *<font style="background-color: #B94E48;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #000000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #888888;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffffff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #B94E48;" color=ffffff>&nbsp@&nbsp</font>
+     *
+     *<font style="background-color: #ff0000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #00ff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #0000ff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #964b00;" color=000000>&nbsp&nbsp&nbsp</font>
+     *<font style="background-color: #ff0000;" color=B94E48>&nbsp@&nbsp<font style="background-color: #ffff00;">&nbsp@&nbsp<font style="background-color: #00ff00;">&nbsp@&nbsp<font style="background-color: #0000ff;">&nbsp@&nbsp<font style="background-color: #964b00;">&nbsp@&nbsp</font>
+     *<font style="background-color: #ff0000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #00ff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #0000ff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #964b00;" color=000000>&nbsp&nbsp&nbsp</font></pre>
+     */
+    public static final CSIColor DEEP_CHESTNUT = new CSIColor(0xB94E48);
+    /**
+     *<pre><font style="background-color: #C154C1;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #000000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #888888;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffffff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #C154C1;" color=000000>&nbsp@&nbsp</font>
+     *<font style="background-color: #C154C1;" color=C154C1>&nbsp&nbsp&nbsp<font style="background-color: #000000;">&nbsp@&nbsp<font style="background-color: #888888;">&nbsp@&nbsp<font style="background-color: #ffffff;">&nbsp@&nbsp<font style="background-color: #C154C1;" color=888888>&nbsp@&nbsp</font>
+     *<font style="background-color: #C154C1;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #000000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #888888;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffffff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #C154C1;" color=ffffff>&nbsp@&nbsp</font>
+     *
+     *<font style="background-color: #ff0000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #00ff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #0000ff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #964b00;" color=000000>&nbsp&nbsp&nbsp</font>
+     *<font style="background-color: #ff0000;" color=C154C1>&nbsp@&nbsp<font style="background-color: #ffff00;">&nbsp@&nbsp<font style="background-color: #00ff00;">&nbsp@&nbsp<font style="background-color: #0000ff;">&nbsp@&nbsp<font style="background-color: #964b00;">&nbsp@&nbsp</font>
+     *<font style="background-color: #ff0000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #00ff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #0000ff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #964b00;" color=000000>&nbsp&nbsp&nbsp</font></pre>
+     */
+    public static final CSIColor DEEP_FUCHSIA = new CSIColor(0xC154C1);
+    /**
+     *<pre><font style="background-color: #9955BB;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #000000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #888888;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffffff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #9955BB;" color=000000>&nbsp@&nbsp</font>
+     *<font style="background-color: #9955BB;" color=9955BB>&nbsp&nbsp&nbsp<font style="background-color: #000000;">&nbsp@&nbsp<font style="background-color: #888888;">&nbsp@&nbsp<font style="background-color: #ffffff;">&nbsp@&nbsp<font style="background-color: #9955BB;" color=888888>&nbsp@&nbsp</font>
+     *<font style="background-color: #9955BB;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #000000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #888888;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffffff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #9955BB;" color=ffffff>&nbsp@&nbsp</font>
+     *
+     *<font style="background-color: #ff0000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #00ff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #0000ff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #964b00;" color=000000>&nbsp&nbsp&nbsp</font>
+     *<font style="background-color: #ff0000;" color=9955BB>&nbsp@&nbsp<font style="background-color: #ffff00;">&nbsp@&nbsp<font style="background-color: #00ff00;">&nbsp@&nbsp<font style="background-color: #0000ff;">&nbsp@&nbsp<font style="background-color: #964b00;">&nbsp@&nbsp</font>
+     *<font style="background-color: #ff0000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #00ff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #0000ff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #964b00;" color=000000>&nbsp&nbsp&nbsp</font></pre>
+     */
+    public static final CSIColor DEEP_LILAC = new CSIColor(0x9955BB);
+    /**
+     *<pre><font style="background-color: #CD00CC;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #000000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #888888;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffffff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #CD00CC;" color=000000>&nbsp@&nbsp</font>
+     *<font style="background-color: #CD00CC;" color=CD00CC>&nbsp&nbsp&nbsp<font style="background-color: #000000;">&nbsp@&nbsp<font style="background-color: #888888;">&nbsp@&nbsp<font style="background-color: #ffffff;">&nbsp@&nbsp<font style="background-color: #CD00CC;" color=888888>&nbsp@&nbsp</font>
+     *<font style="background-color: #CD00CC;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #000000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #888888;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffffff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #CD00CC;" color=ffffff>&nbsp@&nbsp</font>
+     *
+     *<font style="background-color: #ff0000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #00ff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #0000ff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #964b00;" color=000000>&nbsp&nbsp&nbsp</font>
+     *<font style="background-color: #ff0000;" color=CD00CC>&nbsp@&nbsp<font style="background-color: #ffff00;">&nbsp@&nbsp<font style="background-color: #00ff00;">&nbsp@&nbsp<font style="background-color: #0000ff;">&nbsp@&nbsp<font style="background-color: #964b00;">&nbsp@&nbsp</font>
+     *<font style="background-color: #ff0000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #00ff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #0000ff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #964b00;" color=000000>&nbsp&nbsp&nbsp</font></pre>
+     */
+    public static final CSIColor DEEP_MAGENTA = new CSIColor(0xCD00CC);
+    /**
+     *<pre><font style="background-color: #FFCBA4;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #000000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #888888;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffffff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #FFCBA4;" color=000000>&nbsp@&nbsp</font>
+     *<font style="background-color: #FFCBA4;" color=FFCBA4>&nbsp&nbsp&nbsp<font style="background-color: #000000;">&nbsp@&nbsp<font style="background-color: #888888;">&nbsp@&nbsp<font style="background-color: #ffffff;">&nbsp@&nbsp<font style="background-color: #FFCBA4;" color=888888>&nbsp@&nbsp</font>
+     *<font style="background-color: #FFCBA4;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #000000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #888888;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffffff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #FFCBA4;" color=ffffff>&nbsp@&nbsp</font>
+     *
+     *<font style="background-color: #ff0000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #00ff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #0000ff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #964b00;" color=000000>&nbsp&nbsp&nbsp</font>
+     *<font style="background-color: #ff0000;" color=FFCBA4>&nbsp@&nbsp<font style="background-color: #ffff00;">&nbsp@&nbsp<font style="background-color: #00ff00;">&nbsp@&nbsp<font style="background-color: #0000ff;">&nbsp@&nbsp<font style="background-color: #964b00;">&nbsp@&nbsp</font>
+     *<font style="background-color: #ff0000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #00ff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #0000ff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #964b00;" color=000000>&nbsp&nbsp&nbsp</font></pre>
+     */
+    public static final CSIColor DEEP_PEACH = new CSIColor(0xFFCBA4);
+    /**
+     *<pre><font style="background-color: #FF1493;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #000000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #888888;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffffff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #FF1493;" color=000000>&nbsp@&nbsp</font>
+     *<font style="background-color: #FF1493;" color=FF1493>&nbsp&nbsp&nbsp<font style="background-color: #000000;">&nbsp@&nbsp<font style="background-color: #888888;">&nbsp@&nbsp<font style="background-color: #ffffff;">&nbsp@&nbsp<font style="background-color: #FF1493;" color=888888>&nbsp@&nbsp</font>
+     *<font style="background-color: #FF1493;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #000000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #888888;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffffff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #FF1493;" color=ffffff>&nbsp@&nbsp</font>
+     *
+     *<font style="background-color: #ff0000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #00ff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #0000ff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #964b00;" color=000000>&nbsp&nbsp&nbsp</font>
+     *<font style="background-color: #ff0000;" color=FF1493>&nbsp@&nbsp<font style="background-color: #ffff00;">&nbsp@&nbsp<font style="background-color: #00ff00;">&nbsp@&nbsp<font style="background-color: #0000ff;">&nbsp@&nbsp<font style="background-color: #964b00;">&nbsp@&nbsp</font>
+     *<font style="background-color: #ff0000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #00ff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #0000ff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #964b00;" color=000000>&nbsp&nbsp&nbsp</font></pre>
+     */
+    public static final CSIColor DEEP_PINK = new CSIColor(0xFF1493);
+    /**
+     *<pre><font style="background-color: #1560BD;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #000000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #888888;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffffff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #1560BD;" color=000000>&nbsp@&nbsp</font>
+     *<font style="background-color: #1560BD;" color=1560BD>&nbsp&nbsp&nbsp<font style="background-color: #000000;">&nbsp@&nbsp<font style="background-color: #888888;">&nbsp@&nbsp<font style="background-color: #ffffff;">&nbsp@&nbsp<font style="background-color: #1560BD;" color=888888>&nbsp@&nbsp</font>
+     *<font style="background-color: #1560BD;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #000000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #888888;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffffff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #1560BD;" color=ffffff>&nbsp@&nbsp</font>
+     *
+     *<font style="background-color: #ff0000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #00ff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #0000ff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #964b00;" color=000000>&nbsp&nbsp&nbsp</font>
+     *<font style="background-color: #ff0000;" color=1560BD>&nbsp@&nbsp<font style="background-color: #ffff00;">&nbsp@&nbsp<font style="background-color: #00ff00;">&nbsp@&nbsp<font style="background-color: #0000ff;">&nbsp@&nbsp<font style="background-color: #964b00;">&nbsp@&nbsp</font>
+     *<font style="background-color: #ff0000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #00ff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #0000ff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #964b00;" color=000000>&nbsp&nbsp&nbsp</font></pre>
+     */
+    public static final CSIColor DENIM = new CSIColor(0x1560BD);
+    /**
+     *<pre><font style="background-color: #1E90FF;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #000000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #888888;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffffff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #1E90FF;" color=000000>&nbsp@&nbsp</font>
+     *<font style="background-color: #1E90FF;" color=1E90FF>&nbsp&nbsp&nbsp<font style="background-color: #000000;">&nbsp@&nbsp<font style="background-color: #888888;">&nbsp@&nbsp<font style="background-color: #ffffff;">&nbsp@&nbsp<font style="background-color: #1E90FF;" color=888888>&nbsp@&nbsp</font>
+     *<font style="background-color: #1E90FF;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #000000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #888888;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffffff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #1E90FF;" color=ffffff>&nbsp@&nbsp</font>
+     *
+     *<font style="background-color: #ff0000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #00ff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #0000ff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #964b00;" color=000000>&nbsp&nbsp&nbsp</font>
+     *<font style="background-color: #ff0000;" color=1E90FF>&nbsp@&nbsp<font style="background-color: #ffff00;">&nbsp@&nbsp<font style="background-color: #00ff00;">&nbsp@&nbsp<font style="background-color: #0000ff;">&nbsp@&nbsp<font style="background-color: #964b00;">&nbsp@&nbsp</font>
+     *<font style="background-color: #ff0000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #00ff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #0000ff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #964b00;" color=000000>&nbsp&nbsp&nbsp</font></pre>
+     */
+    public static final CSIColor DODGER_BLUE = new CSIColor(0x1E90FF);
+    /**
+     *<pre><font style="background-color: #C2B280;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #000000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #888888;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffffff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #C2B280;" color=000000>&nbsp@&nbsp</font>
+     *<font style="background-color: #C2B280;" color=C2B280>&nbsp&nbsp&nbsp<font style="background-color: #000000;">&nbsp@&nbsp<font style="background-color: #888888;">&nbsp@&nbsp<font style="background-color: #ffffff;">&nbsp@&nbsp<font style="background-color: #C2B280;" color=888888>&nbsp@&nbsp</font>
+     *<font style="background-color: #C2B280;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #000000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #888888;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffffff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #C2B280;" color=ffffff>&nbsp@&nbsp</font>
+     *
+     *<font style="background-color: #ff0000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #00ff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #0000ff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #964b00;" color=000000>&nbsp&nbsp&nbsp</font>
+     *<font style="background-color: #ff0000;" color=C2B280>&nbsp@&nbsp<font style="background-color: #ffff00;">&nbsp@&nbsp<font style="background-color: #00ff00;">&nbsp@&nbsp<font style="background-color: #0000ff;">&nbsp@&nbsp<font style="background-color: #964b00;">&nbsp@&nbsp</font>
+     *<font style="background-color: #ff0000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #00ff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #0000ff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #964b00;" color=000000>&nbsp&nbsp&nbsp</font></pre>
+     */
+    public static final CSIColor ECRU = new CSIColor(0xC2B280);
+    /**
+     *<pre><font style="background-color: #1034A6;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #000000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #888888;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffffff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #1034A6;" color=000000>&nbsp@&nbsp</font>
+     *<font style="background-color: #1034A6;" color=1034A6>&nbsp&nbsp&nbsp<font style="background-color: #000000;">&nbsp@&nbsp<font style="background-color: #888888;">&nbsp@&nbsp<font style="background-color: #ffffff;">&nbsp@&nbsp<font style="background-color: #1034A6;" color=888888>&nbsp@&nbsp</font>
+     *<font style="background-color: #1034A6;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #000000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #888888;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffffff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #1034A6;" color=ffffff>&nbsp@&nbsp</font>
+     *
+     *<font style="background-color: #ff0000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #00ff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #0000ff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #964b00;" color=000000>&nbsp&nbsp&nbsp</font>
+     *<font style="background-color: #ff0000;" color=1034A6>&nbsp@&nbsp<font style="background-color: #ffff00;">&nbsp@&nbsp<font style="background-color: #00ff00;">&nbsp@&nbsp<font style="background-color: #0000ff;">&nbsp@&nbsp<font style="background-color: #964b00;">&nbsp@&nbsp</font>
+     *<font style="background-color: #ff0000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #00ff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #0000ff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #964b00;" color=000000>&nbsp&nbsp&nbsp</font></pre>
+     */
+    public static final CSIColor EGYPTIAN_BLUE = new CSIColor(0x1034A6);
+    /**
+     *<pre><font style="background-color: #7DF9FF;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #000000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #888888;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffffff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #7DF9FF;" color=000000>&nbsp@&nbsp</font>
+     *<font style="background-color: #7DF9FF;" color=7DF9FF>&nbsp&nbsp&nbsp<font style="background-color: #000000;">&nbsp@&nbsp<font style="background-color: #888888;">&nbsp@&nbsp<font style="background-color: #ffffff;">&nbsp@&nbsp<font style="background-color: #7DF9FF;" color=888888>&nbsp@&nbsp</font>
+     *<font style="background-color: #7DF9FF;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #000000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #888888;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffffff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #7DF9FF;" color=ffffff>&nbsp@&nbsp</font>
+     *
+     *<font style="background-color: #ff0000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #00ff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #0000ff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #964b00;" color=000000>&nbsp&nbsp&nbsp</font>
+     *<font style="background-color: #ff0000;" color=7DF9FF>&nbsp@&nbsp<font style="background-color: #ffff00;">&nbsp@&nbsp<font style="background-color: #00ff00;">&nbsp@&nbsp<font style="background-color: #0000ff;">&nbsp@&nbsp<font style="background-color: #964b00;">&nbsp@&nbsp</font>
+     *<font style="background-color: #ff0000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #00ff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #0000ff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #964b00;" color=000000>&nbsp&nbsp&nbsp</font></pre>
+     */
+    public static final CSIColor ELECTRIC_BLUE = new CSIColor(0x7DF9FF);
+    /**
+     *<pre><font style="background-color: #00FF00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #000000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #888888;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffffff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #00FF00;" color=000000>&nbsp@&nbsp</font>
+     *<font style="background-color: #00FF00;" color=00FF00>&nbsp&nbsp&nbsp<font style="background-color: #000000;">&nbsp@&nbsp<font style="background-color: #888888;">&nbsp@&nbsp<font style="background-color: #ffffff;">&nbsp@&nbsp<font style="background-color: #00FF00;" color=888888>&nbsp@&nbsp</font>
+     *<font style="background-color: #00FF00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #000000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #888888;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffffff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #00FF00;" color=ffffff>&nbsp@&nbsp</font>
+     *
+     *<font style="background-color: #ff0000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #00ff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #0000ff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #964b00;" color=000000>&nbsp&nbsp&nbsp</font>
+     *<font style="background-color: #ff0000;" color=00FF00>&nbsp@&nbsp<font style="background-color: #ffff00;">&nbsp@&nbsp<font style="background-color: #00ff00;">&nbsp@&nbsp<font style="background-color: #0000ff;">&nbsp@&nbsp<font style="background-color: #964b00;">&nbsp@&nbsp</font>
+     *<font style="background-color: #ff0000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #00ff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #0000ff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #964b00;" color=000000>&nbsp&nbsp&nbsp</font></pre>
+     */
+    public static final CSIColor ELECTRIC_GREEN = new CSIColor(0x00FF00);
+    /**
+     *<pre><font style="background-color: #6600FF;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #000000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #888888;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffffff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #6600FF;" color=000000>&nbsp@&nbsp</font>
+     *<font style="background-color: #6600FF;" color=6600FF>&nbsp&nbsp&nbsp<font style="background-color: #000000;">&nbsp@&nbsp<font style="background-color: #888888;">&nbsp@&nbsp<font style="background-color: #ffffff;">&nbsp@&nbsp<font style="background-color: #6600FF;" color=888888>&nbsp@&nbsp</font>
+     *<font style="background-color: #6600FF;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #000000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #888888;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffffff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #6600FF;" color=ffffff>&nbsp@&nbsp</font>
+     *
+     *<font style="background-color: #ff0000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #00ff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #0000ff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #964b00;" color=000000>&nbsp&nbsp&nbsp</font>
+     *<font style="background-color: #ff0000;" color=6600FF>&nbsp@&nbsp<font style="background-color: #ffff00;">&nbsp@&nbsp<font style="background-color: #00ff00;">&nbsp@&nbsp<font style="background-color: #0000ff;">&nbsp@&nbsp<font style="background-color: #964b00;">&nbsp@&nbsp</font>
+     *<font style="background-color: #ff0000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #00ff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #0000ff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #964b00;" color=000000>&nbsp&nbsp&nbsp</font></pre>
+     */
+    public static final CSIColor ELECTRIC_INDIGO = new CSIColor(0x6600FF);
+    /**
+     *<pre><font style="background-color: #CCFF00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #000000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #888888;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffffff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #CCFF00;" color=000000>&nbsp@&nbsp</font>
+     *<font style="background-color: #CCFF00;" color=CCFF00>&nbsp&nbsp&nbsp<font style="background-color: #000000;">&nbsp@&nbsp<font style="background-color: #888888;">&nbsp@&nbsp<font style="background-color: #ffffff;">&nbsp@&nbsp<font style="background-color: #CCFF00;" color=888888>&nbsp@&nbsp</font>
+     *<font style="background-color: #CCFF00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #000000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #888888;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffffff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #CCFF00;" color=ffffff>&nbsp@&nbsp</font>
+     *
+     *<font style="background-color: #ff0000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #00ff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #0000ff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #964b00;" color=000000>&nbsp&nbsp&nbsp</font>
+     *<font style="background-color: #ff0000;" color=CCFF00>&nbsp@&nbsp<font style="background-color: #ffff00;">&nbsp@&nbsp<font style="background-color: #00ff00;">&nbsp@&nbsp<font style="background-color: #0000ff;">&nbsp@&nbsp<font style="background-color: #964b00;">&nbsp@&nbsp</font>
+     *<font style="background-color: #ff0000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #00ff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #0000ff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #964b00;" color=000000>&nbsp&nbsp&nbsp</font></pre>
+     */
+    public static final CSIColor ELECTRIC_LIME = new CSIColor(0xCCFF00);
+    /**
+     *<pre><font style="background-color: #BF00FF;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #000000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #888888;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffffff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #BF00FF;" color=000000>&nbsp@&nbsp</font>
+     *<font style="background-color: #BF00FF;" color=BF00FF>&nbsp&nbsp&nbsp<font style="background-color: #000000;">&nbsp@&nbsp<font style="background-color: #888888;">&nbsp@&nbsp<font style="background-color: #ffffff;">&nbsp@&nbsp<font style="background-color: #BF00FF;" color=888888>&nbsp@&nbsp</font>
+     *<font style="background-color: #BF00FF;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #000000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #888888;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffffff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #BF00FF;" color=ffffff>&nbsp@&nbsp</font>
+     *
+     *<font style="background-color: #ff0000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #00ff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #0000ff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #964b00;" color=000000>&nbsp&nbsp&nbsp</font>
+     *<font style="background-color: #ff0000;" color=BF00FF>&nbsp@&nbsp<font style="background-color: #ffff00;">&nbsp@&nbsp<font style="background-color: #00ff00;">&nbsp@&nbsp<font style="background-color: #0000ff;">&nbsp@&nbsp<font style="background-color: #964b00;">&nbsp@&nbsp</font>
+     *<font style="background-color: #ff0000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #00ff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #0000ff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #964b00;" color=000000>&nbsp&nbsp&nbsp</font></pre>
+     */
+    public static final CSIColor ELECTRIC_PURPLE = new CSIColor(0xBF00FF);
+    /**
+     *<pre><font style="background-color: #50C878;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #000000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #888888;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffffff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #50C878;" color=000000>&nbsp@&nbsp</font>
+     *<font style="background-color: #50C878;" color=50C878>&nbsp&nbsp&nbsp<font style="background-color: #000000;">&nbsp@&nbsp<font style="background-color: #888888;">&nbsp@&nbsp<font style="background-color: #ffffff;">&nbsp@&nbsp<font style="background-color: #50C878;" color=888888>&nbsp@&nbsp</font>
+     *<font style="background-color: #50C878;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #000000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #888888;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffffff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #50C878;" color=ffffff>&nbsp@&nbsp</font>
+     *
+     *<font style="background-color: #ff0000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #00ff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #0000ff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #964b00;" color=000000>&nbsp&nbsp&nbsp</font>
+     *<font style="background-color: #ff0000;" color=50C878>&nbsp@&nbsp<font style="background-color: #ffff00;">&nbsp@&nbsp<font style="background-color: #00ff00;">&nbsp@&nbsp<font style="background-color: #0000ff;">&nbsp@&nbsp<font style="background-color: #964b00;">&nbsp@&nbsp</font>
+     *<font style="background-color: #ff0000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #00ff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #0000ff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #964b00;" color=000000>&nbsp&nbsp&nbsp</font></pre>
+     */
+    public static final CSIColor EMERALD = new CSIColor(0x50C878);
+    /**
+     *<pre><font style="background-color: #614051;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #000000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #888888;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffffff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #614051;" color=000000>&nbsp@&nbsp</font>
+     *<font style="background-color: #614051;" color=614051>&nbsp&nbsp&nbsp<font style="background-color: #000000;">&nbsp@&nbsp<font style="background-color: #888888;">&nbsp@&nbsp<font style="background-color: #ffffff;">&nbsp@&nbsp<font style="background-color: #614051;" color=888888>&nbsp@&nbsp</font>
+     *<font style="background-color: #614051;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #000000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #888888;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffffff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #614051;" color=ffffff>&nbsp@&nbsp</font>
+     *
+     *<font style="background-color: #ff0000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #00ff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #0000ff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #964b00;" color=000000>&nbsp&nbsp&nbsp</font>
+     *<font style="background-color: #ff0000;" color=614051>&nbsp@&nbsp<font style="background-color: #ffff00;">&nbsp@&nbsp<font style="background-color: #00ff00;">&nbsp@&nbsp<font style="background-color: #0000ff;">&nbsp@&nbsp<font style="background-color: #964b00;">&nbsp@&nbsp</font>
+     *<font style="background-color: #ff0000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #00ff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #0000ff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #964b00;" color=000000>&nbsp&nbsp&nbsp</font></pre>
+     */
+    public static final CSIColor EGGPLANT = new CSIColor(0x614051);
+    /**
+     *<pre><font style="background-color: #801818;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #000000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #888888;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffffff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #801818;" color=000000>&nbsp@&nbsp</font>
+     *<font style="background-color: #801818;" color=801818>&nbsp&nbsp&nbsp<font style="background-color: #000000;">&nbsp@&nbsp<font style="background-color: #888888;">&nbsp@&nbsp<font style="background-color: #ffffff;">&nbsp@&nbsp<font style="background-color: #801818;" color=888888>&nbsp@&nbsp</font>
+     *<font style="background-color: #801818;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #000000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #888888;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffffff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #801818;" color=ffffff>&nbsp@&nbsp</font>
+     *
+     *<font style="background-color: #ff0000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #00ff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #0000ff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #964b00;" color=000000>&nbsp&nbsp&nbsp</font>
+     *<font style="background-color: #ff0000;" color=801818>&nbsp@&nbsp<font style="background-color: #ffff00;">&nbsp@&nbsp<font style="background-color: #00ff00;">&nbsp@&nbsp<font style="background-color: #0000ff;">&nbsp@&nbsp<font style="background-color: #964b00;">&nbsp@&nbsp</font>
+     *<font style="background-color: #ff0000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #00ff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #0000ff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #964b00;" color=000000>&nbsp&nbsp&nbsp</font></pre>
+     */
+    public static final CSIColor FALU_RED = new CSIColor(0x801818);
+    /**
+     *<pre><font style="background-color: #4F7942;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #000000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #888888;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffffff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #4F7942;" color=000000>&nbsp@&nbsp</font>
+     *<font style="background-color: #4F7942;" color=4F7942>&nbsp&nbsp&nbsp<font style="background-color: #000000;">&nbsp@&nbsp<font style="background-color: #888888;">&nbsp@&nbsp<font style="background-color: #ffffff;">&nbsp@&nbsp<font style="background-color: #4F7942;" color=888888>&nbsp@&nbsp</font>
+     *<font style="background-color: #4F7942;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #000000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #888888;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffffff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #4F7942;" color=ffffff>&nbsp@&nbsp</font>
+     *
+     *<font style="background-color: #ff0000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #00ff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #0000ff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #964b00;" color=000000>&nbsp&nbsp&nbsp</font>
+     *<font style="background-color: #ff0000;" color=4F7942>&nbsp@&nbsp<font style="background-color: #ffff00;">&nbsp@&nbsp<font style="background-color: #00ff00;">&nbsp@&nbsp<font style="background-color: #0000ff;">&nbsp@&nbsp<font style="background-color: #964b00;">&nbsp@&nbsp</font>
+     *<font style="background-color: #ff0000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #00ff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #0000ff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #964b00;" color=000000>&nbsp&nbsp&nbsp</font></pre>
+     */
+    public static final CSIColor FERN_GREEN = new CSIColor(0x4F7942);
+    /**
+     *<pre><font style="background-color: #B22222;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #000000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #888888;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffffff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #B22222;" color=000000>&nbsp@&nbsp</font>
+     *<font style="background-color: #B22222;" color=B22222>&nbsp&nbsp&nbsp<font style="background-color: #000000;">&nbsp@&nbsp<font style="background-color: #888888;">&nbsp@&nbsp<font style="background-color: #ffffff;">&nbsp@&nbsp<font style="background-color: #B22222;" color=888888>&nbsp@&nbsp</font>
+     *<font style="background-color: #B22222;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #000000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #888888;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffffff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #B22222;" color=ffffff>&nbsp@&nbsp</font>
+     *
+     *<font style="background-color: #ff0000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #00ff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #0000ff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #964b00;" color=000000>&nbsp&nbsp&nbsp</font>
+     *<font style="background-color: #ff0000;" color=B22222>&nbsp@&nbsp<font style="background-color: #ffff00;">&nbsp@&nbsp<font style="background-color: #00ff00;">&nbsp@&nbsp<font style="background-color: #0000ff;">&nbsp@&nbsp<font style="background-color: #964b00;">&nbsp@&nbsp</font>
+     *<font style="background-color: #ff0000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #00ff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #0000ff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #964b00;" color=000000>&nbsp&nbsp&nbsp</font></pre>
+     */
+    public static final CSIColor FIREBRICK = new CSIColor(0xB22222);
+    /**
+     *<pre><font style="background-color: #EEDC82;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #000000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #888888;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffffff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #EEDC82;" color=000000>&nbsp@&nbsp</font>
+     *<font style="background-color: #EEDC82;" color=EEDC82>&nbsp&nbsp&nbsp<font style="background-color: #000000;">&nbsp@&nbsp<font style="background-color: #888888;">&nbsp@&nbsp<font style="background-color: #ffffff;">&nbsp@&nbsp<font style="background-color: #EEDC82;" color=888888>&nbsp@&nbsp</font>
+     *<font style="background-color: #EEDC82;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #000000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #888888;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffffff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #EEDC82;" color=ffffff>&nbsp@&nbsp</font>
+     *
+     *<font style="background-color: #ff0000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #00ff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #0000ff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #964b00;" color=000000>&nbsp&nbsp&nbsp</font>
+     *<font style="background-color: #ff0000;" color=EEDC82>&nbsp@&nbsp<font style="background-color: #ffff00;">&nbsp@&nbsp<font style="background-color: #00ff00;">&nbsp@&nbsp<font style="background-color: #0000ff;">&nbsp@&nbsp<font style="background-color: #964b00;">&nbsp@&nbsp</font>
+     *<font style="background-color: #ff0000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #00ff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #0000ff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #964b00;" color=000000>&nbsp&nbsp&nbsp</font></pre>
+     */
+    public static final CSIColor FLAX = new CSIColor(0xEEDC82);
+    /**
+     *<pre><font style="background-color: #228B22;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #000000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #888888;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffffff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #228B22;" color=000000>&nbsp@&nbsp</font>
+     *<font style="background-color: #228B22;" color=228B22>&nbsp&nbsp&nbsp<font style="background-color: #000000;">&nbsp@&nbsp<font style="background-color: #888888;">&nbsp@&nbsp<font style="background-color: #ffffff;">&nbsp@&nbsp<font style="background-color: #228B22;" color=888888>&nbsp@&nbsp</font>
+     *<font style="background-color: #228B22;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #000000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #888888;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffffff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #228B22;" color=ffffff>&nbsp@&nbsp</font>
+     *
+     *<font style="background-color: #ff0000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #00ff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #0000ff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #964b00;" color=000000>&nbsp&nbsp&nbsp</font>
+     *<font style="background-color: #ff0000;" color=228B22>&nbsp@&nbsp<font style="background-color: #ffff00;">&nbsp@&nbsp<font style="background-color: #00ff00;">&nbsp@&nbsp<font style="background-color: #0000ff;">&nbsp@&nbsp<font style="background-color: #964b00;">&nbsp@&nbsp</font>
+     *<font style="background-color: #ff0000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #00ff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #0000ff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #964b00;" color=000000>&nbsp&nbsp&nbsp</font></pre>
+     */
+    public static final CSIColor FOREST_GREEN = new CSIColor(0x228B22);
+    /**
+     *<pre><font style="background-color: #F64A8A;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #000000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #888888;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffffff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #F64A8A;" color=000000>&nbsp@&nbsp</font>
+     *<font style="background-color: #F64A8A;" color=F64A8A>&nbsp&nbsp&nbsp<font style="background-color: #000000;">&nbsp@&nbsp<font style="background-color: #888888;">&nbsp@&nbsp<font style="background-color: #ffffff;">&nbsp@&nbsp<font style="background-color: #F64A8A;" color=888888>&nbsp@&nbsp</font>
+     *<font style="background-color: #F64A8A;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #000000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #888888;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffffff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #F64A8A;" color=ffffff>&nbsp@&nbsp</font>
+     *
+     *<font style="background-color: #ff0000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #00ff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #0000ff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #964b00;" color=000000>&nbsp&nbsp&nbsp</font>
+     *<font style="background-color: #ff0000;" color=F64A8A>&nbsp@&nbsp<font style="background-color: #ffff00;">&nbsp@&nbsp<font style="background-color: #00ff00;">&nbsp@&nbsp<font style="background-color: #0000ff;">&nbsp@&nbsp<font style="background-color: #964b00;">&nbsp@&nbsp</font>
+     *<font style="background-color: #ff0000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #00ff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #0000ff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #964b00;" color=000000>&nbsp&nbsp&nbsp</font></pre>
+     */
+    public static final CSIColor FRENCH_ROSE = new CSIColor(0xF64A8A);
+    /**
+     *<pre><font style="background-color: #FF77FF;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #000000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #888888;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffffff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #FF77FF;" color=000000>&nbsp@&nbsp</font>
+     *<font style="background-color: #FF77FF;" color=FF77FF>&nbsp&nbsp&nbsp<font style="background-color: #000000;">&nbsp@&nbsp<font style="background-color: #888888;">&nbsp@&nbsp<font style="background-color: #ffffff;">&nbsp@&nbsp<font style="background-color: #FF77FF;" color=888888>&nbsp@&nbsp</font>
+     *<font style="background-color: #FF77FF;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #000000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #888888;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffffff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #FF77FF;" color=ffffff>&nbsp@&nbsp</font>
+     *
+     *<font style="background-color: #ff0000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #00ff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #0000ff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #964b00;" color=000000>&nbsp&nbsp&nbsp</font>
+     *<font style="background-color: #ff0000;" color=FF77FF>&nbsp@&nbsp<font style="background-color: #ffff00;">&nbsp@&nbsp<font style="background-color: #00ff00;">&nbsp@&nbsp<font style="background-color: #0000ff;">&nbsp@&nbsp<font style="background-color: #964b00;">&nbsp@&nbsp</font>
+     *<font style="background-color: #ff0000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #00ff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #0000ff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #964b00;" color=000000>&nbsp&nbsp&nbsp</font></pre>
+     */
+    public static final CSIColor FUCSHIA_PINK = new CSIColor(0xFF77FF);
+    /**
+     *<pre><font style="background-color: #E49B0F;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #000000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #888888;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffffff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #E49B0F;" color=000000>&nbsp@&nbsp</font>
+     *<font style="background-color: #E49B0F;" color=E49B0F>&nbsp&nbsp&nbsp<font style="background-color: #000000;">&nbsp@&nbsp<font style="background-color: #888888;">&nbsp@&nbsp<font style="background-color: #ffffff;">&nbsp@&nbsp<font style="background-color: #E49B0F;" color=888888>&nbsp@&nbsp</font>
+     *<font style="background-color: #E49B0F;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #000000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #888888;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffffff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #E49B0F;" color=ffffff>&nbsp@&nbsp</font>
+     *
+     *<font style="background-color: #ff0000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #00ff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #0000ff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #964b00;" color=000000>&nbsp&nbsp&nbsp</font>
+     *<font style="background-color: #ff0000;" color=E49B0F>&nbsp@&nbsp<font style="background-color: #ffff00;">&nbsp@&nbsp<font style="background-color: #00ff00;">&nbsp@&nbsp<font style="background-color: #0000ff;">&nbsp@&nbsp<font style="background-color: #964b00;">&nbsp@&nbsp</font>
+     *<font style="background-color: #ff0000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #00ff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #0000ff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #964b00;" color=000000>&nbsp&nbsp&nbsp</font></pre>
+     */
+    public static final CSIColor GAMBOGE = new CSIColor(0xE49B0F);
+    /**
+     *<pre><font style="background-color: #D4AF37;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #000000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #888888;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffffff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #D4AF37;" color=000000>&nbsp@&nbsp</font>
+     *<font style="background-color: #D4AF37;" color=D4AF37>&nbsp&nbsp&nbsp<font style="background-color: #000000;">&nbsp@&nbsp<font style="background-color: #888888;">&nbsp@&nbsp<font style="background-color: #ffffff;">&nbsp@&nbsp<font style="background-color: #D4AF37;" color=888888>&nbsp@&nbsp</font>
+     *<font style="background-color: #D4AF37;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #000000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #888888;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffffff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #D4AF37;" color=ffffff>&nbsp@&nbsp</font>
+     *
+     *<font style="background-color: #ff0000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #00ff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #0000ff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #964b00;" color=000000>&nbsp&nbsp&nbsp</font>
+     *<font style="background-color: #ff0000;" color=D4AF37>&nbsp@&nbsp<font style="background-color: #ffff00;">&nbsp@&nbsp<font style="background-color: #00ff00;">&nbsp@&nbsp<font style="background-color: #0000ff;">&nbsp@&nbsp<font style="background-color: #964b00;">&nbsp@&nbsp</font>
+     *<font style="background-color: #ff0000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #00ff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #0000ff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #964b00;" color=000000>&nbsp&nbsp&nbsp</font></pre>
+     */
+    public static final CSIColor GOLD = new CSIColor(0xD4AF37);
+    /**
+     *<pre><font style="background-color: #FFD700;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #000000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #888888;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffffff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #FFD700;" color=000000>&nbsp@&nbsp</font>
+     *<font style="background-color: #FFD700;" color=FFD700>&nbsp&nbsp&nbsp<font style="background-color: #000000;">&nbsp@&nbsp<font style="background-color: #888888;">&nbsp@&nbsp<font style="background-color: #ffffff;">&nbsp@&nbsp<font style="background-color: #FFD700;" color=888888>&nbsp@&nbsp</font>
+     *<font style="background-color: #FFD700;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #000000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #888888;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffffff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #FFD700;" color=ffffff>&nbsp@&nbsp</font>
+     *
+     *<font style="background-color: #ff0000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #00ff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #0000ff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #964b00;" color=000000>&nbsp&nbsp&nbsp</font>
+     *<font style="background-color: #ff0000;" color=FFD700>&nbsp@&nbsp<font style="background-color: #ffff00;">&nbsp@&nbsp<font style="background-color: #00ff00;">&nbsp@&nbsp<font style="background-color: #0000ff;">&nbsp@&nbsp<font style="background-color: #964b00;">&nbsp@&nbsp</font>
+     *<font style="background-color: #ff0000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #00ff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #0000ff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #964b00;" color=000000>&nbsp&nbsp&nbsp</font></pre>
+     */
+    public static final CSIColor GOLDEN = new CSIColor(0xFFD700);
+    /**
+     *<pre><font style="background-color: #996515;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #000000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #888888;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffffff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #996515;" color=000000>&nbsp@&nbsp</font>
+     *<font style="background-color: #996515;" color=996515>&nbsp&nbsp&nbsp<font style="background-color: #000000;">&nbsp@&nbsp<font style="background-color: #888888;">&nbsp@&nbsp<font style="background-color: #ffffff;">&nbsp@&nbsp<font style="background-color: #996515;" color=888888>&nbsp@&nbsp</font>
+     *<font style="background-color: #996515;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #000000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #888888;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffffff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #996515;" color=ffffff>&nbsp@&nbsp</font>
+     *
+     *<font style="background-color: #ff0000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #00ff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #0000ff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #964b00;" color=000000>&nbsp&nbsp&nbsp</font>
+     *<font style="background-color: #ff0000;" color=996515>&nbsp@&nbsp<font style="background-color: #ffff00;">&nbsp@&nbsp<font style="background-color: #00ff00;">&nbsp@&nbsp<font style="background-color: #0000ff;">&nbsp@&nbsp<font style="background-color: #964b00;">&nbsp@&nbsp</font>
+     *<font style="background-color: #ff0000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #00ff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #0000ff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #964b00;" color=000000>&nbsp&nbsp&nbsp</font></pre>
+     */
+    public static final CSIColor GOLDEN_BROWN = new CSIColor(0x996515);
+    /**
+     *<pre><font style="background-color: #FFDF00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #000000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #888888;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffffff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #FFDF00;" color=000000>&nbsp@&nbsp</font>
+     *<font style="background-color: #FFDF00;" color=FFDF00>&nbsp&nbsp&nbsp<font style="background-color: #000000;">&nbsp@&nbsp<font style="background-color: #888888;">&nbsp@&nbsp<font style="background-color: #ffffff;">&nbsp@&nbsp<font style="background-color: #FFDF00;" color=888888>&nbsp@&nbsp</font>
+     *<font style="background-color: #FFDF00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #000000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #888888;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffffff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #FFDF00;" color=ffffff>&nbsp@&nbsp</font>
+     *
+     *<font style="background-color: #ff0000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #00ff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #0000ff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #964b00;" color=000000>&nbsp&nbsp&nbsp</font>
+     *<font style="background-color: #ff0000;" color=FFDF00>&nbsp@&nbsp<font style="background-color: #ffff00;">&nbsp@&nbsp<font style="background-color: #00ff00;">&nbsp@&nbsp<font style="background-color: #0000ff;">&nbsp@&nbsp<font style="background-color: #964b00;">&nbsp@&nbsp</font>
+     *<font style="background-color: #ff0000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #00ff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #0000ff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #964b00;" color=000000>&nbsp&nbsp&nbsp</font></pre>
+     */
+    public static final CSIColor GOLDEN_YELLOW = new CSIColor(0xFFDF00);
+    /**
+     *<pre><font style="background-color: #DAA520;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #000000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #888888;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffffff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #DAA520;" color=000000>&nbsp@&nbsp</font>
+     *<font style="background-color: #DAA520;" color=DAA520>&nbsp&nbsp&nbsp<font style="background-color: #000000;">&nbsp@&nbsp<font style="background-color: #888888;">&nbsp@&nbsp<font style="background-color: #ffffff;">&nbsp@&nbsp<font style="background-color: #DAA520;" color=888888>&nbsp@&nbsp</font>
+     *<font style="background-color: #DAA520;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #000000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #888888;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffffff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #DAA520;" color=ffffff>&nbsp@&nbsp</font>
+     *
+     *<font style="background-color: #ff0000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #00ff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #0000ff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #964b00;" color=000000>&nbsp&nbsp&nbsp</font>
+     *<font style="background-color: #ff0000;" color=DAA520>&nbsp@&nbsp<font style="background-color: #ffff00;">&nbsp@&nbsp<font style="background-color: #00ff00;">&nbsp@&nbsp<font style="background-color: #0000ff;">&nbsp@&nbsp<font style="background-color: #964b00;">&nbsp@&nbsp</font>
+     *<font style="background-color: #ff0000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #00ff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #0000ff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #964b00;" color=000000>&nbsp&nbsp&nbsp</font></pre>
+     */
+    public static final CSIColor GOLDENROD = new CSIColor(0xDAA520);
+    /**
+     *<pre><font style="background-color: #465945;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #000000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #888888;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffffff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #465945;" color=000000>&nbsp@&nbsp</font>
+     *<font style="background-color: #465945;" color=465945>&nbsp&nbsp&nbsp<font style="background-color: #000000;">&nbsp@&nbsp<font style="background-color: #888888;">&nbsp@&nbsp<font style="background-color: #ffffff;">&nbsp@&nbsp<font style="background-color: #465945;" color=888888>&nbsp@&nbsp</font>
+     *<font style="background-color: #465945;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #000000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #888888;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffffff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #465945;" color=ffffff>&nbsp@&nbsp</font>
+     *
+     *<font style="background-color: #ff0000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #00ff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #0000ff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #964b00;" color=000000>&nbsp&nbsp&nbsp</font>
+     *<font style="background-color: #ff0000;" color=465945>&nbsp@&nbsp<font style="background-color: #ffff00;">&nbsp@&nbsp<font style="background-color: #00ff00;">&nbsp@&nbsp<font style="background-color: #0000ff;">&nbsp@&nbsp<font style="background-color: #964b00;">&nbsp@&nbsp</font>
+     *<font style="background-color: #ff0000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #00ff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #0000ff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #964b00;" color=000000>&nbsp&nbsp&nbsp</font></pre>
+     */
+    public static final CSIColor GRAY_ASPARAGUS = new CSIColor(0x465945);
+    /**
+     *<pre><font style="background-color: #ADFF2F;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #000000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #888888;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffffff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ADFF2F;" color=000000>&nbsp@&nbsp</font>
+     *<font style="background-color: #ADFF2F;" color=ADFF2F>&nbsp&nbsp&nbsp<font style="background-color: #000000;">&nbsp@&nbsp<font style="background-color: #888888;">&nbsp@&nbsp<font style="background-color: #ffffff;">&nbsp@&nbsp<font style="background-color: #ADFF2F;" color=888888>&nbsp@&nbsp</font>
+     *<font style="background-color: #ADFF2F;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #000000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #888888;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffffff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ADFF2F;" color=ffffff>&nbsp@&nbsp</font>
+     *
+     *<font style="background-color: #ff0000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #00ff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #0000ff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #964b00;" color=000000>&nbsp&nbsp&nbsp</font>
+     *<font style="background-color: #ff0000;" color=ADFF2F>&nbsp@&nbsp<font style="background-color: #ffff00;">&nbsp@&nbsp<font style="background-color: #00ff00;">&nbsp@&nbsp<font style="background-color: #0000ff;">&nbsp@&nbsp<font style="background-color: #964b00;">&nbsp@&nbsp</font>
+     *<font style="background-color: #ff0000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #00ff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #0000ff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #964b00;" color=000000>&nbsp&nbsp&nbsp</font></pre>
+     */
+    public static final CSIColor GREEN_YELLOW = new CSIColor(0xADFF2F);
+    /**
+     *<pre><font style="background-color: #5218FA;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #000000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #888888;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffffff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #5218FA;" color=000000>&nbsp@&nbsp</font>
+     *<font style="background-color: #5218FA;" color=5218FA>&nbsp&nbsp&nbsp<font style="background-color: #000000;">&nbsp@&nbsp<font style="background-color: #888888;">&nbsp@&nbsp<font style="background-color: #ffffff;">&nbsp@&nbsp<font style="background-color: #5218FA;" color=888888>&nbsp@&nbsp</font>
+     *<font style="background-color: #5218FA;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #000000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #888888;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffffff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #5218FA;" color=ffffff>&nbsp@&nbsp</font>
+     *
+     *<font style="background-color: #ff0000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #00ff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #0000ff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #964b00;" color=000000>&nbsp&nbsp&nbsp</font>
+     *<font style="background-color: #ff0000;" color=5218FA>&nbsp@&nbsp<font style="background-color: #ffff00;">&nbsp@&nbsp<font style="background-color: #00ff00;">&nbsp@&nbsp<font style="background-color: #0000ff;">&nbsp@&nbsp<font style="background-color: #964b00;">&nbsp@&nbsp</font>
+     *<font style="background-color: #ff0000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #00ff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #0000ff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #964b00;" color=000000>&nbsp&nbsp&nbsp</font></pre>
+     */
+    public static final CSIColor HAN_PURPLE = new CSIColor(0x5218FA);
+    /**
+     *<pre><font style="background-color: #DF73FF;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #000000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #888888;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffffff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #DF73FF;" color=000000>&nbsp@&nbsp</font>
+     *<font style="background-color: #DF73FF;" color=DF73FF>&nbsp&nbsp&nbsp<font style="background-color: #000000;">&nbsp@&nbsp<font style="background-color: #888888;">&nbsp@&nbsp<font style="background-color: #ffffff;">&nbsp@&nbsp<font style="background-color: #DF73FF;" color=888888>&nbsp@&nbsp</font>
+     *<font style="background-color: #DF73FF;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #000000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #888888;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffffff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #DF73FF;" color=ffffff>&nbsp@&nbsp</font>
+     *
+     *<font style="background-color: #ff0000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #00ff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #0000ff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #964b00;" color=000000>&nbsp&nbsp&nbsp</font>
+     *<font style="background-color: #ff0000;" color=DF73FF>&nbsp@&nbsp<font style="background-color: #ffff00;">&nbsp@&nbsp<font style="background-color: #00ff00;">&nbsp@&nbsp<font style="background-color: #0000ff;">&nbsp@&nbsp<font style="background-color: #964b00;">&nbsp@&nbsp</font>
+     *<font style="background-color: #ff0000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #00ff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #0000ff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #964b00;" color=000000>&nbsp&nbsp&nbsp</font></pre>
+     */
+    public static final CSIColor HELIOTROPE = new CSIColor(0xDF73FF);
+    /**
+     *<pre><font style="background-color: #F400A1;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #000000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #888888;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffffff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #F400A1;" color=000000>&nbsp@&nbsp</font>
+     *<font style="background-color: #F400A1;" color=F400A1>&nbsp&nbsp&nbsp<font style="background-color: #000000;">&nbsp@&nbsp<font style="background-color: #888888;">&nbsp@&nbsp<font style="background-color: #ffffff;">&nbsp@&nbsp<font style="background-color: #F400A1;" color=888888>&nbsp@&nbsp</font>
+     *<font style="background-color: #F400A1;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #000000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #888888;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffffff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #F400A1;" color=ffffff>&nbsp@&nbsp</font>
+     *
+     *<font style="background-color: #ff0000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #00ff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #0000ff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #964b00;" color=000000>&nbsp&nbsp&nbsp</font>
+     *<font style="background-color: #ff0000;" color=F400A1>&nbsp@&nbsp<font style="background-color: #ffff00;">&nbsp@&nbsp<font style="background-color: #00ff00;">&nbsp@&nbsp<font style="background-color: #0000ff;">&nbsp@&nbsp<font style="background-color: #964b00;">&nbsp@&nbsp</font>
+     *<font style="background-color: #ff0000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #00ff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #0000ff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #964b00;" color=000000>&nbsp&nbsp&nbsp</font></pre>
+     */
+    public static final CSIColor HOLLYWOOD_CERISE = new CSIColor(0xF400A1);
+    /**
+     *<pre><font style="background-color: #FF00CC;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #000000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #888888;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffffff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #FF00CC;" color=000000>&nbsp@&nbsp</font>
+     *<font style="background-color: #FF00CC;" color=FF00CC>&nbsp&nbsp&nbsp<font style="background-color: #000000;">&nbsp@&nbsp<font style="background-color: #888888;">&nbsp@&nbsp<font style="background-color: #ffffff;">&nbsp@&nbsp<font style="background-color: #FF00CC;" color=888888>&nbsp@&nbsp</font>
+     *<font style="background-color: #FF00CC;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #000000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #888888;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffffff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #FF00CC;" color=ffffff>&nbsp@&nbsp</font>
+     *
+     *<font style="background-color: #ff0000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #00ff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #0000ff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #964b00;" color=000000>&nbsp&nbsp&nbsp</font>
+     *<font style="background-color: #ff0000;" color=FF00CC>&nbsp@&nbsp<font style="background-color: #ffff00;">&nbsp@&nbsp<font style="background-color: #00ff00;">&nbsp@&nbsp<font style="background-color: #0000ff;">&nbsp@&nbsp<font style="background-color: #964b00;">&nbsp@&nbsp</font>
+     *<font style="background-color: #ff0000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #00ff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #0000ff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #964b00;" color=000000>&nbsp&nbsp&nbsp</font></pre>
+     */
+    public static final CSIColor HOT_MAGENTA = new CSIColor(0xFF00CC);
+    /**
+     *<pre><font style="background-color: #FF69B4;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #000000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #888888;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffffff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #FF69B4;" color=000000>&nbsp@&nbsp</font>
+     *<font style="background-color: #FF69B4;" color=FF69B4>&nbsp&nbsp&nbsp<font style="background-color: #000000;">&nbsp@&nbsp<font style="background-color: #888888;">&nbsp@&nbsp<font style="background-color: #ffffff;">&nbsp@&nbsp<font style="background-color: #FF69B4;" color=888888>&nbsp@&nbsp</font>
+     *<font style="background-color: #FF69B4;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #000000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #888888;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffffff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #FF69B4;" color=ffffff>&nbsp@&nbsp</font>
+     *
+     *<font style="background-color: #ff0000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #00ff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #0000ff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #964b00;" color=000000>&nbsp&nbsp&nbsp</font>
+     *<font style="background-color: #ff0000;" color=FF69B4>&nbsp@&nbsp<font style="background-color: #ffff00;">&nbsp@&nbsp<font style="background-color: #00ff00;">&nbsp@&nbsp<font style="background-color: #0000ff;">&nbsp@&nbsp<font style="background-color: #964b00;">&nbsp@&nbsp</font>
+     *<font style="background-color: #ff0000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #00ff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #0000ff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #964b00;" color=000000>&nbsp&nbsp&nbsp</font></pre>
+     */
+    public static final CSIColor HOT_PINK = new CSIColor(0xFF69B4);
+    /**
+     *<pre><font style="background-color: #00416A;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #000000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #888888;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffffff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #00416A;" color=000000>&nbsp@&nbsp</font>
+     *<font style="background-color: #00416A;" color=00416A>&nbsp&nbsp&nbsp<font style="background-color: #000000;">&nbsp@&nbsp<font style="background-color: #888888;">&nbsp@&nbsp<font style="background-color: #ffffff;">&nbsp@&nbsp<font style="background-color: #00416A;" color=888888>&nbsp@&nbsp</font>
+     *<font style="background-color: #00416A;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #000000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #888888;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffffff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #00416A;" color=ffffff>&nbsp@&nbsp</font>
+     *
+     *<font style="background-color: #ff0000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #00ff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #0000ff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #964b00;" color=000000>&nbsp&nbsp&nbsp</font>
+     *<font style="background-color: #ff0000;" color=00416A>&nbsp@&nbsp<font style="background-color: #ffff00;">&nbsp@&nbsp<font style="background-color: #00ff00;">&nbsp@&nbsp<font style="background-color: #0000ff;">&nbsp@&nbsp<font style="background-color: #964b00;">&nbsp@&nbsp</font>
+     *<font style="background-color: #ff0000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #00ff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #0000ff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #964b00;" color=000000>&nbsp&nbsp&nbsp</font></pre>
+     */
+    public static final CSIColor INDIGO_DYE = new CSIColor(0x00416A);
+    /**
+     *<pre><font style="background-color: #4B0082;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #000000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #888888;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffffff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #4B0082;" color=000000>&nbsp@&nbsp</font>
+     *<font style="background-color: #4B0082;" color=4B0082>&nbsp&nbsp&nbsp<font style="background-color: #000000;">&nbsp@&nbsp<font style="background-color: #888888;">&nbsp@&nbsp<font style="background-color: #ffffff;">&nbsp@&nbsp<font style="background-color: #4B0082;" color=888888>&nbsp@&nbsp</font>
+     *<font style="background-color: #4B0082;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #000000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #888888;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffffff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #4B0082;" color=ffffff>&nbsp@&nbsp</font>
+     *
+     *<font style="background-color: #ff0000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #00ff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #0000ff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #964b00;" color=000000>&nbsp&nbsp&nbsp</font>
+     *<font style="background-color: #ff0000;" color=4B0082>&nbsp@&nbsp<font style="background-color: #ffff00;">&nbsp@&nbsp<font style="background-color: #00ff00;">&nbsp@&nbsp<font style="background-color: #0000ff;">&nbsp@&nbsp<font style="background-color: #964b00;">&nbsp@&nbsp</font>
+     *<font style="background-color: #ff0000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #00ff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #0000ff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #964b00;" color=000000>&nbsp&nbsp&nbsp</font></pre>
+     */
+    public static final CSIColor INDIGO = new CSIColor(0x4B0082);
+    /**
+     *<pre><font style="background-color: #002FA7;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #000000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #888888;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffffff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #002FA7;" color=000000>&nbsp@&nbsp</font>
+     *<font style="background-color: #002FA7;" color=002FA7>&nbsp&nbsp&nbsp<font style="background-color: #000000;">&nbsp@&nbsp<font style="background-color: #888888;">&nbsp@&nbsp<font style="background-color: #ffffff;">&nbsp@&nbsp<font style="background-color: #002FA7;" color=888888>&nbsp@&nbsp</font>
+     *<font style="background-color: #002FA7;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #000000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #888888;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffffff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #002FA7;" color=ffffff>&nbsp@&nbsp</font>
+     *
+     *<font style="background-color: #ff0000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #00ff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #0000ff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #964b00;" color=000000>&nbsp&nbsp&nbsp</font>
+     *<font style="background-color: #ff0000;" color=002FA7>&nbsp@&nbsp<font style="background-color: #ffff00;">&nbsp@&nbsp<font style="background-color: #00ff00;">&nbsp@&nbsp<font style="background-color: #0000ff;">&nbsp@&nbsp<font style="background-color: #964b00;">&nbsp@&nbsp</font>
+     *<font style="background-color: #ff0000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #00ff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #0000ff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #964b00;" color=000000>&nbsp&nbsp&nbsp</font></pre>
+     */
+    public static final CSIColor INTERNATIONAL_KLEIN_BLUE = new CSIColor(0x002FA7);
+    /**
+     *<pre><font style="background-color: #FF4F00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #000000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #888888;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffffff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #FF4F00;" color=000000>&nbsp@&nbsp</font>
+     *<font style="background-color: #FF4F00;" color=FF4F00>&nbsp&nbsp&nbsp<font style="background-color: #000000;">&nbsp@&nbsp<font style="background-color: #888888;">&nbsp@&nbsp<font style="background-color: #ffffff;">&nbsp@&nbsp<font style="background-color: #FF4F00;" color=888888>&nbsp@&nbsp</font>
+     *<font style="background-color: #FF4F00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #000000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #888888;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffffff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #FF4F00;" color=ffffff>&nbsp@&nbsp</font>
+     *
+     *<font style="background-color: #ff0000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #00ff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #0000ff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #964b00;" color=000000>&nbsp&nbsp&nbsp</font>
+     *<font style="background-color: #ff0000;" color=FF4F00>&nbsp@&nbsp<font style="background-color: #ffff00;">&nbsp@&nbsp<font style="background-color: #00ff00;">&nbsp@&nbsp<font style="background-color: #0000ff;">&nbsp@&nbsp<font style="background-color: #964b00;">&nbsp@&nbsp</font>
+     *<font style="background-color: #ff0000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #00ff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #0000ff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #964b00;" color=000000>&nbsp&nbsp&nbsp</font></pre>
+     */
+    public static final CSIColor INTERNATIONAL_ORANGE = new CSIColor(0xFF4F00);
+    /**
+     *<pre><font style="background-color: #009000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #000000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #888888;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffffff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #009000;" color=000000>&nbsp@&nbsp</font>
+     *<font style="background-color: #009000;" color=009000>&nbsp&nbsp&nbsp<font style="background-color: #000000;">&nbsp@&nbsp<font style="background-color: #888888;">&nbsp@&nbsp<font style="background-color: #ffffff;">&nbsp@&nbsp<font style="background-color: #009000;" color=888888>&nbsp@&nbsp</font>
+     *<font style="background-color: #009000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #000000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #888888;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffffff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #009000;" color=ffffff>&nbsp@&nbsp</font>
+     *
+     *<font style="background-color: #ff0000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #00ff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #0000ff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #964b00;" color=000000>&nbsp&nbsp&nbsp</font>
+     *<font style="background-color: #ff0000;" color=009000>&nbsp@&nbsp<font style="background-color: #ffff00;">&nbsp@&nbsp<font style="background-color: #00ff00;">&nbsp@&nbsp<font style="background-color: #0000ff;">&nbsp@&nbsp<font style="background-color: #964b00;">&nbsp@&nbsp</font>
+     *<font style="background-color: #ff0000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #00ff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #0000ff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #964b00;" color=000000>&nbsp&nbsp&nbsp</font></pre>
+     */
+    public static final CSIColor ISLAMIC_GREEN = new CSIColor(0x009000);
+    /**
+     *<pre><font style="background-color: #FFFFF0;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #000000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #888888;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffffff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #FFFFF0;" color=000000>&nbsp@&nbsp</font>
+     *<font style="background-color: #FFFFF0;" color=FFFFF0>&nbsp&nbsp&nbsp<font style="background-color: #000000;">&nbsp@&nbsp<font style="background-color: #888888;">&nbsp@&nbsp<font style="background-color: #ffffff;">&nbsp@&nbsp<font style="background-color: #FFFFF0;" color=888888>&nbsp@&nbsp</font>
+     *<font style="background-color: #FFFFF0;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #000000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #888888;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffffff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #FFFFF0;" color=ffffff>&nbsp@&nbsp</font>
+     *
+     *<font style="background-color: #ff0000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #00ff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #0000ff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #964b00;" color=000000>&nbsp&nbsp&nbsp</font>
+     *<font style="background-color: #ff0000;" color=FFFFF0>&nbsp@&nbsp<font style="background-color: #ffff00;">&nbsp@&nbsp<font style="background-color: #00ff00;">&nbsp@&nbsp<font style="background-color: #0000ff;">&nbsp@&nbsp<font style="background-color: #964b00;">&nbsp@&nbsp</font>
+     *<font style="background-color: #ff0000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #00ff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #0000ff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #964b00;" color=000000>&nbsp&nbsp&nbsp</font></pre>
+     */
+    public static final CSIColor IVORY = new CSIColor(0xFFFFF0);
+    /**
+     *<pre><font style="background-color: #00A86B;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #000000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #888888;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffffff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #00A86B;" color=000000>&nbsp@&nbsp</font>
+     *<font style="background-color: #00A86B;" color=00A86B>&nbsp&nbsp&nbsp<font style="background-color: #000000;">&nbsp@&nbsp<font style="background-color: #888888;">&nbsp@&nbsp<font style="background-color: #ffffff;">&nbsp@&nbsp<font style="background-color: #00A86B;" color=888888>&nbsp@&nbsp</font>
+     *<font style="background-color: #00A86B;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #000000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #888888;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffffff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #00A86B;" color=ffffff>&nbsp@&nbsp</font>
+     *
+     *<font style="background-color: #ff0000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #00ff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #0000ff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #964b00;" color=000000>&nbsp&nbsp&nbsp</font>
+     *<font style="background-color: #ff0000;" color=00A86B>&nbsp@&nbsp<font style="background-color: #ffff00;">&nbsp@&nbsp<font style="background-color: #00ff00;">&nbsp@&nbsp<font style="background-color: #0000ff;">&nbsp@&nbsp<font style="background-color: #964b00;">&nbsp@&nbsp</font>
+     *<font style="background-color: #ff0000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #00ff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #0000ff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #964b00;" color=000000>&nbsp&nbsp&nbsp</font></pre>
+     */
+    public static final CSIColor JADE = new CSIColor(0x00A86B);
+    /**
+     *<pre><font style="background-color: #4CBB17;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #000000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #888888;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffffff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #4CBB17;" color=000000>&nbsp@&nbsp</font>
+     *<font style="background-color: #4CBB17;" color=4CBB17>&nbsp&nbsp&nbsp<font style="background-color: #000000;">&nbsp@&nbsp<font style="background-color: #888888;">&nbsp@&nbsp<font style="background-color: #ffffff;">&nbsp@&nbsp<font style="background-color: #4CBB17;" color=888888>&nbsp@&nbsp</font>
+     *<font style="background-color: #4CBB17;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #000000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #888888;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffffff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #4CBB17;" color=ffffff>&nbsp@&nbsp</font>
+     *
+     *<font style="background-color: #ff0000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #00ff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #0000ff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #964b00;" color=000000>&nbsp&nbsp&nbsp</font>
+     *<font style="background-color: #ff0000;" color=4CBB17>&nbsp@&nbsp<font style="background-color: #ffff00;">&nbsp@&nbsp<font style="background-color: #00ff00;">&nbsp@&nbsp<font style="background-color: #0000ff;">&nbsp@&nbsp<font style="background-color: #964b00;">&nbsp@&nbsp</font>
+     *<font style="background-color: #ff0000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #00ff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #0000ff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #964b00;" color=000000>&nbsp&nbsp&nbsp</font></pre>
+     */
+    public static final CSIColor KELLY_GREEN = new CSIColor(0x4CBB17);
+    /**
+     *<pre><font style="background-color: #C3B091;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #000000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #888888;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffffff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #C3B091;" color=000000>&nbsp@&nbsp</font>
+     *<font style="background-color: #C3B091;" color=C3B091>&nbsp&nbsp&nbsp<font style="background-color: #000000;">&nbsp@&nbsp<font style="background-color: #888888;">&nbsp@&nbsp<font style="background-color: #ffffff;">&nbsp@&nbsp<font style="background-color: #C3B091;" color=888888>&nbsp@&nbsp</font>
+     *<font style="background-color: #C3B091;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #000000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #888888;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffffff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #C3B091;" color=ffffff>&nbsp@&nbsp</font>
+     *
+     *<font style="background-color: #ff0000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #00ff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #0000ff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #964b00;" color=000000>&nbsp&nbsp&nbsp</font>
+     *<font style="background-color: #ff0000;" color=C3B091>&nbsp@&nbsp<font style="background-color: #ffff00;">&nbsp@&nbsp<font style="background-color: #00ff00;">&nbsp@&nbsp<font style="background-color: #0000ff;">&nbsp@&nbsp<font style="background-color: #964b00;">&nbsp@&nbsp</font>
+     *<font style="background-color: #ff0000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #00ff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #0000ff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #964b00;" color=000000>&nbsp&nbsp&nbsp</font></pre>
+     */
+    public static final CSIColor KHAKI = new CSIColor(0xC3B091);
+    /**
+     *<pre><font style="background-color: #F0E68C;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #000000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #888888;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffffff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #F0E68C;" color=000000>&nbsp@&nbsp</font>
+     *<font style="background-color: #F0E68C;" color=F0E68C>&nbsp&nbsp&nbsp<font style="background-color: #000000;">&nbsp@&nbsp<font style="background-color: #888888;">&nbsp@&nbsp<font style="background-color: #ffffff;">&nbsp@&nbsp<font style="background-color: #F0E68C;" color=888888>&nbsp@&nbsp</font>
+     *<font style="background-color: #F0E68C;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #000000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #888888;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffffff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #F0E68C;" color=ffffff>&nbsp@&nbsp</font>
+     *
+     *<font style="background-color: #ff0000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #00ff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #0000ff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #964b00;" color=000000>&nbsp&nbsp&nbsp</font>
+     *<font style="background-color: #ff0000;" color=F0E68C>&nbsp@&nbsp<font style="background-color: #ffff00;">&nbsp@&nbsp<font style="background-color: #00ff00;">&nbsp@&nbsp<font style="background-color: #0000ff;">&nbsp@&nbsp<font style="background-color: #964b00;">&nbsp@&nbsp</font>
+     *<font style="background-color: #ff0000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #00ff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #0000ff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #964b00;" color=000000>&nbsp&nbsp&nbsp</font></pre>
+     */
+    public static final CSIColor LIGHT_KHAKI = new CSIColor(0xF0E68C);
+    /**
+     *<pre><font style="background-color: #B57EDC;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #000000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #888888;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffffff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #B57EDC;" color=000000>&nbsp@&nbsp</font>
+     *<font style="background-color: #B57EDC;" color=B57EDC>&nbsp&nbsp&nbsp<font style="background-color: #000000;">&nbsp@&nbsp<font style="background-color: #888888;">&nbsp@&nbsp<font style="background-color: #ffffff;">&nbsp@&nbsp<font style="background-color: #B57EDC;" color=888888>&nbsp@&nbsp</font>
+     *<font style="background-color: #B57EDC;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #000000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #888888;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffffff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #B57EDC;" color=ffffff>&nbsp@&nbsp</font>
+     *
+     *<font style="background-color: #ff0000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #00ff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #0000ff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #964b00;" color=000000>&nbsp&nbsp&nbsp</font>
+     *<font style="background-color: #ff0000;" color=B57EDC>&nbsp@&nbsp<font style="background-color: #ffff00;">&nbsp@&nbsp<font style="background-color: #00ff00;">&nbsp@&nbsp<font style="background-color: #0000ff;">&nbsp@&nbsp<font style="background-color: #964b00;">&nbsp@&nbsp</font>
+     *<font style="background-color: #ff0000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #00ff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #0000ff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #964b00;" color=000000>&nbsp&nbsp&nbsp</font></pre>
+     */
+    public static final CSIColor LAVENDER_FLORAL = new CSIColor(0xB57EDC);
+    /**
+     *<pre><font style="background-color: #E6E6FA;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #000000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #888888;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffffff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #E6E6FA;" color=000000>&nbsp@&nbsp</font>
+     *<font style="background-color: #E6E6FA;" color=E6E6FA>&nbsp&nbsp&nbsp<font style="background-color: #000000;">&nbsp@&nbsp<font style="background-color: #888888;">&nbsp@&nbsp<font style="background-color: #ffffff;">&nbsp@&nbsp<font style="background-color: #E6E6FA;" color=888888>&nbsp@&nbsp</font>
+     *<font style="background-color: #E6E6FA;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #000000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #888888;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffffff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #E6E6FA;" color=ffffff>&nbsp@&nbsp</font>
+     *
+     *<font style="background-color: #ff0000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #00ff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #0000ff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #964b00;" color=000000>&nbsp&nbsp&nbsp</font>
+     *<font style="background-color: #ff0000;" color=E6E6FA>&nbsp@&nbsp<font style="background-color: #ffff00;">&nbsp@&nbsp<font style="background-color: #00ff00;">&nbsp@&nbsp<font style="background-color: #0000ff;">&nbsp@&nbsp<font style="background-color: #964b00;">&nbsp@&nbsp</font>
+     *<font style="background-color: #ff0000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #00ff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #0000ff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #964b00;" color=000000>&nbsp&nbsp&nbsp</font></pre>
+     */
+    public static final CSIColor LAVENDER = new CSIColor(0xE6E6FA);
+    /**
+     *<pre><font style="background-color: #CCCCFF;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #000000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #888888;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffffff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #CCCCFF;" color=000000>&nbsp@&nbsp</font>
+     *<font style="background-color: #CCCCFF;" color=CCCCFF>&nbsp&nbsp&nbsp<font style="background-color: #000000;">&nbsp@&nbsp<font style="background-color: #888888;">&nbsp@&nbsp<font style="background-color: #ffffff;">&nbsp@&nbsp<font style="background-color: #CCCCFF;" color=888888>&nbsp@&nbsp</font>
+     *<font style="background-color: #CCCCFF;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #000000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #888888;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffffff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #CCCCFF;" color=ffffff>&nbsp@&nbsp</font>
+     *
+     *<font style="background-color: #ff0000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #00ff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #0000ff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #964b00;" color=000000>&nbsp&nbsp&nbsp</font>
+     *<font style="background-color: #ff0000;" color=CCCCFF>&nbsp@&nbsp<font style="background-color: #ffff00;">&nbsp@&nbsp<font style="background-color: #00ff00;">&nbsp@&nbsp<font style="background-color: #0000ff;">&nbsp@&nbsp<font style="background-color: #964b00;">&nbsp@&nbsp</font>
+     *<font style="background-color: #ff0000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #00ff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #0000ff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #964b00;" color=000000>&nbsp&nbsp&nbsp</font></pre>
+     */
+    public static final CSIColor LAVENDER_BLUE = new CSIColor(0xCCCCFF);
+    /**
+     *<pre><font style="background-color: #FFF0F5;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #000000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #888888;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffffff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #FFF0F5;" color=000000>&nbsp@&nbsp</font>
+     *<font style="background-color: #FFF0F5;" color=FFF0F5>&nbsp&nbsp&nbsp<font style="background-color: #000000;">&nbsp@&nbsp<font style="background-color: #888888;">&nbsp@&nbsp<font style="background-color: #ffffff;">&nbsp@&nbsp<font style="background-color: #FFF0F5;" color=888888>&nbsp@&nbsp</font>
+     *<font style="background-color: #FFF0F5;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #000000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #888888;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffffff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #FFF0F5;" color=ffffff>&nbsp@&nbsp</font>
+     *
+     *<font style="background-color: #ff0000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #00ff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #0000ff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #964b00;" color=000000>&nbsp&nbsp&nbsp</font>
+     *<font style="background-color: #ff0000;" color=FFF0F5>&nbsp@&nbsp<font style="background-color: #ffff00;">&nbsp@&nbsp<font style="background-color: #00ff00;">&nbsp@&nbsp<font style="background-color: #0000ff;">&nbsp@&nbsp<font style="background-color: #964b00;">&nbsp@&nbsp</font>
+     *<font style="background-color: #ff0000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #00ff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #0000ff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #964b00;" color=000000>&nbsp&nbsp&nbsp</font></pre>
+     */
+    public static final CSIColor LAVENDER_BLUSH = new CSIColor(0xFFF0F5);
+    /**
+     *<pre><font style="background-color: #C4C3D0;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #000000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #888888;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffffff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #C4C3D0;" color=000000>&nbsp@&nbsp</font>
+     *<font style="background-color: #C4C3D0;" color=C4C3D0>&nbsp&nbsp&nbsp<font style="background-color: #000000;">&nbsp@&nbsp<font style="background-color: #888888;">&nbsp@&nbsp<font style="background-color: #ffffff;">&nbsp@&nbsp<font style="background-color: #C4C3D0;" color=888888>&nbsp@&nbsp</font>
+     *<font style="background-color: #C4C3D0;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #000000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #888888;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffffff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #C4C3D0;" color=ffffff>&nbsp@&nbsp</font>
+     *
+     *<font style="background-color: #ff0000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #00ff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #0000ff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #964b00;" color=000000>&nbsp&nbsp&nbsp</font>
+     *<font style="background-color: #ff0000;" color=C4C3D0>&nbsp@&nbsp<font style="background-color: #ffff00;">&nbsp@&nbsp<font style="background-color: #00ff00;">&nbsp@&nbsp<font style="background-color: #0000ff;">&nbsp@&nbsp<font style="background-color: #964b00;">&nbsp@&nbsp</font>
+     *<font style="background-color: #ff0000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #00ff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #0000ff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #964b00;" color=000000>&nbsp&nbsp&nbsp</font></pre>
+     */
+    public static final CSIColor LAVENDER_GRAY = new CSIColor(0xC4C3D0);
+    /**
+     *<pre><font style="background-color: #EE82EE;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #000000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #888888;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffffff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #EE82EE;" color=000000>&nbsp@&nbsp</font>
+     *<font style="background-color: #EE82EE;" color=EE82EE>&nbsp&nbsp&nbsp<font style="background-color: #000000;">&nbsp@&nbsp<font style="background-color: #888888;">&nbsp@&nbsp<font style="background-color: #ffffff;">&nbsp@&nbsp<font style="background-color: #EE82EE;" color=888888>&nbsp@&nbsp</font>
+     *<font style="background-color: #EE82EE;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #000000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #888888;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffffff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #EE82EE;" color=ffffff>&nbsp@&nbsp</font>
+     *
+     *<font style="background-color: #ff0000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #00ff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #0000ff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #964b00;" color=000000>&nbsp&nbsp&nbsp</font>
+     *<font style="background-color: #ff0000;" color=EE82EE>&nbsp@&nbsp<font style="background-color: #ffff00;">&nbsp@&nbsp<font style="background-color: #00ff00;">&nbsp@&nbsp<font style="background-color: #0000ff;">&nbsp@&nbsp<font style="background-color: #964b00;">&nbsp@&nbsp</font>
+     *<font style="background-color: #ff0000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #00ff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #0000ff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #964b00;" color=000000>&nbsp&nbsp&nbsp</font></pre>
+     */
+    public static final CSIColor LAVENDER_MAGENTA = new CSIColor(0xEE82EE);
+    /**
+     *<pre><font style="background-color: #FBAED2;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #000000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #888888;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffffff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #FBAED2;" color=000000>&nbsp@&nbsp</font>
+     *<font style="background-color: #FBAED2;" color=FBAED2>&nbsp&nbsp&nbsp<font style="background-color: #000000;">&nbsp@&nbsp<font style="background-color: #888888;">&nbsp@&nbsp<font style="background-color: #ffffff;">&nbsp@&nbsp<font style="background-color: #FBAED2;" color=888888>&nbsp@&nbsp</font>
+     *<font style="background-color: #FBAED2;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #000000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #888888;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffffff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #FBAED2;" color=ffffff>&nbsp@&nbsp</font>
+     *
+     *<font style="background-color: #ff0000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #00ff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #0000ff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #964b00;" color=000000>&nbsp&nbsp&nbsp</font>
+     *<font style="background-color: #ff0000;" color=FBAED2>&nbsp@&nbsp<font style="background-color: #ffff00;">&nbsp@&nbsp<font style="background-color: #00ff00;">&nbsp@&nbsp<font style="background-color: #0000ff;">&nbsp@&nbsp<font style="background-color: #964b00;">&nbsp@&nbsp</font>
+     *<font style="background-color: #ff0000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #00ff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #0000ff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #964b00;" color=000000>&nbsp&nbsp&nbsp</font></pre>
+     */
+    public static final CSIColor LAVENDER_PINK = new CSIColor(0xFBAED2);
+    /**
+     *<pre><font style="background-color: #967BB6;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #000000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #888888;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffffff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #967BB6;" color=000000>&nbsp@&nbsp</font>
+     *<font style="background-color: #967BB6;" color=967BB6>&nbsp&nbsp&nbsp<font style="background-color: #000000;">&nbsp@&nbsp<font style="background-color: #888888;">&nbsp@&nbsp<font style="background-color: #ffffff;">&nbsp@&nbsp<font style="background-color: #967BB6;" color=888888>&nbsp@&nbsp</font>
+     *<font style="background-color: #967BB6;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #000000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #888888;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffffff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #967BB6;" color=ffffff>&nbsp@&nbsp</font>
+     *
+     *<font style="background-color: #ff0000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #00ff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #0000ff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #964b00;" color=000000>&nbsp&nbsp&nbsp</font>
+     *<font style="background-color: #ff0000;" color=967BB6>&nbsp@&nbsp<font style="background-color: #ffff00;">&nbsp@&nbsp<font style="background-color: #00ff00;">&nbsp@&nbsp<font style="background-color: #0000ff;">&nbsp@&nbsp<font style="background-color: #964b00;">&nbsp@&nbsp</font>
+     *<font style="background-color: #ff0000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #00ff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #0000ff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #964b00;" color=000000>&nbsp&nbsp&nbsp</font></pre>
+     */
+    public static final CSIColor LAVENDER_PURPLE = new CSIColor(0x967BB6);
+    /**
+     *<pre><font style="background-color: #FBA0E3;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #000000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #888888;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffffff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #FBA0E3;" color=000000>&nbsp@&nbsp</font>
+     *<font style="background-color: #FBA0E3;" color=FBA0E3>&nbsp&nbsp&nbsp<font style="background-color: #000000;">&nbsp@&nbsp<font style="background-color: #888888;">&nbsp@&nbsp<font style="background-color: #ffffff;">&nbsp@&nbsp<font style="background-color: #FBA0E3;" color=888888>&nbsp@&nbsp</font>
+     *<font style="background-color: #FBA0E3;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #000000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #888888;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffffff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #FBA0E3;" color=ffffff>&nbsp@&nbsp</font>
+     *
+     *<font style="background-color: #ff0000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #00ff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #0000ff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #964b00;" color=000000>&nbsp&nbsp&nbsp</font>
+     *<font style="background-color: #ff0000;" color=FBA0E3>&nbsp@&nbsp<font style="background-color: #ffff00;">&nbsp@&nbsp<font style="background-color: #00ff00;">&nbsp@&nbsp<font style="background-color: #0000ff;">&nbsp@&nbsp<font style="background-color: #964b00;">&nbsp@&nbsp</font>
+     *<font style="background-color: #ff0000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #00ff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #0000ff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #964b00;" color=000000>&nbsp&nbsp&nbsp</font></pre>
+     */
+    public static final CSIColor LAVENDER_ROSE = new CSIColor(0xFBA0E3);
+    /**
+     *<pre><font style="background-color: #7CFC00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #000000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #888888;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffffff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #7CFC00;" color=000000>&nbsp@&nbsp</font>
+     *<font style="background-color: #7CFC00;" color=7CFC00>&nbsp&nbsp&nbsp<font style="background-color: #000000;">&nbsp@&nbsp<font style="background-color: #888888;">&nbsp@&nbsp<font style="background-color: #ffffff;">&nbsp@&nbsp<font style="background-color: #7CFC00;" color=888888>&nbsp@&nbsp</font>
+     *<font style="background-color: #7CFC00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #000000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #888888;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffffff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #7CFC00;" color=ffffff>&nbsp@&nbsp</font>
+     *
+     *<font style="background-color: #ff0000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #00ff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #0000ff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #964b00;" color=000000>&nbsp&nbsp&nbsp</font>
+     *<font style="background-color: #ff0000;" color=7CFC00>&nbsp@&nbsp<font style="background-color: #ffff00;">&nbsp@&nbsp<font style="background-color: #00ff00;">&nbsp@&nbsp<font style="background-color: #0000ff;">&nbsp@&nbsp<font style="background-color: #964b00;">&nbsp@&nbsp</font>
+     *<font style="background-color: #ff0000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #00ff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #0000ff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #964b00;" color=000000>&nbsp&nbsp&nbsp</font></pre>
+     */
+    public static final CSIColor LAWN_GREEN = new CSIColor(0x7CFC00);
+    /**
+     *<pre><font style="background-color: #FFFACD;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #000000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #888888;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffffff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #FFFACD;" color=000000>&nbsp@&nbsp</font>
+     *<font style="background-color: #FFFACD;" color=FFFACD>&nbsp&nbsp&nbsp<font style="background-color: #000000;">&nbsp@&nbsp<font style="background-color: #888888;">&nbsp@&nbsp<font style="background-color: #ffffff;">&nbsp@&nbsp<font style="background-color: #FFFACD;" color=888888>&nbsp@&nbsp</font>
+     *<font style="background-color: #FFFACD;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #000000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #888888;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffffff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #FFFACD;" color=ffffff>&nbsp@&nbsp</font>
+     *
+     *<font style="background-color: #ff0000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #00ff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #0000ff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #964b00;" color=000000>&nbsp&nbsp&nbsp</font>
+     *<font style="background-color: #ff0000;" color=FFFACD>&nbsp@&nbsp<font style="background-color: #ffff00;">&nbsp@&nbsp<font style="background-color: #00ff00;">&nbsp@&nbsp<font style="background-color: #0000ff;">&nbsp@&nbsp<font style="background-color: #964b00;">&nbsp@&nbsp</font>
+     *<font style="background-color: #ff0000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #00ff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #0000ff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #964b00;" color=000000>&nbsp&nbsp&nbsp</font></pre>
+     */
+    public static final CSIColor LEMON_CHIFFON = new CSIColor(0xFFFACD);
+    /**
+     *<pre><font style="background-color: #ADD8E6;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #000000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #888888;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffffff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ADD8E6;" color=000000>&nbsp@&nbsp</font>
+     *<font style="background-color: #ADD8E6;" color=ADD8E6>&nbsp&nbsp&nbsp<font style="background-color: #000000;">&nbsp@&nbsp<font style="background-color: #888888;">&nbsp@&nbsp<font style="background-color: #ffffff;">&nbsp@&nbsp<font style="background-color: #ADD8E6;" color=888888>&nbsp@&nbsp</font>
+     *<font style="background-color: #ADD8E6;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #000000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #888888;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffffff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ADD8E6;" color=ffffff>&nbsp@&nbsp</font>
+     *
+     *<font style="background-color: #ff0000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #00ff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #0000ff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #964b00;" color=000000>&nbsp&nbsp&nbsp</font>
+     *<font style="background-color: #ff0000;" color=ADD8E6>&nbsp@&nbsp<font style="background-color: #ffff00;">&nbsp@&nbsp<font style="background-color: #00ff00;">&nbsp@&nbsp<font style="background-color: #0000ff;">&nbsp@&nbsp<font style="background-color: #964b00;">&nbsp@&nbsp</font>
+     *<font style="background-color: #ff0000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #00ff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #0000ff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #964b00;" color=000000>&nbsp&nbsp&nbsp</font></pre>
+     */
+    public static final CSIColor LIGHT_BLUE = new CSIColor(0xADD8E6);
+    /**
+     *<pre><font style="background-color: #FFB6C1;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #000000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #888888;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffffff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #FFB6C1;" color=000000>&nbsp@&nbsp</font>
+     *<font style="background-color: #FFB6C1;" color=FFB6C1>&nbsp&nbsp&nbsp<font style="background-color: #000000;">&nbsp@&nbsp<font style="background-color: #888888;">&nbsp@&nbsp<font style="background-color: #ffffff;">&nbsp@&nbsp<font style="background-color: #FFB6C1;" color=888888>&nbsp@&nbsp</font>
+     *<font style="background-color: #FFB6C1;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #000000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #888888;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffffff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #FFB6C1;" color=ffffff>&nbsp@&nbsp</font>
+     *
+     *<font style="background-color: #ff0000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #00ff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #0000ff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #964b00;" color=000000>&nbsp&nbsp&nbsp</font>
+     *<font style="background-color: #ff0000;" color=FFB6C1>&nbsp@&nbsp<font style="background-color: #ffff00;">&nbsp@&nbsp<font style="background-color: #00ff00;">&nbsp@&nbsp<font style="background-color: #0000ff;">&nbsp@&nbsp<font style="background-color: #964b00;">&nbsp@&nbsp</font>
+     *<font style="background-color: #ff0000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #00ff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #0000ff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #964b00;" color=000000>&nbsp&nbsp&nbsp</font></pre>
+     */
+    public static final CSIColor LIGHT_PINK = new CSIColor(0xFFB6C1);
+    /**
+     *<pre><font style="background-color: #C8A2C8;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #000000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #888888;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffffff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #C8A2C8;" color=000000>&nbsp@&nbsp</font>
+     *<font style="background-color: #C8A2C8;" color=C8A2C8>&nbsp&nbsp&nbsp<font style="background-color: #000000;">&nbsp@&nbsp<font style="background-color: #888888;">&nbsp@&nbsp<font style="background-color: #ffffff;">&nbsp@&nbsp<font style="background-color: #C8A2C8;" color=888888>&nbsp@&nbsp</font>
+     *<font style="background-color: #C8A2C8;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #000000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #888888;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffffff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #C8A2C8;" color=ffffff>&nbsp@&nbsp</font>
+     *
+     *<font style="background-color: #ff0000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #00ff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #0000ff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #964b00;" color=000000>&nbsp&nbsp&nbsp</font>
+     *<font style="background-color: #ff0000;" color=C8A2C8>&nbsp@&nbsp<font style="background-color: #ffff00;">&nbsp@&nbsp<font style="background-color: #00ff00;">&nbsp@&nbsp<font style="background-color: #0000ff;">&nbsp@&nbsp<font style="background-color: #964b00;">&nbsp@&nbsp</font>
+     *<font style="background-color: #ff0000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #00ff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #0000ff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #964b00;" color=000000>&nbsp&nbsp&nbsp</font></pre>
+     */
+    public static final CSIColor LILAC = new CSIColor(0xC8A2C8);
+    /**
+     *<pre><font style="background-color: #FDE910;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #000000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #888888;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffffff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #FDE910;" color=000000>&nbsp@&nbsp</font>
+     *<font style="background-color: #FDE910;" color=FDE910>&nbsp&nbsp&nbsp<font style="background-color: #000000;">&nbsp@&nbsp<font style="background-color: #888888;">&nbsp@&nbsp<font style="background-color: #ffffff;">&nbsp@&nbsp<font style="background-color: #FDE910;" color=888888>&nbsp@&nbsp</font>
+     *<font style="background-color: #FDE910;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #000000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #888888;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffffff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #FDE910;" color=ffffff>&nbsp@&nbsp</font>
+     *
+     *<font style="background-color: #ff0000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #00ff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #0000ff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #964b00;" color=000000>&nbsp&nbsp&nbsp</font>
+     *<font style="background-color: #ff0000;" color=FDE910>&nbsp@&nbsp<font style="background-color: #ffff00;">&nbsp@&nbsp<font style="background-color: #00ff00;">&nbsp@&nbsp<font style="background-color: #0000ff;">&nbsp@&nbsp<font style="background-color: #964b00;">&nbsp@&nbsp</font>
+     *<font style="background-color: #ff0000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #00ff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #0000ff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #964b00;" color=000000>&nbsp&nbsp&nbsp</font></pre>
+     */
+    public static final CSIColor LEMON = new CSIColor(0xFDE910);
+    /**
+     *<pre><font style="background-color: #BFFF00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #000000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #888888;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffffff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #BFFF00;" color=000000>&nbsp@&nbsp</font>
+     *<font style="background-color: #BFFF00;" color=BFFF00>&nbsp&nbsp&nbsp<font style="background-color: #000000;">&nbsp@&nbsp<font style="background-color: #888888;">&nbsp@&nbsp<font style="background-color: #ffffff;">&nbsp@&nbsp<font style="background-color: #BFFF00;" color=888888>&nbsp@&nbsp</font>
+     *<font style="background-color: #BFFF00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #000000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #888888;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffffff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #BFFF00;" color=ffffff>&nbsp@&nbsp</font>
+     *
+     *<font style="background-color: #ff0000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #00ff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #0000ff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #964b00;" color=000000>&nbsp&nbsp&nbsp</font>
+     *<font style="background-color: #ff0000;" color=BFFF00>&nbsp@&nbsp<font style="background-color: #ffff00;">&nbsp@&nbsp<font style="background-color: #00ff00;">&nbsp@&nbsp<font style="background-color: #0000ff;">&nbsp@&nbsp<font style="background-color: #964b00;">&nbsp@&nbsp</font>
+     *<font style="background-color: #ff0000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #00ff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #0000ff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #964b00;" color=000000>&nbsp&nbsp&nbsp</font></pre>
+     */
+    public static final CSIColor LIGHT_LIME = new CSIColor(0xBFFF00);
+    /**
+     *<pre><font style="background-color: #32CD32;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #000000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #888888;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffffff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #32CD32;" color=000000>&nbsp@&nbsp</font>
+     *<font style="background-color: #32CD32;" color=32CD32>&nbsp&nbsp&nbsp<font style="background-color: #000000;">&nbsp@&nbsp<font style="background-color: #888888;">&nbsp@&nbsp<font style="background-color: #ffffff;">&nbsp@&nbsp<font style="background-color: #32CD32;" color=888888>&nbsp@&nbsp</font>
+     *<font style="background-color: #32CD32;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #000000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #888888;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffffff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #32CD32;" color=ffffff>&nbsp@&nbsp</font>
+     *
+     *<font style="background-color: #ff0000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #00ff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #0000ff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #964b00;" color=000000>&nbsp&nbsp&nbsp</font>
+     *<font style="background-color: #ff0000;" color=32CD32>&nbsp@&nbsp<font style="background-color: #ffff00;">&nbsp@&nbsp<font style="background-color: #00ff00;">&nbsp@&nbsp<font style="background-color: #0000ff;">&nbsp@&nbsp<font style="background-color: #964b00;">&nbsp@&nbsp</font>
+     *<font style="background-color: #ff0000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #00ff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #0000ff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #964b00;" color=000000>&nbsp&nbsp&nbsp</font></pre>
+     */
+    public static final CSIColor LIME_GREEN = new CSIColor(0x32CD32);
+    /**
+     *<pre><font style="background-color: #FAF0E6;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #000000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #888888;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffffff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #FAF0E6;" color=000000>&nbsp@&nbsp</font>
+     *<font style="background-color: #FAF0E6;" color=FAF0E6>&nbsp&nbsp&nbsp<font style="background-color: #000000;">&nbsp@&nbsp<font style="background-color: #888888;">&nbsp@&nbsp<font style="background-color: #ffffff;">&nbsp@&nbsp<font style="background-color: #FAF0E6;" color=888888>&nbsp@&nbsp</font>
+     *<font style="background-color: #FAF0E6;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #000000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #888888;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffffff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #FAF0E6;" color=ffffff>&nbsp@&nbsp</font>
+     *
+     *<font style="background-color: #ff0000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #00ff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #0000ff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #964b00;" color=000000>&nbsp&nbsp&nbsp</font>
+     *<font style="background-color: #ff0000;" color=FAF0E6>&nbsp@&nbsp<font style="background-color: #ffff00;">&nbsp@&nbsp<font style="background-color: #00ff00;">&nbsp@&nbsp<font style="background-color: #0000ff;">&nbsp@&nbsp<font style="background-color: #964b00;">&nbsp@&nbsp</font>
+     *<font style="background-color: #ff0000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #00ff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #0000ff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #964b00;" color=000000>&nbsp&nbsp&nbsp</font></pre>
+     */
+    public static final CSIColor LINEN = new CSIColor(0xFAF0E6);
+    /**
+     *<pre><font style="background-color: #CA1F7B;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #000000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #888888;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffffff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #CA1F7B;" color=000000>&nbsp@&nbsp</font>
+     *<font style="background-color: #CA1F7B;" color=CA1F7B>&nbsp&nbsp&nbsp<font style="background-color: #000000;">&nbsp@&nbsp<font style="background-color: #888888;">&nbsp@&nbsp<font style="background-color: #ffffff;">&nbsp@&nbsp<font style="background-color: #CA1F7B;" color=888888>&nbsp@&nbsp</font>
+     *<font style="background-color: #CA1F7B;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #000000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #888888;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffffff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #CA1F7B;" color=ffffff>&nbsp@&nbsp</font>
+     *
+     *<font style="background-color: #ff0000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #00ff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #0000ff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #964b00;" color=000000>&nbsp&nbsp&nbsp</font>
+     *<font style="background-color: #ff0000;" color=CA1F7B>&nbsp@&nbsp<font style="background-color: #ffff00;">&nbsp@&nbsp<font style="background-color: #00ff00;">&nbsp@&nbsp<font style="background-color: #0000ff;">&nbsp@&nbsp<font style="background-color: #964b00;">&nbsp@&nbsp</font>
+     *<font style="background-color: #ff0000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #00ff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #0000ff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #964b00;" color=000000>&nbsp&nbsp&nbsp</font></pre>
+     */
+    public static final CSIColor MAGENTA_DYE = new CSIColor(0xCA1F7B);
+    /**
+     *<pre><font style="background-color: #AAF0D1;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #000000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #888888;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffffff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #AAF0D1;" color=000000>&nbsp@&nbsp</font>
+     *<font style="background-color: #AAF0D1;" color=AAF0D1>&nbsp&nbsp&nbsp<font style="background-color: #000000;">&nbsp@&nbsp<font style="background-color: #888888;">&nbsp@&nbsp<font style="background-color: #ffffff;">&nbsp@&nbsp<font style="background-color: #AAF0D1;" color=888888>&nbsp@&nbsp</font>
+     *<font style="background-color: #AAF0D1;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #000000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #888888;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffffff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #AAF0D1;" color=ffffff>&nbsp@&nbsp</font>
+     *
+     *<font style="background-color: #ff0000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #00ff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #0000ff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #964b00;" color=000000>&nbsp&nbsp&nbsp</font>
+     *<font style="background-color: #ff0000;" color=AAF0D1>&nbsp@&nbsp<font style="background-color: #ffff00;">&nbsp@&nbsp<font style="background-color: #00ff00;">&nbsp@&nbsp<font style="background-color: #0000ff;">&nbsp@&nbsp<font style="background-color: #964b00;">&nbsp@&nbsp</font>
+     *<font style="background-color: #ff0000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #00ff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #0000ff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #964b00;" color=000000>&nbsp&nbsp&nbsp</font></pre>
+     */
+    public static final CSIColor MAGIC_MINT = new CSIColor(0xAAF0D1);
+    /**
+     *<pre><font style="background-color: #F8F4FF;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #000000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #888888;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffffff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #F8F4FF;" color=000000>&nbsp@&nbsp</font>
+     *<font style="background-color: #F8F4FF;" color=F8F4FF>&nbsp&nbsp&nbsp<font style="background-color: #000000;">&nbsp@&nbsp<font style="background-color: #888888;">&nbsp@&nbsp<font style="background-color: #ffffff;">&nbsp@&nbsp<font style="background-color: #F8F4FF;" color=888888>&nbsp@&nbsp</font>
+     *<font style="background-color: #F8F4FF;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #000000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #888888;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffffff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #F8F4FF;" color=ffffff>&nbsp@&nbsp</font>
+     *
+     *<font style="background-color: #ff0000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #00ff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #0000ff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #964b00;" color=000000>&nbsp&nbsp&nbsp</font>
+     *<font style="background-color: #ff0000;" color=F8F4FF>&nbsp@&nbsp<font style="background-color: #ffff00;">&nbsp@&nbsp<font style="background-color: #00ff00;">&nbsp@&nbsp<font style="background-color: #0000ff;">&nbsp@&nbsp<font style="background-color: #964b00;">&nbsp@&nbsp</font>
+     *<font style="background-color: #ff0000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #00ff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #0000ff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #964b00;" color=000000>&nbsp&nbsp&nbsp</font></pre>
+     */
+    public static final CSIColor MAGNOLIA = new CSIColor(0xF8F4FF);
+    /**
+     *<pre><font style="background-color: #0BDA51;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #000000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #888888;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffffff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #0BDA51;" color=000000>&nbsp@&nbsp</font>
+     *<font style="background-color: #0BDA51;" color=0BDA51>&nbsp&nbsp&nbsp<font style="background-color: #000000;">&nbsp@&nbsp<font style="background-color: #888888;">&nbsp@&nbsp<font style="background-color: #ffffff;">&nbsp@&nbsp<font style="background-color: #0BDA51;" color=888888>&nbsp@&nbsp</font>
+     *<font style="background-color: #0BDA51;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #000000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #888888;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffffff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #0BDA51;" color=ffffff>&nbsp@&nbsp</font>
+     *
+     *<font style="background-color: #ff0000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #00ff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #0000ff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #964b00;" color=000000>&nbsp&nbsp&nbsp</font>
+     *<font style="background-color: #ff0000;" color=0BDA51>&nbsp@&nbsp<font style="background-color: #ffff00;">&nbsp@&nbsp<font style="background-color: #00ff00;">&nbsp@&nbsp<font style="background-color: #0000ff;">&nbsp@&nbsp<font style="background-color: #964b00;">&nbsp@&nbsp</font>
+     *<font style="background-color: #ff0000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #00ff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #0000ff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #964b00;" color=000000>&nbsp&nbsp&nbsp</font></pre>
+     */
+    public static final CSIColor MALACHITE = new CSIColor(0x0BDA51);
+    /**
+     *<pre><font style="background-color: #800000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #000000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #888888;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffffff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #800000;" color=000000>&nbsp@&nbsp</font>
+     *<font style="background-color: #800000;" color=800000>&nbsp&nbsp&nbsp<font style="background-color: #000000;">&nbsp@&nbsp<font style="background-color: #888888;">&nbsp@&nbsp<font style="background-color: #ffffff;">&nbsp@&nbsp<font style="background-color: #800000;" color=888888>&nbsp@&nbsp</font>
+     *<font style="background-color: #800000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #000000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #888888;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffffff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #800000;" color=ffffff>&nbsp@&nbsp</font>
+     *
+     *<font style="background-color: #ff0000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #00ff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #0000ff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #964b00;" color=000000>&nbsp&nbsp&nbsp</font>
+     *<font style="background-color: #ff0000;" color=800000>&nbsp@&nbsp<font style="background-color: #ffff00;">&nbsp@&nbsp<font style="background-color: #00ff00;">&nbsp@&nbsp<font style="background-color: #0000ff;">&nbsp@&nbsp<font style="background-color: #964b00;">&nbsp@&nbsp</font>
+     *<font style="background-color: #ff0000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #00ff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #0000ff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #964b00;" color=000000>&nbsp&nbsp&nbsp</font></pre>
+     */
+    public static final CSIColor MAROON = new CSIColor(0x800000);
+    /**
+     *<pre><font style="background-color: #B03060;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #000000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #888888;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffffff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #B03060;" color=000000>&nbsp@&nbsp</font>
+     *<font style="background-color: #B03060;" color=B03060>&nbsp&nbsp&nbsp<font style="background-color: #000000;">&nbsp@&nbsp<font style="background-color: #888888;">&nbsp@&nbsp<font style="background-color: #ffffff;">&nbsp@&nbsp<font style="background-color: #B03060;" color=888888>&nbsp@&nbsp</font>
+     *<font style="background-color: #B03060;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #000000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #888888;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffffff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #B03060;" color=ffffff>&nbsp@&nbsp</font>
+     *
+     *<font style="background-color: #ff0000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #00ff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #0000ff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #964b00;" color=000000>&nbsp&nbsp&nbsp</font>
+     *<font style="background-color: #ff0000;" color=B03060>&nbsp@&nbsp<font style="background-color: #ffff00;">&nbsp@&nbsp<font style="background-color: #00ff00;">&nbsp@&nbsp<font style="background-color: #0000ff;">&nbsp@&nbsp<font style="background-color: #964b00;">&nbsp@&nbsp</font>
+     *<font style="background-color: #ff0000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #00ff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #0000ff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #964b00;" color=000000>&nbsp&nbsp&nbsp</font></pre>
+     */
+    public static final CSIColor LIGHT_MAROON = new CSIColor(0xB03060);
+    /**
+     *<pre><font style="background-color: #73C2FB;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #000000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #888888;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffffff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #73C2FB;" color=000000>&nbsp@&nbsp</font>
+     *<font style="background-color: #73C2FB;" color=73C2FB>&nbsp&nbsp&nbsp<font style="background-color: #000000;">&nbsp@&nbsp<font style="background-color: #888888;">&nbsp@&nbsp<font style="background-color: #ffffff;">&nbsp@&nbsp<font style="background-color: #73C2FB;" color=888888>&nbsp@&nbsp</font>
+     *<font style="background-color: #73C2FB;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #000000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #888888;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffffff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #73C2FB;" color=ffffff>&nbsp@&nbsp</font>
+     *
+     *<font style="background-color: #ff0000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #00ff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #0000ff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #964b00;" color=000000>&nbsp&nbsp&nbsp</font>
+     *<font style="background-color: #ff0000;" color=73C2FB>&nbsp@&nbsp<font style="background-color: #ffff00;">&nbsp@&nbsp<font style="background-color: #00ff00;">&nbsp@&nbsp<font style="background-color: #0000ff;">&nbsp@&nbsp<font style="background-color: #964b00;">&nbsp@&nbsp</font>
+     *<font style="background-color: #ff0000;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #ffff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #00ff00;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #0000ff;" color=000000>&nbsp&nbsp&nbsp<font style="background-color: #964b00;" color=000000>&nbsp&nbsp&nbsp</font></pre>
+     */
+    public static final CSIColor MAYA_BLUE = new CSIColor(0x73C2FB),  MAUVE = new CSIColor(0xE0B0FF),
+            MAUVE_TAUPE = new CSIColor(0x915F6D),  MEDIUM_BLUE = new CSIColor(0x0000CD),
+            MEDIUM_CARMINE = new CSIColor(0xAF4035),  MEDIUM_LAVENDER_MAGENTA = new CSIColor(0xCC99CC),
+            MEDIUM_PURPLE = new CSIColor(0x9370DB),  MEDIUM_SPRING_GREEN = new CSIColor(0x00FA9A),
+            MIDNIGHT_BLUE = new CSIColor(0x003366),  MINT_GREEN = new CSIColor(0x98FF98),
+            MISTY_ROSE = new CSIColor(0xFFE4E1),  MOSS_GREEN = new CSIColor(0xADDFAD),
+            MOUNTBATTEN_PINK = new CSIColor(0x997A8D),  MUSTARD = new CSIColor(0xFFDB58),
+            MYRTLE = new CSIColor(0x21421E),  NAVAJO_WHITE = new CSIColor(0xFFDEAD),
+            NAVY_BLUE = new CSIColor(0x000080),  OCHRE = new CSIColor(0xCC7722),
+            OLD_GOLD = new CSIColor(0xCFB53B),  OLD_LACE = new CSIColor(0xFDF5E6),
+            OLD_LAVENDER = new CSIColor(0x796878),  OLD_ROSE = new CSIColor(0xC08081),
+            OLIVE = new CSIColor(0x808000),  OLIVE_DRAB = new CSIColor(0x6B8E23),
+            OLIVINE = new CSIColor(0x9AB973),  ORANGE_PEEL = new CSIColor(0xFFA000),
+            ORANGE_RED = new CSIColor(0xFF4500),  ORCHID = new CSIColor(0xDA70D6),
+            PALE_BLUE = new CSIColor(0xAFEEEE),  PALE_BROWN = new CSIColor(0x987654),
+            PALE_CARMINE = new CSIColor(0xAF4035),  PALE_CHESTNUT = new CSIColor(0xDDADAF),
+            PALE_CORNFLOWER_BLUE = new CSIColor(0xABCDEF),  PALE_MAGENTA = new CSIColor(0xF984E5),
+            PALE_PINK = new CSIColor(0xFADADD),  PALE_RED_VIOLET = new CSIColor(0xDB7093),
+            PAPAYA_WHIP = new CSIColor(0xFFEFD5),  PASTEL_GREEN = new CSIColor(0x77DD77),
+            PASTEL_PINK = new CSIColor(0xFFD1DC),  PEACH = new CSIColor(0xFFE5B4),
+            PEACH_ORANGE = new CSIColor(0xFFCC99),  PEACH_YELLOW = new CSIColor(0xFADFAD),
+            PEAR = new CSIColor(0xD1E231),  PERIWINKLE = new CSIColor(0xCCCCFF),
+            PERSIAN_BLUE = new CSIColor(0x1C39BB),  PERSIAN_GREEN = new CSIColor(0x00A693),
+            PERSIAN_INDIGO = new CSIColor(0x32127A),  PERSIAN_RED = new CSIColor(0xCC3333),
+            PERSIAN_PINK = new CSIColor(0xF77FBE),  PERSIAN_ROSE = new CSIColor(0xFE28A2),
+            PERSIMMON = new CSIColor(0xEC5800),  PINE_GREEN = new CSIColor(0x01796F),
+            TRUE_PINK = new CSIColor(0xFFC0CB),  PINK_ORANGE = new CSIColor(0xFF9966),
+            PLATINUM = new CSIColor(0xE5E4E2),  PLUM = new CSIColor(0xCC99CC),
+            POWDER_BLUE = new CSIColor(0xB0E0E6),  PUCE = new CSIColor(0xCC8899),
+            PRUSSIAN_BLUE = new CSIColor(0x003153),  PSYCHEDELIC_PURPLE = new CSIColor(0xDD00FF),
+            PUMPKIN = new CSIColor(0xFF7518),  PURPLE_TAUPE = new CSIColor(0x50404D),
+            RAW_UMBER = new CSIColor(0x734A12),  RAZZMATAZZ = new CSIColor(0xE30B5C),
+            RED_PIGMENT = new CSIColor(0xED1C24),  RED_VIOLET = new CSIColor(0xC71585),
+            RICH_CARMINE = new CSIColor(0xD70040),  ROBIN_EGG_BLUE = new CSIColor(0x00CCCC),
+            ROSE = new CSIColor(0xFF007F),  ROSE_MADDER = new CSIColor(0xE32636),
+            ROSE_TAUPE = new CSIColor(0x905D5D),  ROYAL_BLUE = new CSIColor(0x4169E1),
+            ROYAL_PURPLE = new CSIColor(0x6B3FA0),  RUBY = new CSIColor(0xE0115F),
+            RUSSET = new CSIColor(0x80461B),  RUST = new CSIColor(0xB7410E),
+            SAFETY_ORANGE = new CSIColor(0xFF6600),  SAFFRON = new CSIColor(0xF4C430),
+            SALMON = new CSIColor(0xFF8C69),  SANDY_BROWN = new CSIColor(0xF4A460),
+            SANGRIA = new CSIColor(0x92000A),  SAPPHIRE = new CSIColor(0x082567),
+            SCARLET = new CSIColor(0xFF2400),  SCHOOL_BUS_YELLOW = new CSIColor(0xFFD800),
+            SEA_GREEN = new CSIColor(0x2E8B57),  SEASHELL = new CSIColor(0xFFF5EE),
+            SELECTIVE_YELLOW = new CSIColor(0xFFBA00),  SEPIA = new CSIColor(0x704214),
+            SHAMROCK_GREEN = new CSIColor(0x009E60),  SHOCKING_PINK = new CSIColor(0xFC0FC0),
+            SILVER = new CSIColor(0xC0C0C0),  SKY_BLUE = new CSIColor(0x87CEEB),
+            SLATE_GRAY = new CSIColor(0x708090),  SMALT = new CSIColor(0x003399),
+            SPRING_BUD = new CSIColor(0xA7FC00),  SPRING_GREEN = new CSIColor(0x00FF7F),
+            STEEL_BLUE = new CSIColor(0x4682B4),  TAN = new CSIColor(0xD2B48C),
+            TANGERINE = new CSIColor(0xF28500),
+            TAUPE = new CSIColor(0x483C32),  TEA_GREEN = new CSIColor(0xD0F0C0),
+            TEA_ORANGE = new CSIColor(0xF88379),  TEA_ROSE = new CSIColor(0xF4C2C2),
+            TAWNY = new CSIColor(0xCD5700),  TERRA_COTTA = new CSIColor(0xE2725B),
+            THISTLE = new CSIColor(0xD8BFD8),  TOMATO = new CSIColor(0xFF6347),
+            TURQUOISE = new CSIColor(0x30D5C8),  TYRIAN_PURPLE = new CSIColor(0x66023C),
+            ULTRAMARINE = new CSIColor(0x120A8F),  VEGAS_GOLD = new CSIColor(0xC5B358),
+            VERMILION = new CSIColor(0xE34234),  VIOLET = new CSIColor(0x8B00FF),
+            LIGHT_VIOLET = new CSIColor(0xEE82EE),  VIRIDIAN = new CSIColor(0x40826D),
+            WHEAT = new CSIColor(0xF5DEB3),  WISTERIA = new CSIColor(0xC9A0DC),
+            YELLOW_GREEN = new CSIColor(0x9ACD32),  ZINNWALDITE = new CSIColor(0xEBC2AF);
     public static CSIColor[] FULL_PALLET = {
         BLACK,
         BLUE,
@@ -1103,7 +2052,6 @@ public class CSIColor implements Comparable {
         STEEL_BLUE,
         TAN,
         TANGERINE,
-        TANGERINE_YELLOW,
         TAUPE,
         TEA_GREEN,
         TEA_ORANGE,
@@ -1127,9 +2075,594 @@ public class CSIColor implements Comparable {
     };
     public static CSIColor[] DEFAULT_PALLET = {BLACK, DARK_BLUE, GREEN, TEAL, DARK_RED, PURPLE, BROWN, LIGHT_GRAY, GRAY, BLUE, LIME, CYAN, RED, MAGENTA, YELLOW, WHITE};
 
+    /**Returns the name of the CSIColor constant that matches this color.
+     * If there is no such content, returns "none"
+     */
+    public String toString(){
+        String ret = "none";
+
+        if(this.value == BLACK.value){
+            ret = "BLACK";
+        }else if(this.value == BLUE.value){
+            ret = "BLUE";
+        }else if(this.value == BROWN.value){
+            ret = "BROWN";
+        }else if(this.value == CYAN.value){
+            ret = "CYAN";
+        }else if(this.value == DARK_BLUE.value){
+            ret = "DARK_BLUE";
+        }else if(this.value == DARK_GRAY.value){
+            ret = "DARK_GRAY";
+        }else if(this.value == DARK_RED.value){
+            ret = "DARK_RED";
+        }else if(this.value == GRAY.value){
+            ret = "GRAY";
+        }else if(this.value == GREEN.value){
+            ret = "GREEN";
+        }else if(this.value == LIME.value){
+            ret = "LIME";
+        }else if(this.value == LIGHT_GRAY.value){
+            ret = "LIGHT_GRAY";
+        }else if(this.value == MAGENTA.value){
+            ret = "MAGENTA";
+        }else if(this.value == ORANGE.value){
+            ret = "ORANGE";
+        }else if(this.value == PINK.value){
+            ret = "PINK";
+        }else if(this.value == PURPLE.value){
+            ret = "PURPLE";
+        }else if(this.value == TEAL.value){
+            ret = "TEAL";
+        }else if(this.value == RED.value){
+            ret = "RED";
+        }else if(this.value == WHITE.value){
+            ret = "WHITE";
+        }else if(this.value == YELLOW.value){
+            ret = "YELLOW";
+        }else if(this.value == ALICE_BLUE.value){
+            ret = "ALICE_BLUE";
+        }else if(this.value == ALIZARIN.value){
+            ret = "ALIZARIN";
+        }else if(this.value == AMARANTH.value){
+            ret = "AMARANTH";
+        }else if(this.value == AMBER.value){
+            ret = "AMBER";
+        }else if(this.value == AMETHYST.value){
+            ret = "AMETHYST";
+        }else if(this.value == APRICOT.value){
+            ret = "APRICOT";
+        }else if(this.value == AQUAMARINE.value){
+            ret = "AQUAMARINE";
+        }else if(this.value == ARMY_GREEN.value){
+            ret = "ARMY_GREEN";
+        }else if(this.value == ASPARAGUS.value){
+            ret = "ASPARAGUS";
+        }else if(this.value == ATOMIC_TANGERINE.value){
+            ret = "ATOMIC_TANGERINE";
+        }else if(this.value == AUBURN.value){
+            ret = "AUBURN";
+        }else if(this.value == AZUL.value){
+            ret = "AZUL";
+        }else if(this.value == AZURE.value){
+            ret = "AZURE";
+        }else if(this.value == BABY_BLUE.value){
+            ret = "BABY_BLUE";
+        }else if(this.value == BEIGE.value){
+            ret = "BEIGE";
+        }else if(this.value == BISTRE.value){
+            ret = "BISTRE";
+        }else if(this.value == PIGMENT_BLUE.value){
+            ret = "PIGMENT_BLUE";
+        }else if(this.value == BLUE_GREEN.value){
+            ret = "BLUE_GREEN";
+        }else if(this.value == BLUE_VIOLET.value){
+            ret = "BLUE_VIOLET";
+        }else if(this.value == BONDI_BLUE.value){
+            ret = "BONDI_BLUE";
+        }else if(this.value == BRASS.value){
+            ret = "BRASS";
+        }else if(this.value == BRIGHT_GREEN.value){
+            ret = "BRIGHT_GREEN";
+        }else if(this.value == BRIGHT_PINK.value){
+            ret = "BRIGHT_PINK";
+        }else if(this.value == BRIGHT_TURQUOISE.value){
+            ret = "BRIGHT_TURQUOISE";
+        }else if(this.value == BRILLIANT_ROSE.value){
+            ret = "BRILLIANT_ROSE";
+        }else if(this.value == BRONZE.value){
+            ret = "BRONZE";
+        }else if(this.value == BROWNER.value){
+            ret = "BROWNER";
+        }else if(this.value == BUFF.value){
+            ret = "BUFF";
+        }else if(this.value == BURGUNDY.value){
+            ret = "BURGUNDY";
+        }else if(this.value == BURNT_ORANGE.value){
+            ret = "BURNT_ORANGE";
+        }else if(this.value == BURNT_SIENNA.value){
+            ret = "BURNT_SIENNA";
+        }else if(this.value == BURNT_UMBER.value){
+            ret = "BURNT_UMBER";
+        }else if(this.value == CAMO_GREEN.value){
+            ret = "CAMO_GREEN";
+        }else if(this.value == CAPUT_MORTUUM.value){
+            ret = "CAPUT_MORTUUM";
+        }else if(this.value == CARDINAL.value){
+            ret = "CARDINAL";
+        }else if(this.value == CARMINE.value){
+            ret = "CARMINE";
+        }else if(this.value == CARNATION_PINK.value){
+            ret = "CARNATION_PINK";
+        }else if(this.value == CAROLINA_BLUE.value){
+            ret = "CAROLINA_BLUE";
+        }else if(this.value == CARROT_ORANGE.value){
+            ret = "CARROT_ORANGE";
+        }else if(this.value == CELADON.value){
+            ret = "CELADON";
+        }else if(this.value == CERISE.value){
+            ret = "CERISE";
+        }else if(this.value == CERULEAN.value){
+            ret = "CERULEAN";
+        }else if(this.value == CERULEAN_BLUE.value){
+            ret = "CERULEAN_BLUE";
+        }else if(this.value == CHARTREUSE.value){
+            ret = "CHARTREUSE";
+        }else if(this.value == CHARTREUSE_GREEN.value){
+            ret = "CHARTREUSE_GREEN";
+        }else if(this.value == CHERRY_BLOSSOM.value){
+            ret = "CHERRY_BLOSSOM";
+        }else if(this.value == CHESTNUT.value){
+            ret = "CHESTNUT";
+        }else if(this.value == CHOCOLATE.value){
+            ret = "CHOCOLATE";
+        }else if(this.value == CINNABAR.value){
+            ret = "CINNABAR";
+        }else if(this.value == CINNAMON.value){
+            ret = "CINNAMON";
+        }else if(this.value == COBALT.value){
+            ret = "COBALT";
+        }else if(this.value == COLUMBIA_BLUE.value){
+            ret = "COLUMBIA_BLUE";
+        }else if(this.value == COPPER.value){
+            ret = "COPPER";
+        }else if(this.value == COPPER_ROSE.value){
+            ret = "COPPER_ROSE";
+        }else if(this.value == CORAL.value){
+            ret = "CORAL";
+        }else if(this.value == CORAL_RED.value){
+            ret = "CORAL_RED";
+        }else if(this.value == CORN.value){
+            ret = "CORN";
+        }else if(this.value == CORNFLOWER_BLUE.value){
+            ret = "CORNFLOWER_BLUE";
+        }else if(this.value == COSMIC_LATTE.value){
+            ret = "COSMIC_LATTE";
+        }else if(this.value == CREAM.value){
+            ret = "CREAM";
+        }else if(this.value == CRIMSON.value){
+            ret = "CRIMSON";
+        }else if(this.value == DARK_BROWN.value){
+            ret = "DARK_BROWN";
+        }else if(this.value == DARK_CERULEAN.value){
+            ret = "DARK_CERULEAN";
+        }else if(this.value == DARK_CHESTNUT.value){
+            ret = "DARK_CHESTNUT";
+        }else if(this.value == DARK_CORAL.value){
+            ret = "DARK_CORAL";
+        }else if(this.value == DARK_GOLDENROD.value){
+            ret = "DARK_GOLDENROD";
+        }else if(this.value == DARK_GREEN.value){
+            ret = "DARK_GREEN";
+        }else if(this.value == DARK_KHAKI.value){
+            ret = "DARK_KHAKI";
+        }else if(this.value == DARK_PASTEL_GREEN.value){
+            ret = "DARK_PASTEL_GREEN";
+        }else if(this.value == DARK_PINK.value){
+            ret = "DARK_PINK";
+        }else if(this.value == DARK_SCARLET.value){
+            ret = "DARK_SCARLET";
+        }else if(this.value == DARK_SALMON.value){
+            ret = "DARK_SALMON";
+        }else if(this.value == DARK_SLATE_GRAY.value){
+            ret = "DARK_SLATE_GRAY";
+        }else if(this.value == DARK_SPRING_GREEN.value){
+            ret = "DARK_SPRING_GREEN";
+        }else if(this.value == DARK_TAN.value){
+            ret = "DARK_TAN";
+        }else if(this.value == DARK_TURQUOISE.value){
+            ret = "DARK_TURQUOISE";
+        }else if(this.value == DARK_VIOLET.value){
+            ret = "DARK_VIOLET";
+        }else if(this.value == DEEP_CERISE.value){
+            ret = "DEEP_CERISE";
+        }else if(this.value == DEEP_CHESTNUT.value){
+            ret = "DEEP_CHESTNUT";
+        }else if(this.value == DEEP_FUCHSIA.value){
+            ret = "DEEP_FUCHSIA";
+        }else if(this.value == DEEP_LILAC.value){
+            ret = "DEEP_LILAC";
+        }else if(this.value == DEEP_MAGENTA.value){
+            ret = "DEEP_MAGENTA";
+        }else if(this.value == DEEP_PEACH.value){
+            ret = "DEEP_PEACH";
+        }else if(this.value == DEEP_PINK.value){
+            ret = "DEEP_PINK";
+        }else if(this.value == DENIM.value){
+            ret = "DENIM";
+        }else if(this.value == DODGER_BLUE.value){
+            ret = "DODGER_BLUE";
+        }else if(this.value == ECRU.value){
+            ret = "ECRU";
+        }else if(this.value == EGYPTIAN_BLUE.value){
+            ret = "EGYPTIAN_BLUE";
+        }else if(this.value == ELECTRIC_BLUE.value){
+            ret = "ELECTRIC_BLUE";
+        }else if(this.value == ELECTRIC_GREEN.value){
+            ret = "ELECTRIC_GREEN";
+        }else if(this.value == ELECTRIC_INDIGO.value){
+            ret = "ELECTRIC_INDIGO";
+        }else if(this.value == ELECTRIC_LIME.value){
+            ret = "ELECTRIC_LIME";
+        }else if(this.value == ELECTRIC_PURPLE.value){
+            ret = "ELECTRIC_PURPLE";
+        }else if(this.value == EMERALD.value){
+            ret = "EMERALD";
+        }else if(this.value == EGGPLANT.value){
+            ret = "EGGPLANT";
+        }else if(this.value == FALU_RED.value){
+            ret = "FALU_RED";
+        }else if(this.value == FERN_GREEN.value){
+            ret = "FERN_GREEN";
+        }else if(this.value == FIREBRICK.value){
+            ret = "FIREBRICK";
+        }else if(this.value == FLAX.value){
+            ret = "FLAX";
+        }else if(this.value == FOREST_GREEN.value){
+            ret = "FOREST_GREEN";
+        }else if(this.value == FRENCH_ROSE.value){
+            ret = "FRENCH_ROSE";
+        }else if(this.value == FUCSHIA_PINK.value){
+            ret = "FUCSHIA_PINK";
+        }else if(this.value == GAMBOGE.value){
+            ret = "GAMBOGE";
+        }else if(this.value == GOLD.value){
+            ret = "GOLD";
+        }else if(this.value == GOLDEN.value){
+            ret = "GOLDEN";
+        }else if(this.value == GOLDEN_BROWN.value){
+            ret = "GOLDEN_BROWN";
+        }else if(this.value == GOLDEN_YELLOW.value){
+            ret = "GOLDEN_YELLOW";
+        }else if(this.value == GOLDENROD.value){
+            ret = "GOLDENROD";
+        }else if(this.value == GRAY_ASPARAGUS.value){
+            ret = "GRAY_ASPARAGUS";
+        }else if(this.value == GREEN_YELLOW.value){
+            ret = "GREEN_YELLOW";
+        }else if(this.value == HAN_PURPLE.value){
+            ret = "HAN_PURPLE";
+        }else if(this.value == HELIOTROPE.value){
+            ret = "HELIOTROPE";
+        }else if(this.value == HOLLYWOOD_CERISE.value){
+            ret = "HOLLYWOOD_CERISE";
+        }else if(this.value == HOT_MAGENTA.value){
+            ret = "HOT_MAGENTA";
+        }else if(this.value == HOT_PINK.value){
+            ret = "HOT_PINK";
+        }else if(this.value == INDIGO_DYE.value){
+            ret = "INDIGO_DYE";
+        }else if(this.value == INDIGO.value){
+            ret = "INDIGO";
+        }else if(this.value == INTERNATIONAL_KLEIN_BLUE.value){
+            ret = "INTERNATIONAL_KLEIN_BLUE";
+        }else if(this.value == INTERNATIONAL_ORANGE.value){
+            ret = "INTERNATIONAL_ORANGE";
+        }else if(this.value == ISLAMIC_GREEN.value){
+            ret = "ISLAMIC_GREEN";
+        }else if(this.value == IVORY.value){
+            ret = "IVORY";
+        }else if(this.value == JADE.value){
+            ret = "JADE";
+        }else if(this.value == KELLY_GREEN.value){
+            ret = "KELLY_GREEN";
+        }else if(this.value == KHAKI.value){
+            ret = "KHAKI";
+        }else if(this.value == LIGHT_KHAKI.value){
+            ret = "LIGHT_KHAKI";
+        }else if(this.value == LAVENDER_FLORAL.value){
+            ret = "LAVENDER_FLORAL";
+        }else if(this.value == LAVENDER.value){
+            ret = "LAVENDER";
+        }else if(this.value == LAVENDER_BLUE.value){
+            ret = "LAVENDER_BLUE";
+        }else if(this.value == LAVENDER_BLUSH.value){
+            ret = "LAVENDER_BLUSH";
+        }else if(this.value == LAVENDER_GRAY.value){
+            ret = "LAVENDER_GRAY";
+        }else if(this.value == LAVENDER_MAGENTA.value){
+            ret = "LAVENDER_MAGENTA";
+        }else if(this.value == LAVENDER_PINK.value){
+            ret = "LAVENDER_PINK";
+        }else if(this.value == LAVENDER_PURPLE.value){
+            ret = "LAVENDER_PURPLE";
+        }else if(this.value == LAVENDER_ROSE.value){
+            ret = "LAVENDER_ROSE";
+        }else if(this.value == LAWN_GREEN.value){
+            ret = "LAWN_GREEN";
+        }else if(this.value == LEMON_CHIFFON.value){
+            ret = "LEMON_CHIFFON";
+        }else if(this.value == LIGHT_BLUE.value){
+            ret = "LIGHT_BLUE";
+        }else if(this.value == LIGHT_PINK.value){
+            ret = "LIGHT_PINK";
+        }else if(this.value == LILAC.value){
+            ret = "LILAC";
+        }else if(this.value == LEMON.value){
+            ret = "LEMON";
+        }else if(this.value == LIGHT_LIME.value){
+            ret = "LIGHT_LIME";
+        }else if(this.value == LIME_GREEN.value){
+            ret = "LIME_GREEN";
+        }else if(this.value == LINEN.value){
+            ret = "LINEN";
+        }else if(this.value == MAGENTA_DYE.value){
+            ret = "MAGENTA_DYE";
+        }else if(this.value == MAGIC_MINT.value){
+            ret = "MAGIC_MINT";
+        }else if(this.value == MAGNOLIA.value){
+            ret = "MAGNOLIA";
+        }else if(this.value == MALACHITE.value){
+            ret = "MALACHITE";
+        }else if(this.value == MAROON.value){
+            ret = "MAROON";
+        }else if(this.value == LIGHT_MAROON.value){
+            ret = "LIGHT_MAROON";
+        }else if(this.value == MAYA_BLUE.value){
+            ret = "MAYA_BLUE";
+        }else if(this.value == MAUVE.value){
+            ret = "MAUVE";
+        }else if(this.value == MAUVE_TAUPE.value){
+            ret = "MAUVE_TAUPE";
+        }else if(this.value == MEDIUM_BLUE.value){
+            ret = "MEDIUM_BLUE";
+        }else if(this.value == MEDIUM_CARMINE.value){
+            ret = "MEDIUM_CARMINE";
+        }else if(this.value == MEDIUM_LAVENDER_MAGENTA.value){
+            ret = "MEDIUM_LAVENDER_MAGENTA";
+        }else if(this.value == MEDIUM_PURPLE.value){
+            ret = "MEDIUM_PURPLE";
+        }else if(this.value == MEDIUM_SPRING_GREEN.value){
+            ret = "MEDIUM_SPRING_GREEN";
+        }else if(this.value == MIDNIGHT_BLUE.value){
+            ret = "MIDNIGHT_BLUE";
+        }else if(this.value == MINT_GREEN.value){
+            ret = "MINT_GREEN";
+        }else if(this.value == MISTY_ROSE.value){
+            ret = "MISTY_ROSE";
+        }else if(this.value == MOSS_GREEN.value){
+            ret = "MOSS_GREEN";
+        }else if(this.value == MOUNTBATTEN_PINK.value){
+            ret = "MOUNTBATTEN_PINK";
+        }else if(this.value == MUSTARD.value){
+            ret = "MUSTARD";
+        }else if(this.value == MYRTLE.value){
+            ret = "MYRTLE";
+        }else if(this.value == NAVAJO_WHITE.value){
+            ret = "NAVAJO_WHITE";
+        }else if(this.value == NAVY_BLUE.value){
+            ret = "NAVY_BLUE";
+        }else if(this.value == OCHRE.value){
+            ret = "OCHRE";
+        }else if(this.value == OLD_GOLD.value){
+            ret = "OLD_GOLD";
+        }else if(this.value == OLD_LACE.value){
+            ret = "OLD_LACE";
+        }else if(this.value == OLD_LAVENDER.value){
+            ret = "OLD_LAVENDER";
+        }else if(this.value == OLD_ROSE.value){
+            ret = "OLD_ROSE";
+        }else if(this.value == OLIVE.value){
+            ret = "OLIVE";
+        }else if(this.value == OLIVE_DRAB.value){
+            ret = "OLIVE_DRAB";
+        }else if(this.value == OLIVINE.value){
+            ret = "OLIVINE";
+        }else if(this.value == ORANGE_PEEL.value){
+            ret = "ORANGE_PEEL";
+        }else if(this.value == ORANGE_RED.value){
+            ret = "ORANGE_RED";
+        }else if(this.value == ORCHID.value){
+            ret = "ORCHID";
+        }else if(this.value == PALE_BLUE.value){
+            ret = "PALE_BLUE";
+        }else if(this.value == PALE_BROWN.value){
+            ret = "PALE_BROWN";
+        }else if(this.value == PALE_CARMINE.value){
+            ret = "PALE_CARMINE";
+        }else if(this.value == PALE_CHESTNUT.value){
+            ret = "PALE_CHESTNUT";
+        }else if(this.value == PALE_CORNFLOWER_BLUE.value){
+            ret = "PALE_CORNFLOWER_BLUE";
+        }else if(this.value == PALE_MAGENTA.value){
+            ret = "PALE_MAGENTA";
+        }else if(this.value == PALE_PINK.value){
+            ret = "PALE_PINK";
+        }else if(this.value == PALE_RED_VIOLET.value){
+            ret = "PALE_RED_VIOLET";
+        }else if(this.value == PAPAYA_WHIP.value){
+            ret = "PAPAYA_WHIP";
+        }else if(this.value == PASTEL_GREEN.value){
+            ret = "PASTEL_GREEN";
+        }else if(this.value == PASTEL_PINK.value){
+            ret = "PASTEL_PINK";
+        }else if(this.value == PEACH.value){
+            ret = "PEACH";
+        }else if(this.value == PEACH_ORANGE.value){
+            ret = "PEACH_ORANGE";
+        }else if(this.value == PEACH_YELLOW.value){
+            ret = "PEACH_YELLOW";
+        }else if(this.value == PEAR.value){
+            ret = "PEAR";
+        }else if(this.value == PERIWINKLE.value){
+            ret = "PERIWINKLE";
+        }else if(this.value == PERSIAN_BLUE.value){
+            ret = "PERSIAN_BLUE";
+        }else if(this.value == PERSIAN_GREEN.value){
+            ret = "PERSIAN_GREEN";
+        }else if(this.value == PERSIAN_INDIGO.value){
+            ret = "PERSIAN_INDIGO";
+        }else if(this.value == PERSIAN_RED.value){
+            ret = "PERSIAN_RED";
+        }else if(this.value == PERSIAN_PINK.value){
+            ret = "PERSIAN_PINK";
+        }else if(this.value == PERSIAN_ROSE.value){
+            ret = "PERSIAN_ROSE";
+        }else if(this.value == PERSIMMON.value){
+            ret = "PERSIMMON";
+        }else if(this.value == PINE_GREEN.value){
+            ret = "PINE_GREEN";
+        }else if(this.value == TRUE_PINK.value){
+            ret = "TRUE_PINK";
+        }else if(this.value == PINK_ORANGE.value){
+            ret = "PINK_ORANGE";
+        }else if(this.value == PLATINUM.value){
+            ret = "PLATINUM";
+        }else if(this.value == PLUM.value){
+            ret = "PLUM";
+        }else if(this.value == POWDER_BLUE.value){
+            ret = "POWDER_BLUE";
+        }else if(this.value == PUCE.value){
+            ret = "PUCE";
+        }else if(this.value == PRUSSIAN_BLUE.value){
+            ret = "PRUSSIAN_BLUE";
+        }else if(this.value == PSYCHEDELIC_PURPLE.value){
+            ret = "PSYCHEDELIC_PURPLE";
+        }else if(this.value == PUMPKIN.value){
+            ret = "PUMPKIN";
+        }else if(this.value == PURPLE_TAUPE.value){
+            ret = "PURPLE_TAUPE";
+        }else if(this.value == RAW_UMBER.value){
+            ret = "RAW_UMBER";
+        }else if(this.value == RAZZMATAZZ.value){
+            ret = "RAZZMATAZZ";
+        }else if(this.value == RED_PIGMENT.value){
+            ret = "RED_PIGMENT";
+        }else if(this.value == RED_VIOLET.value){
+            ret = "RED_VIOLET";
+        }else if(this.value == RICH_CARMINE.value){
+            ret = "RICH_CARMINE";
+        }else if(this.value == ROBIN_EGG_BLUE.value){
+            ret = "ROBIN_EGG_BLUE";
+        }else if(this.value == ROSE.value){
+            ret = "ROSE";
+        }else if(this.value == ROSE_MADDER.value){
+            ret = "ROSE_MADDER";
+        }else if(this.value == ROSE_TAUPE.value){
+            ret = "ROSE_TAUPE";
+        }else if(this.value == ROYAL_BLUE.value){
+            ret = "ROYAL_BLUE";
+        }else if(this.value == ROYAL_PURPLE.value){
+            ret = "ROYAL_PURPLE";
+        }else if(this.value == RUBY.value){
+            ret = "RUBY";
+        }else if(this.value == RUSSET.value){
+            ret = "RUSSET";
+        }else if(this.value == RUST.value){
+            ret = "RUST";
+        }else if(this.value == SAFETY_ORANGE.value){
+            ret = "SAFETY_ORANGE";
+        }else if(this.value == SAFFRON.value){
+            ret = "SAFFRON";
+        }else if(this.value == SALMON.value){
+            ret = "SALMON";
+        }else if(this.value == SANDY_BROWN.value){
+            ret = "SANDY_BROWN";
+        }else if(this.value == SANGRIA.value){
+            ret = "SANGRIA";
+        }else if(this.value == SAPPHIRE.value){
+            ret = "SAPPHIRE";
+        }else if(this.value == SCARLET.value){
+            ret = "SCARLET";
+        }else if(this.value == SCHOOL_BUS_YELLOW.value){
+            ret = "SCHOOL_BUS_YELLOW";
+        }else if(this.value == SEA_GREEN.value){
+            ret = "SEA_GREEN";
+        }else if(this.value == SEASHELL.value){
+            ret = "SEASHELL";
+        }else if(this.value == SELECTIVE_YELLOW.value){
+            ret = "SELECTIVE_YELLOW";
+        }else if(this.value == SEPIA.value){
+            ret = "SEPIA";
+        }else if(this.value == SHAMROCK_GREEN.value){
+            ret = "SHAMROCK_GREEN";
+        }else if(this.value == SHOCKING_PINK.value){
+            ret = "SHOCKING_PINK";
+        }else if(this.value == SILVER.value){
+            ret = "SILVER";
+        }else if(this.value == SKY_BLUE.value){
+            ret = "SKY_BLUE";
+        }else if(this.value == SLATE_GRAY.value){
+            ret = "SLATE_GRAY";
+        }else if(this.value == SMALT.value){
+            ret = "SMALT";
+        }else if(this.value == SPRING_BUD.value){
+            ret = "SPRING_BUD";
+        }else if(this.value == SPRING_GREEN.value){
+            ret = "SPRING_GREEN";
+        }else if(this.value == STEEL_BLUE.value){
+            ret = "STEEL_BLUE";
+        }else if(this.value == TAN.value){
+            ret = "TAN";
+        }else if(this.value == TANGERINE.value){
+            ret = "TANGERINE";
+        }else if(this.value == TAUPE.value){
+            ret = "TAUPE";
+        }else if(this.value == TEA_GREEN.value){
+            ret = "TEA_GREEN";
+        }else if(this.value == TEA_ORANGE.value){
+            ret = "TEA_ORANGE";
+        }else if(this.value == TEA_ROSE.value){
+            ret = "TEA_ROSE";
+        }else if(this.value == TAWNY.value){
+            ret = "TAWNY";
+        }else if(this.value == TERRA_COTTA.value){
+            ret = "TERRA_COTTA";
+        }else if(this.value == THISTLE.value){
+            ret = "THISTLE";
+        }else if(this.value == TOMATO.value){
+            ret = "TOMATO";
+        }else if(this.value == TURQUOISE.value){
+            ret = "TURQUOISE";
+        }else if(this.value == TYRIAN_PURPLE.value){
+            ret = "TYRIAN_PURPLE";
+        }else if(this.value == ULTRAMARINE.value){
+            ret = "ULTRAMARINE";
+        }else if(this.value == VEGAS_GOLD.value){
+            ret = "VEGAS_GOLD";
+        }else if(this.value == VERMILION.value){
+            ret = "VERMILION";
+        }else if(this.value == VIOLET.value){
+            ret = "VIOLET";
+        }else if(this.value == LIGHT_VIOLET.value){
+            ret = "LIGHT_VIOLET";
+        }else if(this.value == VIRIDIAN.value){
+            ret = "VIRIDIAN";
+        }else if(this.value == WHEAT.value){
+            ret = "WHEAT";
+        }else if(this.value == WISTERIA.value){
+            ret = "WISTERIA";
+        }else if(this.value == YELLOW_GREEN.value){
+            ret = "YELLOW_GREEN";
+        }else if(this.value == ZINNWALDITE.value){
+            ret = "ZINNWALDITE";
+        }
+
+        return ret;
+    }
+
     /**
      * A constructor with information for all color channels in the aRGB colorspace.
-     * 
+     *
      * All values should be between 0 and 255, with 0 be none and 255 being max of that color.
      * @param pr Red value
      * @param pg Green value
@@ -1253,7 +2786,7 @@ public class CSIColor implements Comparable {
 
     /**
      * Sets the value of the alpha channel (or transparency) of the color.
-     * 
+     *
      * 0 is transparent. 255 is opaque or solid.
      * @param a the value that alpha should become
      */
@@ -1261,9 +2794,13 @@ public class CSIColor implements Comparable {
         value = (a << 24) | (getR() << 16) | (getG() << 8) | getB();
     }
 
+    public int getGray(){
+        return (getR() + getG() + getB());
+    }
+
     /**
      * Allows you to get an int that is the array position of the String color name passed in within the default pallet.
-     * 
+     *
      * If the String is not in the default pallet then a -1 is returned.
      * @param colorName the String to get information on
      * @return the position of the color named by the String or -1 if no such color
@@ -1329,7 +2866,7 @@ public class CSIColor implements Comparable {
 
     /**
      * Attempts to return a CSIColor object from the default pallet.
-     * 
+     *
      * If the int passed in is to large or small for a position in the default
      * pallet then CSIColor.BLACK is returned instead.
      * @param code the pallet position whose color is to be returned
@@ -1344,7 +2881,7 @@ public class CSIColor implements Comparable {
 
     /**
      * Attempts to return the index of the passed in color in the default pallet.
-     * 
+     *
      * If the color is not in the default pallet then it will return -1.
      * @param color the color to search the default pallet for
      * @return either the default pallet index matching the color or -1 if no match
@@ -1377,7 +2914,7 @@ public class CSIColor implements Comparable {
     /**
      * Compares the current color to another object of any type.
      * If the second object is not a CSIColor object than an exception will be thrown.
-     * 
+     *
      * @throws UnsupportedOperationException if second object not a CSIColor object
      * @param arg0 second object to be compared to
      * @return indicator of comparison between colors
