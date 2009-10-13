@@ -1,4 +1,4 @@
-package net.slashie.libjcsi.examples.luck;
+package net.slashie.libjcsi.examples;
 
 import net.slashie.libjcsi.CSIColor;
 import net.slashie.libjcsi.CharKey;
