@@ -24,13 +24,17 @@ public class CSIColorTest {
         int xdiv = 255 / 80, ydiv = 255 / 25;
 
         CSIColor tempColor;
-        tempColor = CSIColor.HAN_PURPLE;
+        tempColor = CSIColor.BABY_BLUE;
         for (int i = 0; i < mainInterface.xdim; i++) {
             for (int k = 0; k < mainInterface.ydim; k++) {
                 tempColor = new CSIColor(i * xdiv, k * ydiv, (i * xdiv + k * ydiv) / 2);
                 mainInterface.print(i, k, "#", new CSIColor(tempColor));
             }
         }
+        System.out.println("Input is : " + mainInterface.inkey().toString());
+        int userInput = Integer.parseInt(mainInterface.inkey().toString());
+        mainInterface.cls();
+        mainInterface.refresh();
     }
 
     public static void main(String[] args) {
