@@ -12,7 +12,7 @@ import net.slashie.util.*;
  */
 public class MenuBox extends TextComponent {
 
-    private Vector items;
+    private List items;
     private int promptSize;
     private String title = "";
 
@@ -89,7 +89,7 @@ public class MenuBox extends TextComponent {
      * Allows the menu items to be set.
      * @param items Vector of the items in the menu.
      */
-    public void setMenuItems(Vector items) {
+    public void setMenuItems(List items) {
         this.items = items;
     }
 
@@ -106,11 +106,11 @@ public class MenuBox extends TextComponent {
         promptBox.draw();
 
         int pageElements = inHeight - promptSize;
-        Vector shownItems = Util.page(items, pageElements, currentPage);
+        List shownItems = Util.page(items, pageElements, currentPage);
 
         int i = 0;
         for (; i < shownItems.size(); i++) {
-            MenuItem item = (MenuItem) shownItems.elementAt(i);
+            MenuItem item = (MenuItem) shownItems.get(i);
             si.print(inPosition.x, inPosition.y + i + promptSize, ((char) (97 + i)) + ".");
             si.print(inPosition.x + 2, inPosition.y + i + promptSize, item.getMenuChar(), item.getMenuColor());
             String description = item.getMenuDescription();
@@ -132,7 +132,7 @@ public class MenuBox extends TextComponent {
         while (true) {
             clearBox();
             draw();
-            Vector shownItems = Util.page(items, pageElements, currentPage);
+            List shownItems = Util.page(items, pageElements, currentPage);
             CharKey key = new CharKey(CharKey.NONE);
             while (key.code != CharKey.SPACE &&
                 key.code != CharKey.UARROW &&
@@ -157,9 +157,9 @@ public class MenuBox extends TextComponent {
                 }
             }
             if (key.code >= CharKey.A && key.code <= CharKey.A + shownItems.size() - 1) {
-                return shownItems.elementAt(key.code - CharKey.A);
+                return shownItems.get(key.code - CharKey.A);
             } else if (key.code >= CharKey.a && key.code <= CharKey.a + shownItems.size() - 1) {
-                return shownItems.elementAt(key.code - CharKey.a);
+                return shownItems.get(key.code - CharKey.a);
             }
         }
     }

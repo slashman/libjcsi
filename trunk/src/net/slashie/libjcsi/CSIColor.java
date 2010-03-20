@@ -2886,7 +2886,7 @@ public class CSIColor implements Comparable {
      * @param color the color to search the default pallet for
      * @return either the default pallet index matching the color or -1 if no match
      */
-    public int getCodeFromColor(CSIColor color) {
+    public static int getCodeFromColor(CSIColor color) {
         ArrayList<CSIColor> tempList = new ArrayList<CSIColor>();
         for (int i = 0; i < DEFAULT_PALLET.length; i++) {
             tempList.add(DEFAULT_PALLET[i]);

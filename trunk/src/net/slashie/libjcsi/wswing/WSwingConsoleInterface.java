@@ -59,6 +59,18 @@ public class WSwingConsoleInterface implements ConsoleSystemInterface, Runnable,
     public WSwingConsoleInterface(String windowName) {
         this(windowName, new Properties());
     }
+    
+    /**
+     * Initializes the SwingConsoleBox with a custom font
+     * @param windowName
+     */
+    public WSwingConsoleInterface(String windowName, Font font) {
+        this(windowName, new Properties());
+        consoleFont = font;
+        targetFrame.setFont(consoleFont);
+    }
+    
+    
 
     /**
      * Initializes the SwingConsoleBox, giving its window a distinctive title.
@@ -70,8 +82,21 @@ public class WSwingConsoleInterface implements ConsoleSystemInterface, Runnable,
         this.configuration = configuration;
         aStrokeInformer = new StrokeInformer();
         targetFrame = new SwingConsoleFrame(windowName);
+        
         java.awt.Dimension initialSize = new java.awt.Dimension(1280, 1024);
         int fontSize = defineFontSize(initialSize.height, initialSize.width);
+        
+        String fontSizeCnf = configuration.getProperty("fontSize");
+        if (fontSizeCnf != null){
+        	try {
+				fontSize = Integer.parseInt(fontSizeCnf);
+			} catch (NumberFormatException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+        }
+        
+        
         String strConsoleFont = loadFont();
         consoleFont = new Font(strConsoleFont, Font.PLAIN, fontSize);
         targetFrame.init(consoleFont, xdim, ydim);

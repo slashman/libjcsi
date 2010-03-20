@@ -71,6 +71,18 @@ public class Util {
             return new Vector(source.subList(pageNumber * elementsOnPage, (pageNumber + 1) * elementsOnPage));
         }
     }
+    
+    public static List page(List source, int elementsOnPage, int pageNumber) {
+        if (source.size() == 0) {
+            return source;
+        }
+        if ((pageNumber + 1) * elementsOnPage > source.size()) {
+            return new ArrayList(source.subList(pageNumber * elementsOnPage, source.size()));
+        } else {
+            return new ArrayList(source.subList(pageNumber * elementsOnPage, (pageNumber + 1) * elementsOnPage));
+        }
+    }
+
 
     /**
      * 
