@@ -1,6 +1,7 @@
 package net.slashie.libjcsi.textcomponents;
 
 import java.util.*;
+
 import net.slashie.libjcsi.ConsoleSystemInterface;
 
 /**
@@ -8,19 +9,18 @@ import net.slashie.libjcsi.ConsoleSystemInterface;
  * @author Santiago Zapata
  */
 public class ListBox extends TextComponent {
-
-    public Vector itemsLista;
+	private List<ListItem> itemsList;
 
     public ListBox(ConsoleSystemInterface si) {
         super(si);
-        itemsLista = new Vector(10);
+        itemsList = new ArrayList<ListItem>();
     }
 
     public void draw() {
         clearBox();
-        int length = (itemsLista.size() < super.inHeight ? itemsLista.size() : super.inHeight);
+        int length = (itemsList.size() < super.inHeight ? itemsList.size() : super.inHeight);
         for (int i = 0; i < length; i++) {
-            ListItem item = (ListItem) itemsLista.elementAt(i);
+            ListItem item = itemsList.get(i);
             si.print(inPosition.x, inPosition.y + i, item.getIndex(), item.getIndexColor());
             if (item.getRow().length() > inWidth) {
                 si.print(inPosition.x + 2, inPosition.y + i, item.getRow().substring(0, inWidth), foreColor);
@@ -31,20 +31,37 @@ public class ListBox extends TextComponent {
     }
 
     public void clear() {
-        itemsLista.removeAllElements();
+    	itemsList.clear();
     }
 
+    /**
+     * 
+     * @deprecated
+     */
     public void setElements(Vector elements) {
         clear();
         addElements(elements);
     }
 
+    /**
+     * 
+     * @deprecated
+     */
     public void addElements(Vector elements) {
-        itemsLista.addAll(elements);
+        itemsList.addAll(elements);
     }
-
+    
+    public void addElements(List<ListItem> elements) {
+        itemsList.addAll(elements);
+    }
+    
+    public void setElements(List<ListItem> elements) {
+    	clear();
+        itemsList.addAll(elements);
+    }
+    
     public void addElement(ListItem element) {
-        itemsLista.add(element);
+        itemsList.add(element);
     }
 }
 
