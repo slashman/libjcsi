@@ -43,15 +43,11 @@ public class ListBox extends TextComponent {
         addElements(elements);
     }
 
-    /**
-     * 
-     * @deprecated
-     */
-    public void addElements(Vector elements) {
-        itemsList.addAll(elements);
-    }
-    
     public void addElements(List<ListItem> elements) {
+    	if (elements.size()>0 && (elements.get(0) instanceof ListItem)){
+    		throw new ClassCastException("Invalid list item type: "+elements.get(0).getClass().getCanonicalName());
+    	}
+    	
         itemsList.addAll(elements);
     }
     
