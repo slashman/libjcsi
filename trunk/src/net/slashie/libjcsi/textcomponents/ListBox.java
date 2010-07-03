@@ -34,17 +34,8 @@ public class ListBox extends TextComponent {
     	itemsList.clear();
     }
 
-    /**
-     * 
-     * @deprecated
-     */
-    public void setElements(Vector elements) {
-        clear();
-        addElements(elements);
-    }
-
     public void addElements(List<ListItem> elements) {
-    	if (elements.size()>0 && (elements.get(0) instanceof ListItem)){
+    	if (elements.size()>0 && !(elements.get(0) instanceof ListItem)){
     		throw new ClassCastException("Invalid list item type: "+elements.get(0).getClass().getCanonicalName());
     	}
     	
@@ -53,7 +44,7 @@ public class ListBox extends TextComponent {
     
     public void setElements(List<ListItem> elements) {
     	clear();
-        itemsList.addAll(elements);
+    	addElements(elements);
     }
     
     public void addElement(ListItem element) {
