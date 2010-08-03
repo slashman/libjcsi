@@ -22,6 +22,7 @@ public class JCursesConsoleInterface implements ConsoleSystemInterface {
     private char[][] chars;
     private int[][] colorsBuffer;
     private char[][] charsBuffer;
+    private boolean autorefresh = true;
     private HashMap<String, CharColor> colorMap = new HashMap<String, CharColor>();
     private Position caretPosition = new Position(0, 0);
 
@@ -33,12 +34,17 @@ public class JCursesConsoleInterface implements ConsoleSystemInterface {
         charsBuffer = new char[Toolkit.getScreenWidth() + 1][Toolkit.getScreenHeight() + 1];
     }
 
+    public void setAutoRefresh(boolean autorefresh) {
+		this.autorefresh = autorefresh;
+	}
+    
     public void print(int x, int y, char what, int color) {
         //if (isInsideBounds(x,y))
         if (chars[x][y] == what && colors[x][y] == color) {
             return;
         }
-        Toolkit.printString(what + "", x, y, getJCurseColor(color));
+        if (autorefresh)
+        	Toolkit.printString(what + "", x, y, getJCurseColor(color));
         colors[x][y] = color;
         chars[x][y] = what;
     }
@@ -51,7 +57,8 @@ public class JCursesConsoleInterface implements ConsoleSystemInterface {
             chars[x + i][y] = what.charAt(i);
             colors[x + i][y] = color;
         }
-        Toolkit.printString(what, x, y, getJCurseColor(color));
+        if (autorefresh)
+        	Toolkit.printString(what, x, y, getJCurseColor(color));
     }
 
     public void print(int x, int y, String what) {
@@ -81,6 +88,8 @@ public class JCursesConsoleInterface implements ConsoleSystemInterface {
     }
 
     public String input(int l) {
+    	boolean previousAutoRefresh = autorefresh;
+    	setAutoRefresh(true);
         String ret = "";
         CharKey read = new CharKey(CharKey.NONE);
         while (true) {
@@ -122,6 +131,7 @@ public class JCursesConsoleInterface implements ConsoleSystemInterface {
             read.code = CharKey.NONE;
 
         }
+        setAutoRefresh(previousAutoRefresh);
         return ret;
     }
 
@@ -134,7 +144,8 @@ public class JCursesConsoleInterface implements ConsoleSystemInterface {
     }
 
     public void cls() {
-        Toolkit.clearScreen(getJCurseColor(BLACK));
+    	if (autorefresh)
+    		Toolkit.clearScreen(getJCurseColor(BLACK));
         for (int x = 0; x < chars.length; x++) {
             for (int y = 0; y < chars[0].length; y++) {
                 chars[x][y] = '\u0000';
@@ -144,9 +155,19 @@ public class JCursesConsoleInterface implements ConsoleSystemInterface {
     }
 
     public void refresh() {
-        Toolkit.endPainting();
-        Toolkit.startPainting();
-        Toolkit.printString("", 79, 24, getJCurseColor(BLACK));
+    	if (!autorefresh){
+    		for (int x = 0; x < chars.length; x++) {
+                for (int y = 0; y < chars[0].length; y++) {
+                    Toolkit.printString(chars[x][y] + "", x, y, getJCurseColor(colors[x][y]));
+                }
+            }
+        	
+
+    	} else {
+	        Toolkit.endPainting();
+	        Toolkit.startPainting();
+	        Toolkit.printString("", 79, 24, getJCurseColor(BLACK));
+    	}
     }
 
     public void refresh(Thread t) {
@@ -162,9 +183,6 @@ public class JCursesConsoleInterface implements ConsoleSystemInterface {
         }
         Toolkit.clearScreen(BLACK);   */
         //Toolkit.changeColors(new Rectangle(Toolkit.UL_CORNER, Toolkit.LR_CORNER), new CharColor(getJCurseColor(color).getForeground(), CharColor.BLACK));
-    }
-
-    public void setAutoRefresh(boolean value) {
     }
 
     private void getBasicColorInfo(ReferenceParam<Short> face, ReferenceParam<Short> boldness, int paletteValue) {
