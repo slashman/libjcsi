@@ -367,6 +367,18 @@ public class JCursesConsoleInterface implements ConsoleSystemInterface {
             x = inkey();
         }
     }
+    
+    public void waitKeys(int... keyCodes) {
+        CharKey x = new CharKey(CharKey.NONE);
+		while (true){
+			x = inkey();
+			for (int keyCode: keyCodes){
+				if (x.code == keyCode)
+					return;
+			}
+			
+		}
+    }
 
     public void restore() {
         /*for (int i = 0; i < colors.length; i++){

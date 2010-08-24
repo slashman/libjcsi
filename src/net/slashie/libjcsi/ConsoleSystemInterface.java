@@ -144,6 +144,12 @@ public interface ConsoleSystemInterface {
     public void waitKey(int keyCode);
 
     /**
+     * Waits for the user to press a key
+     * @param keyCode code of specific key to wait for
+     */
+    public void waitKeys(int... keyCode);
+    
+    /**
      * Saves the screen contents to a backup buffer
      *
      */

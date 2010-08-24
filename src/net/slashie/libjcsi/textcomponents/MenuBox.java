@@ -135,6 +135,7 @@ public class MenuBox extends TextComponent {
             List shownItems = Util.page(items, pageElements, currentPage);
             CharKey key = new CharKey(CharKey.NONE);
             while (key.code != CharKey.SPACE &&
+                key.code != CharKey.ESC &&
                 key.code != CharKey.UARROW &&
                 key.code != CharKey.DARROW &&
                 key.code != CharKey.N8 &&
@@ -143,7 +144,7 @@ public class MenuBox extends TextComponent {
                 (key.code < CharKey.a || key.code > CharKey.a + pageElements - 1)) {
                 key = si.inkey();
             }
-            if (key.code == CharKey.SPACE) {
+            if (key.code == CharKey.SPACE || key.code == CharKey.ESC) {
                 return null;
             }
             if (key.code == CharKey.UARROW || key.code == CharKey.N8) {
