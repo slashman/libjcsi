@@ -213,7 +213,7 @@ public class JCursesConsoleInterface implements ConsoleSystemInterface {
                 face.setValue(CharColor.WHITE);
                 break;
             case ConsoleSystemInterface.GRAY:
-                face.setValue(CharColor.BLACK);
+                face.setValue(CharColor.WHITE);
                 break;
             case ConsoleSystemInterface.BLUE:
                 face.setValue(CharColor.BLUE);
