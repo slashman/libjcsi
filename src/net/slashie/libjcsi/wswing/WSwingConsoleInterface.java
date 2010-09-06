@@ -83,7 +83,7 @@ public class WSwingConsoleInterface implements ConsoleSystemInterface, Runnable,
         aStrokeInformer = new StrokeInformer();
         targetFrame = new SwingConsoleFrame(windowName);
         
-        java.awt.Dimension initialSize = new java.awt.Dimension(1280, 1024);
+        java.awt.Dimension initialSize = new java.awt.Dimension(1024, 768);
         int fontSize = defineFontSize(initialSize.height, initialSize.width);
         
         String fontSizeCnf = configuration.getProperty("fontSize");
