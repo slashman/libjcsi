@@ -98,7 +98,9 @@ public class TextBox extends TextComponent {
                 cury++;
                 curx = 0;
             } else {
-                lines[cury].append(tokens[i] + " ");
+            	if (cury < lines.length){
+            		lines[cury].append(tokens[i] + " ");
+            	}
                 curx += tokens[i].length() + 1;
             }
         }
