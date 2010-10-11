@@ -172,4 +172,31 @@ public class MenuBox extends TextComponent {
     public void setTitle(String s) {
         title = s;
     }
+    
+
+	public Object getSelection(CharKey key) {
+		int pageElements = inHeight - promptSize;
+        List shownItems = Util.page(items, pageElements, currentPage);
+        if (key.code == CharKey.SPACE || key.code == CharKey.ESC) {
+            return null;
+        }
+        if (key.code == CharKey.UARROW || key.code == CharKey.N8) {
+            if (currentPage > 0) {
+                currentPage--;
+            }
+            return null;
+        }
+        if (key.code == CharKey.DARROW || key.code == CharKey.N2) {
+            if (currentPage < pages - 1) {
+                currentPage++;
+            }
+            return null;
+        }
+        if (key.code >= CharKey.A && key.code <= CharKey.A + shownItems.size() - 1) {
+            return shownItems.get(key.code - CharKey.A);
+        } else if (key.code >= CharKey.a && key.code <= CharKey.a + shownItems.size() - 1) {
+            return shownItems.get(key.code - CharKey.a);
+        }
+        return null;
+	}
 }
