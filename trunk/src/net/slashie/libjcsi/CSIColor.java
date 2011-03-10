@@ -2872,7 +2872,7 @@ public class CSIColor implements Comparable {
      * @param code the pallet position whose color is to be returned
      * @return the color in the position at code or BLACK if code is outside the default pallet
      */
-    public CSIColor getColorFromCode(int code) {
+    public static CSIColor getColorFromCode(int code) {
         if ((code < 0) || (code > DEFAULT_PALLET.length - 1)) {
             return BLACK;
         }

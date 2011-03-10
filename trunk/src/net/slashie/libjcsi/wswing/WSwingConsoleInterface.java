@@ -208,6 +208,25 @@ public class WSwingConsoleInterface implements ConsoleSystemInterface, Runnable,
         print(x, y, what, frontColor);
     }
 
+    public void printTransparent(int x, int y, String what, int color) {
+	    locate (x,y);
+		CSIColor front = CSIColor.getColorFromCode(color);
+		for (int i = 0; i < what.length(); i++){
+			if (xpos>=xdim){
+				xpos = 0;
+				ypos++;
+			}
+			if (ypos>=ydim)
+				break;
+			if (what.charAt(i) != '¥') {
+				targetFrame.plot(what.charAt(i), xpos, ypos, colorPreProcess(front));
+	            chars[x+i][y] = what.charAt(i);
+				colors[x+i][y] = front;
+			}
+	        xpos ++;
+	    }
+    }
+    
     public void locateCaret(int x, int y) {
         caretPosition.x = x;
         caretPosition.y = y;
