@@ -50,6 +50,18 @@ public interface ConsoleSystemInterface {
      * @param what The String to be printed
      */
     public void print(int x, int y, String what);
+    
+    /**
+     * Prints a String on the console, doesn't overwrite former characters if
+     * the character to be print is the TRANSPARENT sign.
+     * 
+     * Does not check for running of the edge of the screen, so calling function
+     * must do such a check to avoid errors.
+     * @param x horizontal starting position
+     * @param y vertical starting position
+     * @param what The String to be printed
+     */
+    public void printTransparent(int x, int y, String what, int color);
 
     /**
      * Checks what character is at a given position

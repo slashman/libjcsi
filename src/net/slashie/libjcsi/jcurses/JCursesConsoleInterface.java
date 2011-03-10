@@ -65,6 +65,19 @@ public class JCursesConsoleInterface implements ConsoleSystemInterface {
         print(x, y, what, ConsoleSystemInterface.WHITE);
     }
 
+    public void printTransparent(int x, int y, String what, int color) {
+    	for (int i = 0; i < what.length(); i++){
+			if (! isInsideBounds(x+i,y))
+				break;
+			if (what.charAt(i)== '¥')
+				continue;
+			chars[x+i][y] = what.charAt(i);
+			colors[x+i][y] = color;
+			Toolkit.printString(what.charAt(i)+"", x+i, y, getJCurseColor(color));
+		}
+
+    }
+    
     public char peekChar(int x, int y) {
         return chars[x][y];
     }
