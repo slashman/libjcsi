@@ -39,7 +39,15 @@ public class StrokeInformer implements KeyListener, java.io.Serializable {
      */
     public void keyPressed(KeyEvent e) {
         bufferCode = charCode(e);
-        keyListener.interrupt();
+        
+        try
+        {
+        	keyListener.interrupt();
+        }
+        catch (NullPointerException npe)
+        {
+        	//do nothing
+        }
     }
 
     /**
