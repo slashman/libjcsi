@@ -106,7 +106,7 @@ public class WSwingConsoleInterface implements ConsoleSystemInterface, Runnable,
         colorsBuffer = new CSIColor[xdim][ydim];
         charsBuffer = new char[xdim][ydim];
 
-        targetFrame.addKeyListener(aStrokeInformer);
+        addKeyListener(aStrokeInformer);
         targetFrame.addComponentListener(this);
         fMetric = targetFrame.getFontMetrics(consoleFont);
 
@@ -128,6 +128,15 @@ public class WSwingConsoleInterface implements ConsoleSystemInterface, Runnable,
      */
     public void flash(int color) {
         //targetPanel.flash(getColorFromCode(color));
+    }
+    
+    /**
+     * Allows external classes to specify a new KeyListener to use
+     * @param l the component to add the listener to
+     */
+    public void addKeyListener(KeyListener l)
+    {
+    	targetFrame.addKeyListener(l);
     }
 
     private Color colorPreProcess(CSIColor b) {
