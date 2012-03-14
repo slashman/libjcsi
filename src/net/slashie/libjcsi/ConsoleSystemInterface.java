@@ -1,6 +1,6 @@
 package net.slashie.libjcsi;
 
-import net.slashie.util.Position;
+import net.slashie.libjcsi.util.Position;
 
 /**
  * Allows for easy output to a console screen emulation and keyboard input.

@@ -7,8 +7,8 @@ import java.util.HashMap;
 import net.slashie.libjcsi.CSIColor;
 import net.slashie.libjcsi.CharKey;
 import net.slashie.libjcsi.ConsoleSystemInterface;
+import net.slashie.libjcsi.util.Position;
 import net.slashie.util.Pair;
-import net.slashie.util.Position;
 import net.slashie.util.ReferenceParam;
 import jcurses.system.*;
 
@@ -69,7 +69,7 @@ public class JCursesConsoleInterface implements ConsoleSystemInterface {
     	for (int i = 0; i < what.length(); i++){
 			if (! isInsideBounds(x+i,y))
 				break;
-			if (what.charAt(i)== '¥')
+			if (what.charAt(i)== 'ï¿½')
 				continue;
 			chars[x+i][y] = what.charAt(i);
 			colors[x+i][y] = color;

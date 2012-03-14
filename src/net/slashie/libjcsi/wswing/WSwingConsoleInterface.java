@@ -7,6 +7,7 @@ import java.util.HashMap;
 import java.util.Properties;
 
 import net.slashie.libjcsi.*;
+import net.slashie.libjcsi.util.Position;
 import net.slashie.util.*;
 
 /**
@@ -227,7 +228,7 @@ public class WSwingConsoleInterface implements ConsoleSystemInterface, Runnable,
 			}
 			if (ypos>=ydim)
 				break;
-			if (what.charAt(i) != '¥') {
+			if (what.charAt(i) != 'ï¿½') {
 				targetFrame.plot(what.charAt(i), xpos, ypos, colorPreProcess(front));
 	            chars[x+i][y] = what.charAt(i);
 				colors[x+i][y] = front;

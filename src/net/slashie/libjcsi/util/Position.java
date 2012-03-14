@@ -1,4 +1,4 @@
-package net.slashie.util;
+package net.slashie.libjcsi.util;
 
 /**
  * Utility class to make using coordinates easier.

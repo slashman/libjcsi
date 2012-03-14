@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 import net.slashie.libjcsi.CSIColor;
 import net.slashie.libjcsi.ConsoleSystemInterface;
-import net.slashie.util.Position;
+import net.slashie.libjcsi.util.Position;
 
 /**
  * Basic framework for all text components.
