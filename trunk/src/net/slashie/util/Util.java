@@ -116,7 +116,7 @@ public class Util {
      * @param array
      * @return a randomly chosen element of array
      */
-    public static Object randomElementOf(ArrayList array) {
+    public static Object randomElementOf(List array) {
         return array.get(rand(0, array.size() - 1));
     }
 
