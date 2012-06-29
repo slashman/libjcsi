@@ -68,7 +68,7 @@ public class SwingConsolePanel extends JPanel {
         fMetric = graphicsBuff.getFontMetrics(f);
         ascent = fMetric.getMaxAscent();
         fontWidth = fMetric.charWidth('W');
-        fontDown = fMetric.getHeight();
+        fontDown = fMetric.getHeight() -1;
 
         repaint();
     }
