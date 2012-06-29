@@ -32,8 +32,10 @@ public class WSwingConsoleInterface implements ConsoleSystemInterface, Runnable,
     public static int xdim = 80;
     public static int ydim = 25;
     private CSIColor[][] colors;
+	private CSIColor[][] backcolors;
     private char[][] chars;
     private CSIColor[][] colorsBuffer;
+    private CSIColor[][] backcolorsBuffer;
     private char[][] charsBuffer;
     private CSIColor backColor = CSIColor.BLACK;
     private CSIColor frontColor = CSIColor.WHITE;
@@ -103,9 +105,13 @@ public class WSwingConsoleInterface implements ConsoleSystemInterface, Runnable,
         targetFrame.init(consoleFont, xdim, ydim);
 
         colors = new CSIColor[xdim][ydim];
+        backcolors = new CSIColor[xdim][ydim];
         chars = new char[xdim][ydim];
         colorsBuffer = new CSIColor[xdim][ydim];
+        backcolorsBuffer = new CSIColor[xdim][ydim];
         charsBuffer = new char[xdim][ydim];
+		
+		
 
         addKeyListener(aStrokeInformer);
         targetFrame.addComponentListener(this);
@@ -114,7 +120,7 @@ public class WSwingConsoleInterface implements ConsoleSystemInterface, Runnable,
         int x, y;
         x = fMetric.getMaxAdvance();
         x = fMetric.charWidth('W'); //TODO: Which one to use?
-        y = fMetric.getHeight();
+        y = fMetric.getHeight() - 1;
         targetFrame.setSize((xdim * x) + x, (ydim * y) + y + y);
         targetFrame.setLocationRelativeTo(null); // places window in center of screen
         targetFrame.setResizable(false);
@@ -156,6 +162,7 @@ public class WSwingConsoleInterface implements ConsoleSystemInterface, Runnable,
             for (int y = 0; y < colors[0].length; y++) {
                 chars[x][y] = ' ';
                 colors[x][y] = backColor;
+				backcolors[x][y] = backColor;
             }
         }
         targetFrame.cls();
@@ -194,6 +201,7 @@ public class WSwingConsoleInterface implements ConsoleSystemInterface, Runnable,
             targetFrame.plot(what.charAt(i), xpos, ypos, colorPreProcess(color), colorPreProcess(background));
             chars[x + i][y] = what.charAt(i);
             colors[x + i][y] = color;
+			backcolors[x + i][y] = background;
             xpos++;
         }
     }
@@ -212,6 +220,7 @@ public class WSwingConsoleInterface implements ConsoleSystemInterface, Runnable,
         targetFrame.plot(what, xpos, ypos, colorPreProcess(color), colorPreProcess(back));
         colors[x][y] = color;
         chars[x][y] = what;
+		backcolors[x][y] = back;
     }
 
     public void print(int x, int y, String what) {
@@ -416,11 +425,12 @@ public class WSwingConsoleInterface implements ConsoleSystemInterface, Runnable,
         for (int x = 0; x < colors.length; x++) {
             colors[x] = colorsBuffer[x].clone();
             chars[x] = charsBuffer[x].clone();
+			backcolors[x] = backcolorsBuffer[x].clone();
         }
         
         for (int x = 0; x < colors.length; x++) {
             for (int y = 0; y < colors[0].length; y++) {
-                this.print(x, y, chars[x][y], colors[x][y]);
+                this.print(x, y, chars[x][y], colors[x][y], backcolors[x][y]);
             }
         }
     }
@@ -429,6 +439,7 @@ public class WSwingConsoleInterface implements ConsoleSystemInterface, Runnable,
     	for (int x = 0; x < colors.length; x++) {
     		colorsBuffer[x] = colors[x].clone();
     		charsBuffer[x] = chars[x].clone();
+			backcolorsBuffer[x] = backcolors[x].clone();
         }
     }
 }
