@@ -69,7 +69,7 @@ public class JCursesConsoleInterface implements ConsoleSystemInterface {
     	for (int i = 0; i < what.length(); i++){
 			if (! isInsideBounds(x+i,y))
 				break;
-			if (what.charAt(i)== 'ï¿½')
+			if (what.charAt(i)== '¥')
 				continue;
 			chars[x+i][y] = what.charAt(i);
 			colors[x+i][y] = color;
