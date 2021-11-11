@@ -194,4 +194,8 @@ public interface ConsoleSystemInterface {
      * @param color The color, a rgba instance of CSIColor
      */
     public void print(int x, int y, String what, CSIColor color);
+    
+    public static String getVersion() {
+    	return "0.1.0";
+    }
 }
