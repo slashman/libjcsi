@@ -121,7 +121,7 @@ public class WSwingConsoleInterface implements ConsoleSystemInterface, Runnable,
         x = fMetric.getMaxAdvance();
         x = fMetric.charWidth('W'); //TODO: Which one to use?
         y = fMetric.getHeight() - 1;
-        targetFrame.setSize((xdim * x) + x, (ydim * y) + y + y);
+        targetFrame.setSize((xdim * x) + x, (ydim * y) + targetFrame.getInsets().top);
         targetFrame.setLocationRelativeTo(null); // places window in center of screen
         targetFrame.setResizable(false);
         locate(1, 1);
